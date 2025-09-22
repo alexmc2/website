@@ -2,15 +2,14 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { urlFor } from '@/sanity/lib/image';
 
@@ -147,7 +146,7 @@ export function HeroFullCarousel({
   };
 
   return (
-    <Carousel className="relative size-full z-0" opts={carouselOptions} setApi={setCarouselApi}>
+    <Carousel className="relative size-full" opts={carouselOptions} setApi={setCarouselApi}>
       <CarouselContent className="h-full !-ml-0">
         {images.map((carouselImage, index) => {
           const key =
@@ -185,26 +184,28 @@ export function HeroFullCarousel({
       </CarouselContent>
       {images.length > 1 && (
         <>
-          <Button
+          <CarouselPrevious
             type="button"
             variant="outline"
             size="icon"
-            onClick={handlePrev}
-            className="absolute left-6 top-1/2 z-30 -translate-y-1/2 bg-black/30 text-white border-white/40 hover:bg-black/50"
-          >
-            <ArrowLeft />
-            <span className="sr-only">Previous slide</span>
-          </Button>
-          <Button
+            disabled={false}
+            onClick={(event) => {
+              event.preventDefault();
+              handlePrev();
+            }}
+            className="left-6 top-1/2 -translate-y-1/2 border-slate-600 bg-transparent text-slate-300 hover:bg-slate-700 z-30 cursor-pointer"
+          />
+          <CarouselNext
             type="button"
             variant="outline"
             size="icon"
-            onClick={handleNext}
-            className="absolute right-6 top-1/2 z-30 -translate-y-1/2 bg-black/30 text-white border-white/40 hover:bg-black/50"
-          >
-            <ArrowRight />
-            <span className="sr-only">Next slide</span>
-          </Button>
+            disabled={false}
+            onClick={(event) => {
+              event.preventDefault();
+              handleNext();
+            }}
+            className="right-6 top-1/2 -translate-y-1/2 border-white/40 bg-black/30 text-white hover:bg-black/50 z-30 cursor-pointer"
+          />
         </>
       )}
     </Carousel>

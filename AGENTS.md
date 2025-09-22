@@ -4,12 +4,12 @@
 The Next.js App Router lives in `app/`, with route groups for marketing pages and shared layouts. Reusable UI and hooks sit in `components/` and `lib/`, while typed responses from Sanity land in `types/`. Sanity Studio schemas, config, and CLI helpers live under `sanity/`. Static assets belong in `public/`, and `.cursor/rules/` contains agent guardrails; review them before editing schema or frontend blocks. Use `sample-data.tar.gz` only for local seeding experiments.
 
 ## Build, Test, and Development Commands
-- `npm run dev`: Start the Next.js dev server plus hot reloading.
+<!-- - `npm run dev`: Start the Next.js dev server plus hot reloading.
 - `npm run build`: Create a production build for Vercel or static previews.
 - `npm run start`: Serve the last production build locally.
 - `npm run lint`: Run the Next.js ESLint ruleset (treat warnings as failures).
 - `npm run typecheck`: Execute `tsc --noEmit` to guard cross-layer typings.
-- `npm run typegen`: Regenerate `schema.json` and `sanity.types.ts` after schema changes.
+- `npm run typegen`: Regenerate `schema.json` and `sanity.types.ts` after schema changes. -->
 
 ## Coding Style & Naming Conventions
 Write TypeScript-first React components, defaulting to server components unless browser APIs or event handlers require `"use client"`. Name files PascalCase for components, kebab-case for routes, and mirror schema file names with their exported `defineType`. Keep Tailwind utility strings concise; extract shared variants into helpers in `lib/styles`. Each Sanity schema must declare a lucide-react icon, `defineField` usage, and preview configuration.

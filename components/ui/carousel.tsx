@@ -66,8 +66,8 @@ function Carousel({
     (apiInstance: CarouselApi) => {
       if (!apiInstance) return;
 
-      const scrollSnaps = apiInstance.scrollSnapList();
-      const hasMultipleSlides = scrollSnaps.length > 1;
+      const slideCount = apiInstance.slideNodes().length;
+      const hasMultipleSlides = slideCount > 1;
 
       if (opts?.loop) {
         setCanScrollPrev(hasMultipleSlides);
