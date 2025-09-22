@@ -146,7 +146,11 @@ export function HeroFullCarousel({
   };
 
   return (
-    <Carousel className="relative size-full" opts={carouselOptions} setApi={setCarouselApi}>
+    <Carousel
+      className="relative size-full"
+      opts={carouselOptions}
+      setApi={setCarouselApi}
+    >
       <CarouselContent className="h-full !-ml-0">
         {images.map((carouselImage, index) => {
           const key =
@@ -186,25 +190,20 @@ export function HeroFullCarousel({
         <>
           <CarouselPrevious
             type="button"
-            variant="outline"
-            size="icon"
-            disabled={false}
             onClick={(event) => {
               event.preventDefault();
               handlePrev();
             }}
-            className="left-6 top-1/2 -translate-y-1/2 border-slate-600 bg-transparent text-slate-300 hover:bg-slate-700 z-30 cursor-pointer"
+            className="left-6 top-1/2 -translate-y-1/2 z-30 cursor-pointer rounded-full border border-slate-600 bg-transparent text-slate-300 transition-all duration-300 ease-out delay-75 hover:bg-white/10 hover:text-white hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           />
+
           <CarouselNext
             type="button"
-            variant="outline"
-            size="icon"
-            disabled={false}
             onClick={(event) => {
               event.preventDefault();
               handleNext();
             }}
-            className="right-6 top-1/2 -translate-y-1/2 border-white/40 bg-black/30 text-white hover:bg-black/50 z-30 cursor-pointer"
+            className="right-6 top-1/2 -translate-y-1/2 z-30 cursor-pointer rounded-full border border-slate-600 bg-transparent text-slate-300 transition-all duration-300 ease-out delay-75 hover:bg-white/10 hover:text-white hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           />
         </>
       )}
