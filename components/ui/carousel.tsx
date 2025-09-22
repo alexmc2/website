@@ -62,11 +62,24 @@ function Carousel({
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
   const [canScrollNext, setCanScrollNext] = React.useState(false);
 
-  const onSelect = React.useCallback((api: CarouselApi) => {
-    if (!api) return;
-    setCanScrollPrev(api.canScrollPrev());
-    setCanScrollNext(api.canScrollNext());
-  }, []);
+  const onSelect = React.useCallback(
+    (apiInstance: CarouselApi) => {
+      if (!apiInstance) return;
+
+      const scrollSnaps = apiInstance.scrollSnapList();
+      const hasMultipleSlides = scrollSnaps.length > 1;
+
+      if (opts?.loop) {
+        setCanScrollPrev(hasMultipleSlides);
+        setCanScrollNext(hasMultipleSlides);
+        return;
+      }
+
+      setCanScrollPrev(apiInstance.canScrollPrev());
+      setCanScrollNext(apiInstance.canScrollNext());
+    },
+    [opts]
+  );
 
   const scrollPrev = React.useCallback(() => {
     api?.scrollPrev();
@@ -101,7 +114,8 @@ function Carousel({
     api.on("select", onSelect);
 
     return () => {
-      api?.off("select", onSelect);
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
     };
   }, [api, onSelect]);
 
@@ -139,12 +153,12 @@ function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       ref={carouselRef}
-      className="overflow-hidden"
+      className="overflow-hidden h-full"
       data-slot="carousel-content"
     >
       <div
         className={cn(
-          "flex",
+          "flex h-full",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
@@ -163,7 +177,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
       aria-roledescription="slide"
       data-slot="carousel-item"
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
+        "min-w-0 shrink-0 grow-0 basis-full h-full",
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
@@ -246,14 +260,22 @@ function CarouselDots({
   React.useEffect(() => {
     if (!api) return;
 
-    setSlideCount(api.scrollSnapList().length);
-
-    api.on("select", () => {
+    const handleSelect = () => {
       setSelectedIndex(api.selectedScrollSnap());
-    });
+    };
+
+    const handleReInit = () => {
+      setSlideCount(api.scrollSnapList().length);
+      handleSelect();
+    };
+
+    handleReInit();
+    api.on("select", handleSelect);
+    api.on("reInit", handleReInit);
 
     return () => {
-      api?.off("select", () => {});
+      api.off("select", handleSelect);
+      api.off("reInit", handleReInit);
     };
   }, [api]);
 
@@ -270,6 +292,7 @@ function CarouselDots({
         <button
           key={index}
           onClick={() => goToSlide(index)}
+          type="button"
           className={cn(
             "rounded-full transition-colors p-2",
             {
@@ -307,14 +330,22 @@ function CarouselCounter({
   React.useEffect(() => {
     if (!api) return;
 
-    setSlideCount(api.scrollSnapList().length);
-
-    api.on("select", () => {
+    const handleSelect = () => {
       setSelectedIndex(api.selectedScrollSnap());
-    });
+    };
+
+    const handleReInit = () => {
+      setSlideCount(api.scrollSnapList().length);
+      handleSelect();
+    };
+
+    handleReInit();
+    api.on("select", handleSelect);
+    api.on("reInit", handleReInit);
 
     return () => {
-      api?.off("select", () => {});
+      api.off("select", handleSelect);
+      api.off("reInit", handleReInit);
     };
   }, [api]);
 

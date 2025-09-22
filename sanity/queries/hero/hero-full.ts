@@ -13,6 +13,9 @@ export const heroFullQuery = groq`
     body[]{
       ${bodyQuery}
     },
+    images[]{
+      ${imageQuery}
+    },
     image{
       ${imageQuery}
     },

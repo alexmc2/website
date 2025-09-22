@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Open_Sans as FontSans, Merriweather as FontDisplay } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -34,6 +34,12 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
+const fontDisplay = FontDisplay({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-display",
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -45,7 +51,8 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased overscroll-none",
-          fontSans.variable
+          fontSans.variable,
+          fontDisplay.variable
         )}
       >
         <ThemeProvider

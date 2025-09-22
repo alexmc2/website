@@ -16,6 +16,36 @@ export default defineType({
     defineField({ name: "title", type: "string", group: "content" }),
     defineField({ name: "body", type: "block-content", group: "content" }),
     defineField({
+      name: "images",
+      title: "Hero Images",
+      type: "array",
+      group: "content",
+      description: "Add one or more images to rotate through in the hero carousel.",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              type: "string",
+              title: "Alternative Text",
+              description:
+                "Briefly describe the focus of the image for screen readers.",
+              validation: (Rule) =>
+                Rule.max(120).warning("Aim for alt text under 120 characters."),
+            }),
+          ],
+        },
+      ],
+      validation: (Rule) =>
+        Rule.custom((images, context) => {
+          if (images?.length) return true;
+          if (context.parent?.image) return true;
+          return "Add at least one hero image.";
+        }),
+    }),
+    defineField({
       name: "image",
       type: "image",
       group: "content",
@@ -30,6 +60,7 @@ export default defineType({
             Rule.max(120).warning("Aim for alt text under 120 characters."),
         }),
       ],
+      hidden: ({ parent }) => Boolean(parent?.images && parent.images.length > 0),
     }),
     defineField({
       name: "height",
@@ -78,9 +109,12 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { title: "title", media: "image" },
-    prepare({ title, media }) {
-      return { title: title || "Hero – Full Image", media };
+    select: { title: "title", media: "image", gallery: "images.0" },
+    prepare({ title, media, gallery }) {
+      return {
+        title: title || "Hero – Full Image",
+        media: gallery || media,
+      };
     },
   },
 });

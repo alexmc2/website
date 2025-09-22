@@ -4,12 +4,14 @@ import { urlFor } from '@/sanity/lib/image';
 import PortableTextRenderer from '@/components/portable-text-renderer';
 import { FadeIn } from '@/components/ui/fade.in';
 import { cn } from '@/lib/utils';
+import { HeroFullCarousel } from './hero-full-carousel';
 
 type HeroFullProps = {
   tagLine?: string | null;
   title?: string | null;
   body?: any;
   image?: any;
+  images?: any[] | null;
   height?: 'screen' | '70vh' | '60vh' | null;
   overlay?: boolean | null;
   overlayStrength?: number | null;
@@ -21,6 +23,7 @@ export default function HeroFull({
   title,
   body,
   image,
+  images,
   height = 'screen',
   overlay = true,
   overlayStrength = 50,
@@ -42,6 +45,10 @@ export default function HeroFull({
         ? 'text-center'
         : 'text-center';
 
+  const heroImages = (images && images.length ? images : image ? [image] : []).filter(
+    (img) => img?.asset?._id
+  );
+
   return (
     <section
       className={cn(
@@ -50,25 +57,31 @@ export default function HeroFull({
       )}
       style={!isFullScreen ? { minHeight: resolvedMinHeight } : undefined}
     >
-      {(image?.asset?._id || overlay) && (
+      {(heroImages.length > 0 || overlay) && (
         <div className="absolute inset-0">
-          {image?.asset?._id && (
-            <div className="relative h-full w-full overflow-hidden animate-zoom-in">
-              <Image
-                src={urlFor(image).url()}
-                alt={image.alt || ''}
-                fill
-                priority
-                className="object-cover"
-                sizes="100vw"
-                placeholder={image?.asset?.metadata?.lqip ? 'blur' : undefined}
-                blurDataURL={image?.asset?.metadata?.lqip || undefined}
-              />
-            </div>
+          {heroImages.length > 1 ? (
+            <HeroFullCarousel images={heroImages} />
+          ) : (
+            heroImages[0] && (
+              <div className="relative h-full w-full overflow-hidden animate-zoom-in will-change-transform motion-reduce:animate-none">
+                <Image
+                  src={urlFor(heroImages[0]).url()}
+                  alt={heroImages[0].alt || ''}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="100vw"
+                  placeholder={
+                    heroImages[0]?.asset?.metadata?.lqip ? 'blur' : undefined
+                  }
+                  blurDataURL={heroImages[0]?.asset?.metadata?.lqip || undefined}
+                />
+              </div>
+            )
           )}
           {overlay && (
             <div
-              className="absolute inset-0"
+              className="pointer-events-none absolute inset-0 z-10"
               style={{ backgroundColor: `rgba(0,0,0,${overlayOpacity})` }}
             />
           )}
@@ -76,7 +89,7 @@ export default function HeroFull({
       )}
       {(tagLine || title || body) && (
         <div
-          className={`absolute inset-0 flex items-center ${justify} px-6 lg:px-32`}
+          className={`absolute inset-0 z-20 flex items-center ${justify} px-6 lg:px-32`}
         >
           <div className={`max-w-2xl text-white text-center   ${textAlign}`}>
             {tagLine && (
