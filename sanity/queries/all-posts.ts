@@ -1,3 +1,4 @@
+// sanity/queries/all-posts.ts
 import { groq } from "next-sanity";
 
 // @sanity-typegen-ignore

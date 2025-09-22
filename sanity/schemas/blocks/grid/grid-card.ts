@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/grid/grid-card.ts
 import { defineField, defineType } from "sanity";
 import { LayoutGrid } from "lucide-react";
 

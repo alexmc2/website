@@ -1,3 +1,4 @@
+// components/blocks/post-hero.tsx
 import Image from "next/image";
 import PostDate from "@/components/post-date";
 import { Mail } from "lucide-react";

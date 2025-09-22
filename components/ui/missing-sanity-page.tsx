@@ -1,3 +1,4 @@
+// components/ui/missing-sanity-page.tsx
 import { Badge } from "@/components/ui/badge";
 
 export default function MissingSanityPage({

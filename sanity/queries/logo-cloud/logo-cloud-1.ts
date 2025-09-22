@@ -1,3 +1,4 @@
+// sanity/queries/logo-cloud/logo-cloud-1.ts
 import { groq } from "next-sanity";
 import { imageQuery } from "../shared/image";
 

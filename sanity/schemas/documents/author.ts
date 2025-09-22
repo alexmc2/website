@@ -1,3 +1,4 @@
+// sanity/schemas/documents/author.ts
 import { defineField, defineType } from "sanity";
 import { orderRankField } from "@sanity/orderable-document-list";
 

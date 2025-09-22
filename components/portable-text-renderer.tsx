@@ -1,3 +1,4 @@
+// components/portable-text-renderer.tsx
 import { PortableText, PortableTextProps } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/timeline/timeline-row.ts
 import { defineType, defineField } from "sanity";
 import { ArrowDownNarrowWide } from "lucide-react";
 

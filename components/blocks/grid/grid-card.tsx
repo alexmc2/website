@@ -1,3 +1,4 @@
+// components/blocks/grid/grid-card.tsx
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { stegaClean } from "next-sanity";

@@ -1,3 +1,4 @@
+// sanity/queries/split/split-image.ts
 import { groq } from "next-sanity";
 import { imageQuery } from "../shared/image";
 

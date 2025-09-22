@@ -1,3 +1,4 @@
+// sanity/queries/timeline.ts
 import { groq } from "next-sanity";
 import { bodyQuery } from "./shared/body";
 import { imageQuery } from "./shared/image";

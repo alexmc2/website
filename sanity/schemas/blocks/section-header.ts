@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/section-header.ts
 import { defineField, defineType } from "sanity";
 import { LetterText } from "lucide-react";
 import { STACK_ALIGN, SECTION_WIDTH } from "./shared/layout-variants";

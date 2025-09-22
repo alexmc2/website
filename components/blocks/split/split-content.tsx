@@ -1,3 +1,4 @@
+// components/blocks/split/split-content.tsx
 import { cn } from "@/lib/utils";
 import PortableTextRenderer from "@/components/portable-text-renderer";
 import { Button } from "@/components/ui/button";

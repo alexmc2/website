@@ -1,3 +1,4 @@
+// sanity/schemas/documents/page.ts
 import { defineField, defineType } from "sanity";
 import { Files } from "lucide-react";
 import { orderRankField } from "@sanity/orderable-document-list";
@@ -41,6 +42,7 @@ export default defineType({
       of: [
         { type: "hero-1" },
         { type: "hero-2" },
+        { type: "hero-full" },
         { type: "section-header" },
         { type: "split-row" },
         { type: "grid-row" },
@@ -59,7 +61,7 @@ export default defineType({
             {
               name: "hero",
               title: "Hero",
-              of: ["hero-1", "hero-2"],
+              of: ["hero-1", "hero-2", "hero-full"],
             },
             {
               name: "logo-cloud",

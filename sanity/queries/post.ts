@@ -1,3 +1,4 @@
+// sanity/queries/post.ts
 import { groq } from "next-sanity";
 import { imageQuery } from "./shared/image";
 import { bodyQuery } from "./shared/body";

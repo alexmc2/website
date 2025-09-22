@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/logo-cloud/logo-cloud-1.ts
 import { defineType, defineField } from "sanity";
 import { Images } from "lucide-react";
 

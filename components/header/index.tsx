@@ -1,9 +1,10 @@
-import Link from "next/link";
-import Logo from "@/components/logo";
-import MobileNav from "@/components/header/mobile-nav";
-import DesktopNav from "@/components/header/desktop-nav";
-import { ModeToggle } from "@/components/menu-toggle";
-import { fetchSanitySettings, fetchSanityNavigation } from "@/sanity/lib/fetch";
+// components/header/index.tsx
+import Link from 'next/link';
+import Logo from '@/components/logo';
+import MobileNav from '@/components/header/mobile-nav';
+import DesktopNav from '@/components/header/desktop-nav';
+import { ModeToggle } from '@/components/menu-toggle';
+import { fetchSanitySettings, fetchSanityNavigation } from '@/sanity/lib/fetch';
 
 export default async function Header() {
   const settings = await fetchSanitySettings();

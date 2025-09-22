@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/shared/block-content.ts
 import { defineType, defineArrayMember } from "sanity";
 import { SquarePlay } from "lucide-react";
 import { YouTubePreview } from "@/sanity/schemas/previews/youtube-preview";

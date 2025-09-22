@@ -1,3 +1,4 @@
+// components/blocks/split/split-cards-item.tsx
 "use client";
 import PortableTextRenderer from "@/components/portable-text-renderer";
 import { cn } from "@/lib/utils";

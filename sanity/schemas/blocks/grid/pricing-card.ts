@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/grid/pricing-card.ts
 import { defineField, defineType } from "sanity";
 import { WalletCards } from "lucide-react";
 

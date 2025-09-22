@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/all-posts.ts
 import { defineField, defineType } from "sanity";
 import { Newspaper } from "lucide-react";
 

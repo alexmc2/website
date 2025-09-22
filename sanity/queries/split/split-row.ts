@@ -1,3 +1,4 @@
+// sanity/queries/split/split-row.ts
 import { groq } from "next-sanity";
 import { splitContentQuery } from "./split-content";
 import { splitCardsListQuery } from "./split-cards-list";

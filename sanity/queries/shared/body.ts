@@ -1,3 +1,4 @@
+// sanity/queries/shared/body.ts
 import { linkQuery } from "./link";
 import { imageQuery } from "./image";
 

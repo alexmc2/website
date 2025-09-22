@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/shared/section-padding.ts
 import { defineField, defineType } from "sanity";
 
 export default defineType({

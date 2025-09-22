@@ -1,3 +1,4 @@
+// components/blocks/logo-cloud/logo-cloud-1.tsx
 "use client";
 import SectionContainer from "@/components/ui/section-container";
 import { stegaClean } from "next-sanity";

@@ -1,3 +1,4 @@
+// components/blocks/all-posts.tsx
 import SectionContainer from "@/components/ui/section-container";
 import PostCard from "@/components/ui/post-card";
 import Link from "next/link";

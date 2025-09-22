@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/split/split-content.ts
 import { defineField, defineType } from "sanity";
 import { TextQuote } from "lucide-react";
 

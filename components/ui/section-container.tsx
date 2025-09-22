@@ -1,3 +1,4 @@
+// components/ui/section-container.tsx
 import { cn } from "@/lib/utils";
 import { SectionPadding, ColorVariant } from "@/sanity.types";
 

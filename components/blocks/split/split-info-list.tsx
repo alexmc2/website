@@ -1,3 +1,4 @@
+// components/blocks/split/split-info-list.tsx
 import SplitInfoItem from "@/components/blocks/split/split-info-item";
 import { PAGE_QUERYResult } from "@/sanity.types";
 

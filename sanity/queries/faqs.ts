@@ -1,3 +1,4 @@
+// sanity/queries/faqs.ts
 import { groq } from "next-sanity";
 import { bodyQuery } from "./shared/body";
 

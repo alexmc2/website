@@ -1,3 +1,4 @@
+// sanity/schemas/documents/faq.ts
 import { defineField, defineType } from "sanity";
 import { ListCollapse } from "lucide-react";
 import { orderRankField } from "@sanity/orderable-document-list";

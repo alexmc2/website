@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/faqs.ts
 import { defineType, defineField } from "sanity";
 import { ListCollapse } from "lucide-react";
 

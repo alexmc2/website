@@ -1,3 +1,4 @@
+// sanity/queries/forms/newsletter.ts
 import { groq } from "next-sanity";
 
 // @sanity-typegen-ignore

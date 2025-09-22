@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/forms/newsletter.ts
 import { defineField, defineType } from "sanity";
 import { Mails } from "lucide-react";
 import { STACK_ALIGN } from "../shared/layout-variants";

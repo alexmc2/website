@@ -1,3 +1,4 @@
+// components/blocks/hero/hero-1.tsx
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";

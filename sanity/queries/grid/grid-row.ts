@@ -1,3 +1,4 @@
+// sanity/queries/grid/grid-row.ts
 import { groq } from "next-sanity";
 import { gridCardQuery } from "@/sanity/queries/grid/grid-card";
 import { pricingCardQuery } from "@/sanity/queries/grid/pricing-card";

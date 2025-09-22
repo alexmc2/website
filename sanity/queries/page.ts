@@ -1,6 +1,8 @@
+// sanity/queries/page.ts
 import { groq } from "next-sanity";
 import { hero1Query } from "./hero/hero-1";
 import { hero2Query } from "./hero/hero-2";
+import { heroFullQuery } from "./hero/hero-full";
 import { sectionHeaderQuery } from "./section-header";
 import { splitRowQuery } from "./split/split-row";
 import { gridRowQuery } from "./grid/grid-row";
@@ -18,6 +20,7 @@ export const PAGE_QUERY = groq`
     blocks[]{
       ${hero1Query},
       ${hero2Query},
+      ${heroFullQuery},
       ${sectionHeaderQuery},
       ${splitRowQuery},
       ${gridRowQuery},

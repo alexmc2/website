@@ -1,3 +1,4 @@
+// sanity/queries/shared/link.ts
 export const linkQuery = `
     _key,
     ...,

@@ -1,3 +1,4 @@
+// sanity/queries/hero/hero-1.ts
 import { groq } from "next-sanity";
 import { linkQuery } from "../shared/link";
 import { imageQuery } from "../shared/image";

@@ -1,3 +1,4 @@
+// sanity/queries/cta/cta-1.ts
 import { groq } from "next-sanity";
 import { linkQuery } from "../shared/link";
 import { bodyQuery } from "../shared/body";

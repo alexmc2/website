@@ -1,3 +1,4 @@
+// app/sitemap.ts
 import { MetadataRoute } from "next";
 import { groq } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";

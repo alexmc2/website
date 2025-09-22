@@ -1,3 +1,4 @@
+// components/blocks/split/split-info-item.tsx
 "use client";
 import PortableTextRenderer from "@/components/portable-text-renderer";
 import { Badge } from "@/components/ui/badge";

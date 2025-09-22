@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/shared/color-variant.ts
 import { defineType } from "sanity";
 
 export const COLOR_VARIANTS = [

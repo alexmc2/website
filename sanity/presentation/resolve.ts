@@ -1,3 +1,4 @@
+// sanity/presentation/resolve.ts
 import {
   defineLocations,
   defineDocuments,

@@ -1,3 +1,4 @@
+// components/blocks/split/split-image.tsx
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { PAGE_QUERYResult } from "@/sanity.types";

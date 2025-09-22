@@ -1,6 +1,8 @@
+// components/blocks/index.tsx
 import { PAGE_QUERYResult } from "@/sanity.types";
 import Hero1 from "@/components/blocks/hero/hero-1";
 import Hero2 from "@/components/blocks/hero/hero-2";
+import HeroFull from "@/components/blocks/hero/hero-full";
 import SectionHeader from "@/components/blocks/section-header";
 import SplitRow from "@/components/blocks/split/split-row";
 import GridRow from "@/components/blocks/grid/grid-row";
@@ -20,6 +22,7 @@ const componentMap: {
 } = {
   "hero-1": Hero1,
   "hero-2": Hero2,
+  "hero-full": HeroFull,
   "section-header": SectionHeader,
   "split-row": SplitRow,
   "grid-row": GridRow,

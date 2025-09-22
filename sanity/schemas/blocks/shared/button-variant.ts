@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/shared/button-variant.ts
 import { defineType } from "sanity";
 
 export const BUTTON_VARIANTS = [

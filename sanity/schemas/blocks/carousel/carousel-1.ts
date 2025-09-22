@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/carousel/carousel-1.ts
 import { defineField, defineType } from "sanity";
 import { GalleryHorizontal } from "lucide-react";
 

@@ -1,3 +1,4 @@
+// components/blocks/carousel/carousel-1.tsx
 import SectionContainer from "@/components/ui/section-container";
 import { stegaClean } from "next-sanity";
 import {

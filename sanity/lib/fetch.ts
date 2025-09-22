@@ -1,3 +1,4 @@
+// sanity/lib/fetch.ts
 import { sanityFetch } from "@/sanity/lib/live";
 import { PAGE_QUERY, PAGES_SLUGS_QUERY } from "@/sanity/queries/page";
 import { NAVIGATION_QUERY } from "@/sanity/queries/navigation";

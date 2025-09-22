@@ -1,3 +1,4 @@
+// components/blocks/split/split-cards-list.tsx
 import { stegaClean } from "next-sanity";
 import SplitCardsItem from "@/components/blocks/split/split-cards-item";
 import { PAGE_QUERYResult, ColorVariant } from "@/sanity.types";

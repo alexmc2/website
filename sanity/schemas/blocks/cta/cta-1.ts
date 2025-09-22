@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/cta/cta-1.ts
 import { defineField, defineType } from "sanity";
 import { Captions } from "lucide-react";
 import { STACK_ALIGN, SECTION_WIDTH } from "../shared/layout-variants";

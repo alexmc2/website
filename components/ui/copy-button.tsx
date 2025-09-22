@@ -1,3 +1,4 @@
+// components/ui/copy-button.tsx
 "use client";
 
 import { useState } from "react";

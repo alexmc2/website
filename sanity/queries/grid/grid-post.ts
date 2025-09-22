@@ -1,3 +1,4 @@
+// sanity/queries/grid/grid-post.ts
 import { groq } from "next-sanity";
 import { imageQuery } from "../shared/image";
 

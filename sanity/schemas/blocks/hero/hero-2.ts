@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/hero/hero-2.ts
 import { defineField, defineType } from "sanity";
 import { LayoutTemplate } from "lucide-react";
 

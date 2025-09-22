@@ -1,3 +1,4 @@
+// sanity/schemas/previews/youtube-preview.tsx
 import type { PreviewProps } from "sanity";
 import { Flex, Text } from "@sanity/ui";
 import ReactPlayer from "react-player";

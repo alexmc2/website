@@ -1,3 +1,4 @@
+// sanity/schemas/documents/post.ts
 import { defineField, defineType } from "sanity";
 import { FileText } from "lucide-react";
 

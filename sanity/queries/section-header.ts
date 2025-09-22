@@ -1,3 +1,4 @@
+// sanity/queries/section-header.ts
 import { groq } from "next-sanity";
 import { linkQuery } from "./shared/link";
 

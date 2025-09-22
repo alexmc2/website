@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/split/split-info.ts
 import { defineField, defineType } from "sanity";
 import { Info } from "lucide-react";
 import { extractPlainText } from "@/lib/utils";

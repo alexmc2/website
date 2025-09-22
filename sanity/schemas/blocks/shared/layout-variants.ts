@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/shared/layout-variants.ts
 export const STACK_ALIGN = [
   { title: "Left", value: "left" },
   { title: "Center", value: "center" },

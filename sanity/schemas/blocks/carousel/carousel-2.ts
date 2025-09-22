@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/carousel/carousel-2.ts
 import { defineField, defineType } from "sanity";
 import { Quote } from "lucide-react";
 

@@ -1,3 +1,4 @@
+// components/ui/post-card.tsx
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";

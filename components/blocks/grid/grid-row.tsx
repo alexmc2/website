@@ -1,3 +1,4 @@
+// components/blocks/grid/grid-row.tsx
 import { cn } from "@/lib/utils";
 import SectionContainer from "@/components/ui/section-container";
 import { stegaClean } from "next-sanity";

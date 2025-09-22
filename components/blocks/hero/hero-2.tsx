@@ -1,3 +1,4 @@
+// components/blocks/hero/hero-2.tsx
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { stegaClean } from "next-sanity";

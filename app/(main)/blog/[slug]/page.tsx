@@ -1,3 +1,4 @@
+// app/(main)/blog/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
 import PostHero from "@/components/blocks/post-hero";

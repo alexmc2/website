@@ -1,3 +1,4 @@
+// sanity/queries/split/split-content.ts
 import { groq } from "next-sanity";
 import { bodyQuery } from "../shared/body";
 import { linkQuery } from "../shared/link";

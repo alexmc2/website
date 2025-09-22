@@ -1,3 +1,4 @@
+// sanity/queries/navigation.ts
 import { groq } from "next-sanity";
 
 export const NAVIGATION_QUERY = groq`

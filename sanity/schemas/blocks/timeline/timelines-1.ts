@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/timeline/timelines-1.ts
 import { defineField, defineType } from "sanity";
 
 export default defineType({

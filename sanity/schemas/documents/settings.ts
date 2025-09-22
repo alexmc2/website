@@ -1,3 +1,4 @@
+// sanity/schemas/documents/settings.ts
 import { defineField, defineType } from "sanity";
 import { Settings } from "lucide-react";
 

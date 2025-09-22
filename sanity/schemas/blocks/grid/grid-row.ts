@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/grid/grid-row.ts
 import { defineField, defineType } from "sanity";
 import { LayoutGrid } from "lucide-react";
 import { COLS_VARIANTS } from "../shared/layout-variants";

@@ -1,3 +1,4 @@
+// sanity/schemas/blocks/split/split-row.ts
 import { defineType, defineField } from "sanity";
 import { SquareSplitHorizontal } from "lucide-react";
 

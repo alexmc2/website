@@ -1,3 +1,4 @@
+// sanity/queries/shared/image.ts
 export const imageQuery = `
   ...,
   asset->{

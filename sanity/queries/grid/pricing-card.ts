@@ -1,3 +1,4 @@
+// sanity/queries/grid/pricing-card.ts
 import { groq } from "next-sanity";
 import { linkQuery } from "../shared/link";
 

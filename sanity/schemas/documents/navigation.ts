@@ -1,3 +1,4 @@
+// sanity/schemas/documents/navigation.ts
 import { defineField, defineType } from "sanity";
 import { Menu } from "lucide-react";
 
