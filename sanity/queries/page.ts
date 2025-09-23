@@ -14,6 +14,7 @@ import { logoCloud1Query } from "./logo-cloud/logo-cloud-1";
 import { faqsQuery } from "./faqs";
 import { formNewsletterQuery } from "./forms/newsletter";
 import { allPostsQuery } from "./all-posts";
+import { menuSectionQuery } from "./menu-section";
 
 export const PAGE_QUERY = groq`
   *[_type == "page" && slug.current == $slug][0]{
@@ -32,6 +33,7 @@ export const PAGE_QUERY = groq`
       ${faqsQuery},
       ${formNewsletterQuery},
       ${allPostsQuery},
+      ${menuSectionQuery},
     },
     meta_title,
     meta_description,

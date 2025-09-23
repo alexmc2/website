@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Open_Sans as FontSans, Merriweather as FontDisplay } from "next/font/google";
+import { Open_Sans as FontSans, Poppins as FontDisplay } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";

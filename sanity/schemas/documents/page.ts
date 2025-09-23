@@ -44,6 +44,7 @@ export default defineType({
         { type: "hero-2" },
         { type: "hero-full" },
         { type: "section-header" },
+        { type: "menu-section" },
         { type: "split-row" },
         { type: "grid-row" },
         { type: "carousel-1" },
@@ -72,6 +73,11 @@ export default defineType({
               name: "section-header",
               title: "Section Header",
               of: ["section-header"],
+            },
+            {
+              name: "menu",
+              title: "Menu",
+              of: ["menu-section"],
             },
             {
               name: "grid",
