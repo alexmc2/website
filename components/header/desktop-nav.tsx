@@ -22,14 +22,12 @@ export default function DesktopNav({
       )}
     >
       {navigation[0]?.links?.map((navItem: SanityLink) => {
-        const hasHash = Boolean(navItem.href && navItem.href.includes("#"));
         const isGhostVariant = !navItem.buttonVariant || navItem.buttonVariant === "ghost";
 
         return (
           <Link
             key={navItem._key}
             href={navItem.href || "#"}
-            scroll={hasHash ? false : true}
             target={navItem.target ? "_blank" : undefined}
             rel={navItem.target ? "noopener noreferrer" : undefined}
             className={cn(

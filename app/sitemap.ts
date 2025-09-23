@@ -1,7 +1,7 @@
 // app/sitemap.ts
-import { MetadataRoute } from "next";
-import { groq } from "next-sanity";
-import { sanityFetch } from "@/sanity/lib/live";
+import { MetadataRoute } from 'next';
+import { groq } from 'next-sanity';
+import { sanityFetch } from '@/sanity/lib/live';
 
 async function getPagesSitemap(): Promise<MetadataRoute.Sitemap[]> {
   const pagesQuery = groq`
@@ -29,7 +29,7 @@ async function getPagesSitemap(): Promise<MetadataRoute.Sitemap[]> {
 async function getPostsSitemap(): Promise<MetadataRoute.Sitemap[]> {
   const postsQuery = groq`
     *[_type == 'post'] | order(_updatedAt desc) {
-      'url': $baseUrl + '/blog/' + slug.current,
+      'url': $baseUrl + '/news/' + slug.current,
       'lastModified': _updatedAt,
       'changeFrequency': 'weekly',
       'priority': 0.7

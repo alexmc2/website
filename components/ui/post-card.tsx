@@ -48,9 +48,9 @@ export default function PostCard({
         )}
         {excerpt && <p>{excerpt}</p>}
       </div>
-      <div className="mt-3 xl:mt-6 w-10 h-10 border rounded-full flex items-center justify-center group-hover:border-primary">
+      <div className="mt-3 xl:mt-6 w-10 h-10 border rounded-full flex items-center justify-center group-hover:border-primary/20 transition-all">
         <ChevronRight
-          className="text-border group-hover:text-primary"
+          className="text-border group-hover:text-primary/20 transition-all"
           size={24}
         />
       </div>

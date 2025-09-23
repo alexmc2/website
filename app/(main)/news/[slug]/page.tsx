@@ -1,14 +1,14 @@
-// app/(main)/blog/[slug]/page.tsx
-import { notFound } from "next/navigation";
-import Breadcrumbs from "@/components/ui/breadcrumbs";
-import PostHero from "@/components/blocks/post-hero";
-import { BreadcrumbLink } from "@/types";
-import PortableTextRenderer from "@/components/portable-text-renderer";
+// app/(main)/news/[slug]/page.tsx
+import { notFound } from 'next/navigation';
+import Breadcrumbs from '@/components/ui/breadcrumbs';
+import PostHero from '@/components/blocks/post-hero';
+import { BreadcrumbLink } from '@/types';
+import PortableTextRenderer from '@/components/portable-text-renderer';
 import {
   fetchSanityPostBySlug,
   fetchSanityPostsStaticParams,
-} from "@/sanity/lib/fetch";
-import { generatePageMetadata } from "@/sanity/lib/metadata";
+} from '@/sanity/lib/fetch';
+import { generatePageMetadata } from '@/sanity/lib/metadata';
 
 export async function generateStaticParams() {
   const posts = await fetchSanityPostsStaticParams();
@@ -28,7 +28,7 @@ export async function generateMetadata(props: {
     notFound();
   }
 
-  return generatePageMetadata({ page: post, slug: `/blog/${params.slug}` });
+  return generatePageMetadata({ page: post, slug: `/news/${params.slug}` });
 }
 
 export default async function PostPage(props: {
@@ -44,16 +44,16 @@ export default async function PostPage(props: {
   const links: BreadcrumbLink[] = post
     ? [
         {
-          label: "Home",
-          href: "/",
+          label: 'Home',
+          href: '/',
         },
         {
-          label: "Blog",
-          href: "/blog",
+          label: 'news',
+          href: '/news',
         },
         {
           label: post.title as string,
-          href: "#",
+          href: '#',
         },
       ]
     : [];

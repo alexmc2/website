@@ -19,17 +19,17 @@ const ALIGN_CLASS_MAP: Record<"left" | "center" | "right", string> = {
 };
 
 const SIZE_CLASS_MAP: Record<"small" | "medium" | "large" | "full", string> = {
-  small: "max-w-[12rem] sm:max-w-[16rem]",
-  medium: "max-w-[18rem] sm:max-w-[22rem]",
-  large: "max-w-[24rem] sm:max-w-[30rem]",
+  small: "max-w-[14rem] sm:max-w-[18rem]",
+  medium: "max-w-[20rem] sm:max-w-[28rem] md:max-w-[32rem]",
+  large: "max-w-[32rem] sm:max-w-[40rem] md:max-w-[48rem]",
   full: "w-full max-w-none",
 };
 
 const HEIGHT_CLASS_MAP: Record<"small" | "medium" | "large" | "full", string> = {
-  small: "h-20 sm:h-24",
-  medium: "h-24 sm:h-28 md:h-32",
-  large: "h-28 sm:h-32 md:h-40",
-  full: "h-28 sm:h-36 md:h-44",
+  small: "h-24 sm:h-28",
+  medium: "h-32 sm:h-40 md:h-48",
+  large: "h-40 sm:h-52 md:h-64",
+  full: "h-48 sm:h-60 md:h-72 lg:h-80",
 };
 
 const FILLED_SIZE_STYLE = {
@@ -126,7 +126,7 @@ export default function LottieAnimationBlock({
               className="h-full w-full"
               ariaLabel={label}
               style={FILLED_SIZE_STYLE}
-              preserveAspectRatio="xMidYMid slice"
+              preserveAspectRatio="xMidYMid meet"
             />
           </div>
         </div>

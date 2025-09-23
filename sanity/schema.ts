@@ -43,6 +43,7 @@ import newsletter from "./schemas/blocks/forms/newsletter";
 import allPosts from "./schemas/blocks/all-posts";
 import menuSection from "./schemas/blocks/menu-section";
 import lottieAnimation from "./schemas/blocks/lottie-animation";
+import reviewsCarousel from "./schemas/blocks/reviews/reviews-carousel";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -88,5 +89,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     allPosts,
     menuSection,
     lottieAnimation,
+    reviewsCarousel,
   ],
 };

@@ -38,6 +38,7 @@ export default function SectionContainer({
       id={id ?? undefined}
       className={cn(
         "relative",
+        id ? "scroll-mt-24 lg:scroll-mt-32" : undefined,
         backgroundClass,
         padding?.top ? "pt-16 xl:pt-20" : undefined,
         padding?.bottom ? "pb-16 xl:pb-20" : undefined,

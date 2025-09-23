@@ -134,6 +134,9 @@ All environment variables and their descriptions:
 - `SANITY_API_READ_TOKEN` - your Sanity read token for Next.js to fetch data.
 - `RESEND_API_KEY` - your RESEND api key for the newsletter form.
 - `RESEND_AUDIENCE_ID` - your RESEND audience id for the newsletter form to store contacts.
+- `GOOGLE_PLACES_API_KEY` - server-side Google Places API key with the Places API enabled. Needed to fetch live reviews.
+- `GOOGLE_PLACES_PLACE_ID` - default Google Place ID for your location (can be overridden per block in Sanity).
+- `GOOGLE_PLACES_LANGUAGE` - optional fallback locale (e.g. `en-GB`) used when a block does not specify a language code.
 
 ## Examples
 

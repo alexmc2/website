@@ -1,9 +1,9 @@
 // components/blocks/post-hero.tsx
-import Image from "next/image";
-import PostDate from "@/components/post-date";
-import { Mail } from "lucide-react";
-import { urlFor } from "@/sanity/lib/image";
-import { POST_QUERYResult } from "@/sanity.types";
+import Image from 'next/image';
+import PostDate from '@/components/post-date';
+import { Mail } from 'lucide-react';
+import { urlFor } from '@/sanity/lib/image';
+import { POST_QUERYResult } from '@/sanity.types';
 
 type PostHeroProps = NonNullable<POST_QUERYResult>;
 
@@ -21,8 +21,8 @@ export default function PostHero({
         <div className="my-4 md:my-6 rounded-2xl overflow-hidden">
           <Image
             src={urlFor(image).quality(100).url()}
-            alt={image.alt || ""}
-            placeholder={image?.asset?.metadata?.lqip ? "blur" : undefined}
+            alt={image.alt || ''}
+            placeholder={image?.asset?.metadata?.lqip ? 'blur' : undefined}
             blurDataURL={image.asset?.metadata?.lqip || undefined}
             width={image.asset?.metadata?.dimensions?.width || 1200}
             height={image?.asset?.metadata?.dimensions?.height || 630}
@@ -37,13 +37,13 @@ export default function PostHero({
               <div className="relative w-6 h-6 md:w-10 md:h-10">
                 <Image
                   src={urlFor(author.image).url()}
-                  alt={author.image.alt ? author.image.alt : ""}
+                  alt={author.image.alt ? author.image.alt : ''}
                   fill
                   style={{
-                    objectFit: "cover",
+                    objectFit: 'cover',
                   }}
                   placeholder={
-                    author.image.asset?.metadata?.lqip ? "blur" : undefined
+                    author.image.asset?.metadata?.lqip ? 'blur' : undefined
                   }
                   blurDataURL={author.image.asset?.metadata?.lqip || undefined}
                   sizes="40px"
@@ -61,7 +61,7 @@ export default function PostHero({
           <div className="flex gap-2">
             <a
               className="hover:opacity-70"
-              href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug?.current}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug?.current}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Share on Facebook"
@@ -82,7 +82,7 @@ export default function PostHero({
             </a>
             <a
               className="hover:opacity-70"
-              href={`mailto:?subject=${title}&body=${title}%0A%0A${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug?.current}`}
+              href={`mailto:?subject=${title}&body=${title}%0A%0A${process.env.NEXT_PUBLIC_SITE_URL}/news/${slug?.current}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Share via email"

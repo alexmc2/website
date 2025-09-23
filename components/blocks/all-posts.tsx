@@ -1,14 +1,14 @@
 // components/blocks/all-posts.tsx
-import SectionContainer from "@/components/ui/section-container";
-import PostCard from "@/components/ui/post-card";
-import Link from "next/link";
-import { stegaClean } from "next-sanity";
-import { fetchSanityPosts } from "@/sanity/lib/fetch";
-import { PAGE_QUERYResult } from "@/sanity.types";
+import SectionContainer from '@/components/ui/section-container';
+import PostCard from '@/components/ui/post-card';
+import Link from 'next/link';
+import { stegaClean } from 'next-sanity';
+import { fetchSanityPosts } from '@/sanity/lib/fetch';
+import { PAGE_QUERYResult } from '@/sanity.types';
 
 type AllPostsProps = Extract<
-  NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number],
-  { _type: "all-posts" }
+  NonNullable<NonNullable<PAGE_QUERYResult>['blocks']>[number],
+  { _type: 'all-posts' }
 >;
 
 export default async function AllPosts({
@@ -25,11 +25,11 @@ export default async function AllPosts({
           <Link
             key={post?.slug?.current}
             className="flex w-full rounded-3xl ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            href={`/blog/${post?.slug?.current}`}
+            href={`/news/${post?.slug?.current}`}
           >
             <PostCard
-              title={post?.title ?? ""}
-              excerpt={post?.excerpt ?? ""}
+              title={post?.title ?? ''}
+              excerpt={post?.excerpt ?? ''}
               image={post?.image ?? null}
             />
           </Link>
