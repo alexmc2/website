@@ -13,106 +13,99 @@
  */
 
 // Source: schema.json
-export type LottieAnimation = {
-  _type: 'lottie-animation';
+export type ReviewsCarousel = {
+  _type: "reviews-carousel";
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
-  sectionWidth?: 'default' | 'narrow';
-  animationAlign?: 'left' | 'center' | 'right';
-  verticalSpacing?: 'none' | 'compact' | 'comfortable' | 'roomy';
-  animationSize?: 'small' | 'medium' | 'large' | 'full';
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  sectionId?: string;
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  placeId?: string;
+  languageCode?: string;
+  maximumReviews?: number;
+  minimumRating?: "any" | "3" | "4" | "5";
+  sortOrder?: "most_relevant" | "newest";
+  cta?: Link;
+};
+
+export type LottieAnimation = {
+  _type: "lottie-animation";
+  padding?: SectionPadding;
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  sectionWidth?: "default" | "narrow";
+  animationAlign?: "left" | "center" | "right";
+  verticalSpacing?: "none" | "tight" | "compact" | "comfortable" | "roomy";
+  animationSize?: "small" | "medium" | "large" | "full";
   animation?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
     };
     media?: unknown;
-    _type: 'file';
+    _type: "file";
+  };
+  animationDark?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    _type: "file";
   };
   ariaLabel?: string;
 };
 
 export type MenuSection = {
-  _type: 'menu-section';
+  _type: "menu-section";
   padding?: SectionPadding;
   background?: {
-    style?: 'color' | 'texture' | 'image';
-    colorVariant?:
-      | 'background'
-      | 'primary'
-      | 'secondary'
-      | 'card'
-      | 'accent'
-      | 'destructive'
-      | 'muted'
-      | 'cream'
-      | 'espresso'
-      | 'sage'
-      | 'charcoal';
-    texturePreset?: 'paper' | 'canvas' | 'linen';
-    textureTint?:
-      | 'background'
-      | 'primary'
-      | 'secondary'
-      | 'card'
-      | 'accent'
-      | 'destructive'
-      | 'muted'
-      | 'cream'
-      | 'espresso'
-      | 'sage'
-      | 'charcoal';
+    style?: "color" | "texture" | "image";
+    colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+    texturePreset?: "paper" | "canvas" | "linen";
+    textureTint?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
     customImage?: {
       asset?: {
         _ref: string;
-        _type: 'reference';
+        _type: "reference";
         _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
       };
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       alt?: string;
       opacity?: number;
-      _type: 'image';
+      _type: "image";
     };
   };
   eyebrow?: string;
   title?: string;
   sectionId?: string;
   intro?: string;
-  headingFont?: 'sans' | 'serif';
-  displayMode?: 'structured' | 'image' | 'combined';
+  headingFont?: "sans" | "serif";
+  displayMode?: "structured" | "image" | "combined";
   menuImages?: Array<{
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     focus?: string;
-    _type: 'menuImage';
+    _type: "menuImage";
     _key: string;
   }>;
-  imagePlacement?: 'right' | 'left' | 'split';
-  imageLayout?: 'stacked' | 'inline';
+  imagePlacement?: "right" | "left" | "split";
+  imageLayout?: "stacked" | "inline";
   categories?: Array<{
     title?: string;
     description?: string;
@@ -123,396 +116,291 @@ export type MenuSection = {
       itemImage?: {
         asset?: {
           _ref: string;
-          _type: 'reference';
+          _type: "reference";
           _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
         };
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         alt?: string;
-        _type: 'image';
+        _type: "image";
       };
       dietary?: string;
-      _type: 'menuItem';
+      _type: "menuItem";
       _key: string;
     }>;
-    _type: 'menuCategory';
+    _type: "menuCategory";
     _key: string;
   }>;
   lottieAnimation?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
     };
     media?: unknown;
-    _type: 'file';
+    _type: "file";
   };
-  lottiePlacement?: 'heading' | 'aside';
+  lottiePlacement?: "heading" | "aside";
 };
 
 export type AllPosts = {
-  _type: 'all-posts';
+  _type: "all-posts";
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+};
+
+export type FormContactMap = {
+  _type: "form-contact-map";
+  padding?: SectionPadding;
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  heading?: string;
+  body?: string;
+  formspreeFormId?: string;
+  submitButtonLabel?: string;
+  successMessage?: string;
+  locationName?: string;
+  address?: string;
+  latitude?: number;
+  longitude?: number;
+  mapZoom?: number;
 };
 
 export type FormNewsletter = {
-  _type: 'form-newsletter';
+  _type: "form-newsletter";
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
-  stackAlign?: 'left' | 'center';
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  stackAlign?: "left" | "center";
   consentText?: string;
   buttonText?: string;
   successMessage?: string;
 };
 
 export type Faqs = {
-  _type: 'faqs';
+  _type: "faqs";
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
   faqs?: Array<{
     _ref: string;
-    _type: 'reference';
+    _type: "reference";
     _weak?: boolean;
     _key: string;
-    [internalGroqTypeReferenceTo]?: 'faq';
+    [internalGroqTypeReferenceTo]?: "faq";
   }>;
 };
 
 export type LogoCloud1 = {
-  _type: 'logo-cloud-1';
+  _type: "logo-cloud-1";
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
   title?: string;
   images?: Array<{
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
     _key: string;
   }>;
 };
 
 export type Cta1 = {
-  _type: 'cta-1';
+  _type: "cta-1";
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
-  sectionWidth?: 'default' | 'narrow';
-  stackAlign?: 'left' | 'center';
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  sectionWidth?: "default" | "narrow";
+  stackAlign?: "left" | "center";
   tagLine?: string;
   title?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          href?: string;
-          target?: boolean;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-    | {
-        videoId?: string;
-        _type: 'youtube';
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & Code)
-  >;
-  links?: Array<
-    {
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
       _key: string;
-    } & Link
-  >;
-};
-
-export type Timelines1 = {
-  _type: 'timelines-1';
-  title?: string;
-  tagLine?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          href?: string;
-          target?: boolean;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-    | {
-        videoId?: string;
-        _type: 'youtube';
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & Code)
-  >;
-};
-
-export type TimelineRow = {
-  _type: 'timeline-row';
-  padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
-  timelines?: Array<
-    {
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      href?: string;
+      target?: boolean;
+      _type: "link";
       _key: string;
-    } & Timelines1
-  >;
-};
-
-export type Carousel2 = {
-  _type: 'carousel-2';
-  padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
-  testimonial?: Array<{
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
+    }>;
+    level?: number;
+    _type: "block";
     _key: string;
-    [internalGroqTypeReferenceTo]?: 'testimonial';
-  }>;
-};
-
-export type Carousel1 = {
-  _type: 'carousel-1';
-  padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
-  size?: 'one' | 'two' | 'three';
-  indicators?: 'none' | 'dots' | 'count';
-  images?: Array<{
+  } | {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
+    _key: string;
+  } | {
+    videoId?: string;
+    _type: "youtube";
+    _key: string;
+  } | {
+    _key: string;
+  } & Code>;
+  links?: Array<{
+    _key: string;
+  } & Link>;
+};
+
+export type Timelines1 = {
+  _type: "timelines-1";
+  title?: string;
+  tagLine?: string;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      href?: string;
+      target?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  } | {
+    videoId?: string;
+    _type: "youtube";
+    _key: string;
+  } | {
+    _key: string;
+  } & Code>;
+};
+
+export type TimelineRow = {
+  _type: "timeline-row";
+  padding?: SectionPadding;
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  timelines?: Array<{
+    _key: string;
+  } & Timelines1>;
+};
+
+export type Carousel2 = {
+  _type: "carousel-2";
+  padding?: SectionPadding;
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  testimonial?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "testimonial";
+  }>;
+};
+
+export type Carousel1 = {
+  _type: "carousel-1";
+  padding?: SectionPadding;
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  size?: "one" | "two" | "three";
+  indicators?: "none" | "dots" | "count";
+  images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
     _key: string;
   }>;
 };
 
 export type GridRow = {
-  _type: 'grid-row';
+  _type: "grid-row";
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
-  gridColumns?: 'grid-cols-2' | 'grid-cols-3' | 'grid-cols-4';
-  columns?: Array<
-    | ({
-        _key: string;
-      } & GridCard)
-    | ({
-        _key: string;
-      } & GridPost)
-    | ({
-        _key: string;
-      } & PricingCard)
-  >;
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  gridColumns?: "grid-cols-2" | "grid-cols-3" | "grid-cols-4";
+  columns?: Array<{
+    _key: string;
+  } & GridCard | {
+    _key: string;
+  } & GridPost | {
+    _key: string;
+  } & PricingCard>;
 };
 
 export type GridPost = {
-  _type: 'grid-post';
+  _type: "grid-post";
   post?: {
     _ref: string;
-    _type: 'reference';
+    _type: "reference";
     _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: 'post';
+    [internalGroqTypeReferenceTo]?: "post";
   };
 };
 
 export type PricingCard = {
-  _type: 'pricing-card';
+  _type: "pricing-card";
   title?: string;
   tagLine?: string;
   price?: {
@@ -525,617 +413,510 @@ export type PricingCard = {
 };
 
 export type GridCard = {
-  _type: 'grid-card';
+  _type: "grid-card";
   title?: string;
   excerpt?: string;
   image?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
   };
   link?: Link;
 };
 
 export type SplitInfo = {
-  _type: 'split-info';
+  _type: "split-info";
   image?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
   };
   title?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          href?: string;
-          target?: boolean;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-    | {
-        videoId?: string;
-        _type: 'youtube';
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & Code)
-  >;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      href?: string;
+      target?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  } | {
+    videoId?: string;
+    _type: "youtube";
+    _key: string;
+  } | {
+    _key: string;
+  } & Code>;
   tags?: Array<string>;
 };
 
 export type SplitInfoList = {
-  _type: 'split-info-list';
-  list?: Array<
-    {
-      _key: string;
-    } & SplitInfo
-  >;
+  _type: "split-info-list";
+  list?: Array<{
+    _key: string;
+  } & SplitInfo>;
 };
 
 export type SplitImage = {
-  _type: 'split-image';
+  _type: "split-image";
   image?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
   };
 };
 
 export type SplitCard = {
-  _type: 'split-card';
+  _type: "split-card";
   tagLine?: string;
   title?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          href?: string;
-          target?: boolean;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-    | {
-        videoId?: string;
-        _type: 'youtube';
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & Code)
-  >;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      href?: string;
+      target?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  } | {
+    videoId?: string;
+    _type: "youtube";
+    _key: string;
+  } | {
+    _key: string;
+  } & Code>;
 };
 
 export type SplitCardsList = {
-  _type: 'split-cards-list';
-  list?: Array<
-    {
-      _key: string;
-    } & SplitCard
-  >;
+  _type: "split-cards-list";
+  list?: Array<{
+    _key: string;
+  } & SplitCard>;
 };
 
 export type SplitContent = {
-  _type: 'split-content';
+  _type: "split-content";
   sticky?: boolean;
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
   tagLine?: string;
   title?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          href?: string;
-          target?: boolean;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-    | {
-        videoId?: string;
-        _type: 'youtube';
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & Code)
-  >;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      href?: string;
+      target?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  } | {
+    videoId?: string;
+    _type: "youtube";
+    _key: string;
+  } | {
+    _key: string;
+  } & Code>;
   link?: Link;
 };
 
 export type SplitRow = {
-  _type: 'split-row';
+  _type: "split-row";
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
   noGap?: boolean;
-  splitColumns?: Array<
-    | ({
-        _key: string;
-      } & SplitContent)
-    | ({
-        _key: string;
-      } & SplitCardsList)
-    | ({
-        _key: string;
-      } & SplitImage)
-    | ({
-        _key: string;
-      } & SplitInfoList)
-  >;
+  splitColumns?: Array<{
+    _key: string;
+  } & SplitContent | {
+    _key: string;
+  } & SplitCardsList | {
+    _key: string;
+  } & SplitImage | {
+    _key: string;
+  } & SplitInfoList>;
 };
 
 export type SectionHeader = {
-  _type: 'section-header';
+  _type: "section-header";
   padding?: SectionPadding;
-  colorVariant?:
-    | 'background'
-    | 'primary'
-    | 'secondary'
-    | 'card'
-    | 'accent'
-    | 'destructive'
-    | 'muted'
-    | 'cream'
-    | 'espresso'
-    | 'sage'
-    | 'charcoal';
-  sectionWidth?: 'default' | 'narrow';
-  stackAlign?: 'left' | 'center';
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  sectionWidth?: "default" | "narrow";
+  stackAlign?: "left" | "center";
   tagLine?: string;
   title?: string;
   description?: string;
 };
 
 export type HeroFull = {
-  _type: 'hero-full';
+  _type: "hero-full";
   tagLine?: string;
   title?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          href?: string;
-          target?: boolean;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-    | {
-        videoId?: string;
-        _type: 'youtube';
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & Code)
-  >;
-  images?: Array<{
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      href?: string;
+      target?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
+    _key: string;
+  } | {
+    videoId?: string;
+    _type: "youtube";
+    _key: string;
+  } | {
+    _key: string;
+  } & Code>;
+  images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
     _key: string;
   }>;
   image?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
   };
-  height?: 'screen' | '70vh' | '60vh';
+  height?: "screen" | "70vh" | "60vh";
   overlay?: boolean;
   overlayStrength?: number;
-  contentAlignment?: 'left' | 'center' | 'right';
+  contentAlignment?: "left" | "center" | "right";
 };
 
 export type Hero2 = {
-  _type: 'hero-2';
+  _type: "hero-2";
   tagLine?: string;
   title?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          href?: string;
-          target?: boolean;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-    | {
-        videoId?: string;
-        _type: 'youtube';
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & Code)
-  >;
-  links?: Array<
-    {
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
       _key: string;
-    } & Link
-  >;
-};
-
-export type Hero1 = {
-  _type: 'hero-1';
-  tagLine?: string;
-  title?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet' | 'number';
-        markDefs?: Array<{
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          href?: string;
-          target?: boolean;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-    | {
-        videoId?: string;
-        _type: 'youtube';
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & Code)
-  >;
-  image?: {
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      href?: string;
+      target?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
-  };
-  links?: Array<
-    {
+    _type: "image";
+    _key: string;
+  } | {
+    videoId?: string;
+    _type: "youtube";
+    _key: string;
+  } | {
+    _key: string;
+  } & Code>;
+  links?: Array<{
+    _key: string;
+  } & Link>;
+};
+
+export type Hero1 = {
+  _type: "hero-1";
+  tagLine?: string;
+  title?: string;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
       _key: string;
-    } & Link
-  >;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      href?: string;
+      target?: boolean;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  } | {
+    videoId?: string;
+    _type: "youtube";
+    _key: string;
+  } | {
+    _key: string;
+  } & Code>;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  links?: Array<{
+    _key: string;
+  } & Link>;
 };
 
 export type SectionPadding = {
-  _type: 'section-padding';
+  _type: "section-padding";
   top?: boolean;
   bottom?: boolean;
 };
 
-export type ButtonVariant =
-  | 'default'
-  | 'destructive'
-  | 'outline'
-  | 'secondary'
-  | 'ghost'
-  | 'link';
+export type ButtonVariant = "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
 
-export type ColorVariant =
-  | 'background'
-  | 'primary'
-  | 'secondary'
-  | 'card'
-  | 'accent'
-  | 'destructive'
-  | 'muted'
-  | 'cream'
-  | 'espresso'
-  | 'sage'
-  | 'charcoal';
+export type ColorVariant = "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
 
 export type Link = {
-  _type: 'link';
+  _type: "link";
   isExternal?: boolean;
-  internalLink?:
-    | {
-        _ref: string;
-        _type: 'reference';
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'page';
-      }
-    | {
-        _ref: string;
-        _type: 'reference';
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'post';
-      };
+  internalLink?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "post";
+  };
   anchor?: string;
   title?: string;
   href?: string;
@@ -1143,67 +924,60 @@ export type Link = {
   buttonVariant?: ButtonVariant;
 };
 
-export type BlockContent = Array<
-  | {
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: 'span';
-        _key: string;
-      }>;
-      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-      listItem?: 'bullet' | 'number';
-      markDefs?: Array<{
-        isExternal?: boolean;
-        internalLink?:
-          | {
-              _ref: string;
-              _type: 'reference';
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: 'page';
-            }
-          | {
-              _ref: string;
-              _type: 'reference';
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: 'post';
-            };
-        href?: string;
-        target?: boolean;
-        _type: 'link';
-        _key: string;
-      }>;
-      level?: number;
-      _type: 'block';
-      _key: string;
-    }
-  | {
-      asset?: {
-        _ref: string;
-        _type: 'reference';
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: 'image';
-      _key: string;
-    }
-  | {
-      videoId?: string;
-      _type: 'youtube';
-      _key: string;
-    }
-  | ({
-      _key: string;
-    } & Code)
->;
+export type BlockContent = Array<{
+  children?: Array<{
+    marks?: Array<string>;
+    text?: string;
+    _type: "span";
+    _key: string;
+  }>;
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+  listItem?: "bullet" | "number";
+  markDefs?: Array<{
+    isExternal?: boolean;
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "post";
+    };
+    href?: string;
+    target?: boolean;
+    _type: "link";
+    _key: string;
+  }>;
+  level?: number;
+  _type: "block";
+  _key: string;
+} | {
+  asset?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  };
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt?: string;
+  _type: "image";
+  _key: string;
+} | {
+  videoId?: string;
+  _type: "youtube";
+  _key: string;
+} | {
+  _key: string;
+} & Code>;
 
 export type Settings = {
   _id: string;
-  _type: 'settings';
+  _type: "settings";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -1211,26 +985,26 @@ export type Settings = {
     dark?: {
       asset?: {
         _ref: string;
-        _type: 'reference';
+        _type: "reference";
         _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
       };
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
-      _type: 'image';
+      _type: "image";
     };
     light?: {
       asset?: {
         _ref: string;
-        _type: 'reference';
+        _type: "reference";
         _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
       };
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
-      _type: 'image';
+      _type: "image";
     };
     width?: number;
     height?: number;
@@ -1241,20 +1015,18 @@ export type Settings = {
 
 export type Navigation = {
   _id: string;
-  _type: 'navigation';
+  _type: "navigation";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  links?: Array<
-    {
-      _key: string;
-    } & Link
-  >;
+  links?: Array<{
+    _key: string;
+  } & Link>;
 };
 
 export type Testimonial = {
   _id: string;
-  _type: 'testimonial';
+  _type: "testimonial";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -1263,14 +1035,14 @@ export type Testimonial = {
   image?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    _type: 'image';
+    _type: "image";
   };
   body?: BlockContent;
   rating?: number;
@@ -1279,7 +1051,7 @@ export type Testimonial = {
 
 export type Faq = {
   _id: string;
-  _type: 'faq';
+  _type: "faq";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -1290,7 +1062,7 @@ export type Faq = {
 
 export type Category = {
   _id: string;
-  _type: 'category';
+  _type: "category";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -1300,83 +1072,70 @@ export type Category = {
 
 export type Page = {
   _id: string;
-  _type: 'page';
+  _type: "page";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   title?: string;
   slug?: Slug;
-  blocks?: Array<
-    | ({
-        _key: string;
-      } & Hero1)
-    | ({
-        _key: string;
-      } & Hero2)
-    | ({
-        _key: string;
-      } & HeroFull)
-    | ({
-        _key: string;
-      } & SectionHeader)
-    | ({
-        _key: string;
-      } & LottieAnimation)
-    | ({
-        _key: string;
-      } & MenuSection)
-    | ({
-        _key: string;
-      } & SplitRow)
-    | ({
-        _key: string;
-      } & GridRow)
-    | ({
-        _key: string;
-      } & Carousel1)
-    | ({
-        _key: string;
-      } & Carousel2)
-    | ({
-        _key: string;
-      } & TimelineRow)
-    | ({
-        _key: string;
-      } & Cta1)
-    | ({
-        _key: string;
-      } & LogoCloud1)
-    | ({
-        _key: string;
-      } & Faqs)
-    | ({
-        _key: string;
-      } & FormNewsletter)
-    | ({
-        _key: string;
-      } & AllPosts)
-  >;
+  blocks?: Array<{
+    _key: string;
+  } & Hero1 | {
+    _key: string;
+  } & Hero2 | {
+    _key: string;
+  } & HeroFull | {
+    _key: string;
+  } & SectionHeader | {
+    _key: string;
+  } & LottieAnimation | {
+    _key: string;
+  } & MenuSection | {
+    _key: string;
+  } & SplitRow | {
+    _key: string;
+  } & GridRow | {
+    _key: string;
+  } & Carousel1 | {
+    _key: string;
+  } & Carousel2 | {
+    _key: string;
+  } & ReviewsCarousel | {
+    _key: string;
+  } & TimelineRow | {
+    _key: string;
+  } & Cta1 | {
+    _key: string;
+  } & LogoCloud1 | {
+    _key: string;
+  } & Faqs | {
+    _key: string;
+  } & FormNewsletter | {
+    _key: string;
+  } & FormContactMap | {
+    _key: string;
+  } & AllPosts>;
   meta_title?: string;
   meta_description?: string;
   noindex?: boolean;
   ogImage?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    _type: 'image';
+    _type: "image";
   };
   orderRank?: string;
 };
 
 export type Post = {
   _id: string;
-  _type: 'post';
+  _type: "post";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -1385,29 +1144,29 @@ export type Post = {
   excerpt?: string;
   author?: {
     _ref: string;
-    _type: 'reference';
+    _type: "reference";
     _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: 'author';
+    [internalGroqTypeReferenceTo]?: "author";
   };
   image?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
   };
   categories?: Array<{
     _ref: string;
-    _type: 'reference';
+    _type: "reference";
     _weak?: boolean;
     _key: string;
-    [internalGroqTypeReferenceTo]?: 'category';
+    [internalGroqTypeReferenceTo]?: "category";
   }>;
   body?: BlockContent;
   meta_title?: string;
@@ -1416,20 +1175,20 @@ export type Post = {
   ogImage?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    _type: 'image';
+    _type: "image";
   };
 };
 
 export type Author = {
   _id: string;
-  _type: 'author';
+  _type: "author";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -1438,21 +1197,21 @@ export type Author = {
   image?: {
     asset?: {
       _ref: string;
-      _type: 'reference';
+      _type: "reference";
       _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
   };
   orderRank?: string;
 };
 
 export type Code = {
-  _type: 'code';
+  _type: "code";
   language?: string;
   filename?: string;
   code?: string;
@@ -1460,7 +1219,7 @@ export type Code = {
 };
 
 export type SanityImagePaletteSwatch = {
-  _type: 'sanity.imagePaletteSwatch';
+  _type: "sanity.imagePaletteSwatch";
   background?: string;
   foreground?: string;
   population?: number;
@@ -1468,7 +1227,7 @@ export type SanityImagePaletteSwatch = {
 };
 
 export type SanityImagePalette = {
-  _type: 'sanity.imagePalette';
+  _type: "sanity.imagePalette";
   darkMuted?: SanityImagePaletteSwatch;
   lightVibrant?: SanityImagePaletteSwatch;
   darkVibrant?: SanityImagePaletteSwatch;
@@ -1479,14 +1238,14 @@ export type SanityImagePalette = {
 };
 
 export type SanityImageDimensions = {
-  _type: 'sanity.imageDimensions';
+  _type: "sanity.imageDimensions";
   height?: number;
   width?: number;
   aspectRatio?: number;
 };
 
 export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot';
+  _type: "sanity.imageHotspot";
   x?: number;
   y?: number;
   height?: number;
@@ -1494,7 +1253,7 @@ export type SanityImageHotspot = {
 };
 
 export type SanityImageCrop = {
-  _type: 'sanity.imageCrop';
+  _type: "sanity.imageCrop";
   top?: number;
   bottom?: number;
   left?: number;
@@ -1503,7 +1262,7 @@ export type SanityImageCrop = {
 
 export type SanityFileAsset = {
   _id: string;
-  _type: 'sanity.fileAsset';
+  _type: "sanity.fileAsset";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -1525,7 +1284,7 @@ export type SanityFileAsset = {
 
 export type SanityImageAsset = {
   _id: string;
-  _type: 'sanity.imageAsset';
+  _type: "sanity.imageAsset";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -1547,7 +1306,7 @@ export type SanityImageAsset = {
 };
 
 export type SanityImageMetadata = {
-  _type: 'sanity.imageMetadata';
+  _type: "sanity.imageMetadata";
   location?: Geopoint;
   dimensions?: SanityImageDimensions;
   palette?: SanityImagePalette;
@@ -1558,77 +1317,26 @@ export type SanityImageMetadata = {
 };
 
 export type Geopoint = {
-  _type: 'geopoint';
+  _type: "geopoint";
   lat?: number;
   lng?: number;
   alt?: number;
 };
 
 export type Slug = {
-  _type: 'slug';
+  _type: "slug";
   current?: string;
   source?: string;
 };
 
 export type SanityAssetSourceData = {
-  _type: 'sanity.assetSourceData';
+  _type: "sanity.assetSourceData";
   name?: string;
   id?: string;
   url?: string;
 };
 
-export type AllSanitySchemaTypes =
-  | LottieAnimation
-  | MenuSection
-  | AllPosts
-  | FormNewsletter
-  | Faqs
-  | LogoCloud1
-  | Cta1
-  | Timelines1
-  | TimelineRow
-  | Carousel2
-  | Carousel1
-  | GridRow
-  | GridPost
-  | PricingCard
-  | GridCard
-  | SplitInfo
-  | SplitInfoList
-  | SplitImage
-  | SplitCard
-  | SplitCardsList
-  | SplitContent
-  | SplitRow
-  | SectionHeader
-  | HeroFull
-  | Hero2
-  | Hero1
-  | SectionPadding
-  | ButtonVariant
-  | ColorVariant
-  | Link
-  | BlockContent
-  | Settings
-  | Navigation
-  | Testimonial
-  | Faq
-  | Category
-  | Page
-  | Post
-  | Author
-  | Code
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityFileAsset
-  | SanityImageAsset
-  | SanityImageMetadata
-  | Geopoint
-  | Slug
-  | SanityAssetSourceData;
+export type AllSanitySchemaTypes = ReviewsCarousel | LottieAnimation | MenuSection | AllPosts | FormContactMap | FormNewsletter | Faqs | LogoCloud1 | Cta1 | Timelines1 | TimelineRow | Carousel2 | Carousel1 | GridRow | GridPost | PricingCard | GridCard | SplitInfo | SplitInfoList | SplitImage | SplitCard | SplitCardsList | SplitContent | SplitRow | SectionHeader | HeroFull | Hero2 | Hero1 | SectionPadding | ButtonVariant | ColorVariant | Link | BlockContent | Settings | Navigation | Testimonial | Faq | Category | Page | Post | Author | Code | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./app/sitemap.ts
 // Variable: pagesQuery
@@ -1636,7 +1344,7 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 export type PagesQueryResult = Array<{
   url: unknown;
   lastModified: string;
-  changeFrequency: 'daily';
+  changeFrequency: "daily";
   priority: 0.5 | 1;
 }>;
 // Variable: postsQuery
@@ -1644,7 +1352,7 @@ export type PagesQueryResult = Array<{
 export type PostsQueryResult = Array<{
   url: unknown;
   lastModified: string;
-  changeFrequency: 'weekly';
+  changeFrequency: "weekly";
   priority: 0.7;
 }>;
 
@@ -1652,28 +1360,26 @@ export type PostsQueryResult = Array<{
 // Variable: NAVIGATION_QUERY
 // Query: *[_type == "navigation"]{    _type,    _key,    links[]{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  }
 export type NAVIGATION_QUERYResult = Array<{
-  _type: 'navigation';
+  _type: "navigation";
   _key: null;
   links: Array<{
     _key: string;
-    _type: 'link';
+    _type: "link";
     isExternal?: boolean;
-    internalLink?:
-      | {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'page';
-        }
-      | {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'post';
-        };
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "post";
+    };
     anchor?: string;
     title?: string;
-    href: string | '/' | null;
+    href: string | "/" | null;
     target?: boolean;
     buttonVariant?: ButtonVariant;
   }> | null;
@@ -1681,624 +1387,383 @@ export type NAVIGATION_QUERYResult = Array<{
 
 // Source: ./sanity/queries/page.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{    blocks[]{        _type == "hero-1" => {    _type,    _key,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },    links[]{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "hero-2" => {    _type,    _key,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    links[]{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "hero-full" => {    _type,    _key,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    images[]{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },    height,    overlay,    overlayStrength,    contentAlignment,  },        _type == "section-header" => {    _type,    _key,    padding,    colorVariant,    sectionWidth,    stackAlign,    tagLine,    title,    description,    link{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "lottie-animation" => {    _type,    _key,    padding,    colorVariant,    sectionWidth,    animationAlign,    verticalSpacing,    animationSize,    ariaLabel,    animation{      asset->{        _id,        url,        mimeType,        size,        originalFilename      }    }  },        _type == "split-row" => {    _type,    _key,    padding,    colorVariant,    noGap,    splitColumns[]{        _type == "split-content" => {    _type,    _key,    sticky,    padding,    colorVariant,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    link{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "split-cards-list" => {    _type,    _key,    list[]{      tagLine,      title,      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },    },  },        _type == "split-image" => {    _type,    _key,    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },  },        _type == "split-info-list" => {    _type,    _key,    list[]{      image{          ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }      },      title,      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },      tags[],    },  },    },  },        _type == "grid-row" => {    _type,    _key,    padding,    colorVariant,    gridColumns,    columns[]{        _type == "grid-card" => {    _type,    _key,    title,    excerpt,    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },    link{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "pricing-card" => {    _type,    _key,    title,    tagLine,    price,    list[],    excerpt,    link{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "grid-post" => {    _type,    _key,    post->{      title,      slug,      excerpt,      image{          ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }      },      categories[]->{        _id,        title,      },    },  },    },  },        _type == "carousel-1" => {    _type,    _key,    padding,    colorVariant,    size,    orientation,    indicators,    images[]{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },  },        _type == "carousel-2" => {    _type,    _key,    padding,    colorVariant,    testimonial[]->{      _id,      name,      title,      image{          ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }      },      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },      rating,    },  },        _type == "timeline-row" => {    _type,    _key,    padding,    colorVariant,    timelines[]{      title,      tagLine,      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },    },  },        _type == "cta-1" => {    _type,    _key,    padding,    colorVariant,    sectionWidth,    stackAlign,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    links[]{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "logo-cloud-1" => {    _type,    _key,    padding,    colorVariant,    title,    images[]{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },  },        _type == "faqs" => {    _type,    _key,    padding,    colorVariant,    faqs[]->{      _id,      title,      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },    },  },        _type == "form-newsletter" => {    _type,    _key,    padding,    colorVariant,    stackAlign,    consentText,    buttonText,    successMessage,  },        _type == "all-posts" => {    _type,    _key,    padding,    colorVariant,  },        _type == "menu-section" => {    _type,    _key,    padding,    background{      style,      colorVariant,      texturePreset,      textureTint,      customImage{          ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  },        alt,        opacity      }    },    eyebrow,    title,    sectionId,    intro,    headingFont,    displayMode,    menuImages[]{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  },      alt    },    imagePlacement,    imageLayout,    categories[]{      title,      description,      items[]{        _key,        name,        description,        price,        dietary,        itemImage{            ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  },          alt        }      }    },    lottieAnimation{      asset->{        _id,        url,        mimeType,        size,        originalFilename      }    },    lottiePlacement  },    },    meta_title,    meta_description,    noindex,    ogImage {      asset->{        _id,        url,        metadata {          dimensions {            width,            height          }        }      },    }  }
+// Query: *[_type == "page" && slug.current == $slug][0]{    blocks[]{        _type == "hero-1" => {    _type,    _key,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },    links[]{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "hero-2" => {    _type,    _key,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    links[]{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "hero-full" => {    _type,    _key,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    images[]{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },    height,    overlay,    overlayStrength,    contentAlignment,  },        _type == "section-header" => {    _type,    _key,    padding,    colorVariant,    sectionWidth,    stackAlign,    tagLine,    title,    description,    link{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "lottie-animation" => {    _type,    _key,    padding,    colorVariant,    sectionWidth,    animationAlign,    verticalSpacing,    animationSize,    ariaLabel,    animation{      asset->{        _id,        url,        mimeType,        size,        originalFilename      }    },    animationDark{      asset->{        _id,        url,        mimeType,        size,        originalFilename      }    }  },        _type == "split-row" => {    _type,    _key,    padding,    colorVariant,    noGap,    splitColumns[]{        _type == "split-content" => {    _type,    _key,    sticky,    padding,    colorVariant,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    link{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "split-cards-list" => {    _type,    _key,    list[]{      tagLine,      title,      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },    },  },        _type == "split-image" => {    _type,    _key,    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },  },        _type == "split-info-list" => {    _type,    _key,    list[]{      image{          ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }      },      title,      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },      tags[],    },  },    },  },        _type == "grid-row" => {    _type,    _key,    padding,    colorVariant,    gridColumns,    columns[]{        _type == "grid-card" => {    _type,    _key,    title,    excerpt,    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },    link{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "pricing-card" => {    _type,    _key,    title,    tagLine,    price,    list[],    excerpt,    link{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "grid-post" => {    _type,    _key,    post->{      title,      slug,      excerpt,      image{          ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }      },      categories[]->{        _id,        title,      },    },  },    },  },        _type == "carousel-1" => {    _type,    _key,    padding,    colorVariant,    size,    orientation,    indicators,    images[]{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },  },        _type == "carousel-2" => {    _type,    _key,    padding,    colorVariant,    testimonial[]->{      _id,      name,      title,      image{          ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }      },      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },      rating,    },  },        _type == "reviews-carousel" => {    _type,    _key,    padding,    colorVariant,    sectionId,    eyebrow,    heading,    intro,    placeId,    languageCode,    maximumReviews,    minimumRating,    sortOrder,    cta {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "timeline-row" => {    _type,    _key,    padding,    colorVariant,    timelines[]{      title,      tagLine,      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },    },  },        _type == "cta-1" => {    _type,    _key,    padding,    colorVariant,    sectionWidth,    stackAlign,    tagLine,    title,    body[]{        ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }    },    links[]{          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    },  },        _type == "logo-cloud-1" => {    _type,    _key,    padding,    colorVariant,    title,    images[]{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },  },        _type == "faqs" => {    _type,    _key,    padding,    colorVariant,    faqs[]->{      _id,      title,      body[]{          ...,  markDefs[]{    ...,    _type == "link" => {          _key,    ...,    "href": select(      isExternal => href,      defined(anchor) && !defined(internalLink) => "#" + anchor,      defined(href) && !defined(internalLink) => href,      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,      @.internalLink->slug.current == "index" => "/",      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,      "/" + @.internalLink->slug.current    )    }  },  _type == "image" => {      ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }  }      },    },  },        _type == "form-newsletter" => {    _type,    _key,    padding,    colorVariant,    stackAlign,    consentText,    buttonText,    successMessage,  },        _type == "form-contact-map" => {    _type,    _key,    padding,    colorVariant,    heading,    body,    formspreeFormId,    submitButtonLabel,    successMessage,    locationName,    address,    latitude,    longitude,    mapZoom,  },        _type == "all-posts" => {    _type,    _key,    padding,    colorVariant,  },        _type == "menu-section" => {    _type,    _key,    padding,    background{      style,      colorVariant,      texturePreset,      textureTint,      customImage{          ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  },        alt,        opacity      }    },    eyebrow,    title,    sectionId,    intro,    headingFont,    displayMode,    menuImages[]{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  },      alt    },    imagePlacement,    imageLayout,    categories[]{      title,      description,      items[]{        _key,        name,        description,        price,        dietary,        itemImage{            ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  },          alt        }      }    },    lottieAnimation{      asset->{        _id,        url,        mimeType,        size,        originalFilename      }    },    lottiePlacement  },    },    meta_title,    meta_description,    noindex,    ogImage {      asset->{        _id,        url,        metadata {          dimensions {            width,            height          }        }      },    }  }
 export type PAGE_QUERYResult = {
-  blocks: Array<
-    | {
-        _type: 'all-posts';
-        _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-      }
-    | {
-        _type: 'carousel-1';
-        _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        size: 'one' | 'three' | 'two' | null;
-        orientation: null;
-        indicators: 'count' | 'dots' | 'none' | null;
-        images: Array<{
-          asset: {
-            _id: string;
-            url: string | null;
-            mimeType: string | null;
-            metadata: {
-              lqip: string | null;
-              dimensions: {
-                width: number | null;
-                height: number | null;
-              } | null;
-            } | null;
+  blocks: Array<{
+    _type: "all-posts";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+  } | {
+    _type: "carousel-1";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    size: "one" | "three" | "two" | null;
+    orientation: null;
+    indicators: "count" | "dots" | "none" | null;
+    images: Array<{
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
           } | null;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: 'image';
-          _key: string;
-        }> | null;
-      }
-    | {
-        _type: 'carousel-2';
-        _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        testimonial: Array<{
+        } | null;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }> | null;
+  } | {
+    _type: "carousel-2";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    testimonial: Array<{
+      _id: string;
+      name: string | null;
+      title: string | null;
+      image: {
+        asset: {
           _id: string;
-          name: string | null;
-          title: string | null;
-          image: {
-            asset: {
-              _id: string;
-              url: string | null;
-              mimeType: string | null;
-              metadata: {
-                lqip: string | null;
-                dimensions: {
-                  width: number | null;
-                  height: number | null;
-                } | null;
-              } | null;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
             } | null;
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            _type: 'image';
           } | null;
-          body: Array<
-            | {
-                children?: Array<{
-                  marks?: Array<string>;
-                  text?: string;
-                  _type: 'span';
-                  _key: string;
-                }>;
-                style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-                listItem?: 'bullet' | 'number';
-                markDefs: Array<{
-                  isExternal?: boolean;
-                  internalLink?:
-                    | {
-                        _ref: string;
-                        _type: 'reference';
-                        _weak?: boolean;
-                        [internalGroqTypeReferenceTo]?: 'page';
-                      }
-                    | {
-                        _ref: string;
-                        _type: 'reference';
-                        _weak?: boolean;
-                        [internalGroqTypeReferenceTo]?: 'post';
-                      };
-                  href: string | '/' | null;
-                  target?: boolean;
-                  _type: 'link';
-                  _key: string;
-                }> | null;
-                level?: number;
-                _type: 'block';
-                _key: string;
-              }
-            | {
-                _key: string;
-                _type: 'code';
-                language?: string;
-                filename?: string;
-                code?: string;
-                highlightedLines?: Array<number>;
-                markDefs: null;
-              }
-            | {
-                asset: {
-                  _id: string;
-                  url: string | null;
-                  mimeType: string | null;
-                  metadata: {
-                    lqip: string | null;
-                    dimensions: {
-                      width: number | null;
-                      height: number | null;
-                    } | null;
-                  } | null;
-                } | null;
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                alt?: string;
-                _type: 'image';
-                _key: string;
-                markDefs: null;
-              }
-            | {
-                videoId?: string;
-                _type: 'youtube';
-                _key: string;
-                markDefs: null;
-              }
-          > | null;
-          rating: number | null;
-        }> | null;
-      }
-    | {
-        _type: 'cta-1';
-        _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        sectionWidth: 'default' | 'narrow' | null;
-        stackAlign: 'center' | 'left' | null;
-        tagLine: string | null;
-        title: string | null;
-        body: Array<
-          | {
-              children?: Array<{
-                marks?: Array<string>;
-                text?: string;
-                _type: 'span';
-                _key: string;
-              }>;
-              style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-              listItem?: 'bullet' | 'number';
-              markDefs: Array<{
-                isExternal?: boolean;
-                internalLink?:
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'page';
-                    }
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'post';
-                    };
-                href: string | '/' | null;
-                target?: boolean;
-                _type: 'link';
-                _key: string;
-              }> | null;
-              level?: number;
-              _type: 'block';
-              _key: string;
-            }
-          | {
-              _key: string;
-              _type: 'code';
-              language?: string;
-              filename?: string;
-              code?: string;
-              highlightedLines?: Array<number>;
-              markDefs: null;
-            }
-          | {
-              asset: {
-                _id: string;
-                url: string | null;
-                mimeType: string | null;
-                metadata: {
-                  lqip: string | null;
-                  dimensions: {
-                    width: number | null;
-                    height: number | null;
-                  } | null;
-                } | null;
-              } | null;
-              media?: unknown;
-              hotspot?: SanityImageHotspot;
-              crop?: SanityImageCrop;
-              alt?: string;
-              _type: 'image';
-              _key: string;
-              markDefs: null;
-            }
-          | {
-              videoId?: string;
-              _type: 'youtube';
-              _key: string;
-              markDefs: null;
-            }
-        > | null;
-        links: Array<{
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+      } | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
           _key: string;
-          _type: 'link';
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<{
           isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          anchor?: string;
-          title?: string;
-          href: string | '/' | null;
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "post";
+          };
+          href: string | "/" | null;
           target?: boolean;
-          buttonVariant?: ButtonVariant;
+          _type: "link";
+          _key: string;
         }> | null;
-      }
-    | {
-        _type: 'faqs';
+        level?: number;
+        _type: "block";
         _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        faqs: Array<{
+      } | {
+        _key: string;
+        _type: "code";
+        language?: string;
+        filename?: string;
+        code?: string;
+        highlightedLines?: Array<number>;
+        markDefs: null;
+      } | {
+        asset: {
           _id: string;
-          title: string | null;
-          body: Array<
-            | {
-                children?: Array<{
-                  marks?: Array<string>;
-                  text?: string;
-                  _type: 'span';
-                  _key: string;
-                }>;
-                style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-                listItem?: 'bullet' | 'number';
-                markDefs: Array<{
-                  isExternal?: boolean;
-                  internalLink?:
-                    | {
-                        _ref: string;
-                        _type: 'reference';
-                        _weak?: boolean;
-                        [internalGroqTypeReferenceTo]?: 'page';
-                      }
-                    | {
-                        _ref: string;
-                        _type: 'reference';
-                        _weak?: boolean;
-                        [internalGroqTypeReferenceTo]?: 'post';
-                      };
-                  href: string | '/' | null;
-                  target?: boolean;
-                  _type: 'link';
-                  _key: string;
-                }> | null;
-                level?: number;
-                _type: 'block';
-                _key: string;
-              }
-            | {
-                _key: string;
-                _type: 'code';
-                language?: string;
-                filename?: string;
-                code?: string;
-                highlightedLines?: Array<number>;
-                markDefs: null;
-              }
-            | {
-                asset: {
-                  _id: string;
-                  url: string | null;
-                  mimeType: string | null;
-                  metadata: {
-                    lqip: string | null;
-                    dimensions: {
-                      width: number | null;
-                      height: number | null;
-                    } | null;
-                  } | null;
-                } | null;
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                alt?: string;
-                _type: 'image';
-                _key: string;
-                markDefs: null;
-              }
-            | {
-                videoId?: string;
-                _type: 'youtube';
-                _key: string;
-                markDefs: null;
-              }
-          > | null;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+        markDefs: null;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+        markDefs: null;
+      }> | null;
+      rating: number | null;
+    }> | null;
+  } | {
+    _type: "cta-1";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    sectionWidth: "default" | "narrow" | null;
+    stackAlign: "center" | "left" | null;
+    tagLine: string | null;
+    title: string | null;
+    body: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs: Array<{
+        isExternal?: boolean;
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "post";
+        };
+        href: string | "/" | null;
+        target?: boolean;
+        _type: "link";
+        _key: string;
+      }> | null;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      _key: string;
+      _type: "code";
+      language?: string;
+      filename?: string;
+      code?: string;
+      highlightedLines?: Array<number>;
+      markDefs: null;
+    } | {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      markDefs: null;
+    } | {
+      videoId?: string;
+      _type: "youtube";
+      _key: string;
+      markDefs: null;
+    }> | null;
+    links: Array<{
+      _key: string;
+      _type: "link";
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      anchor?: string;
+      title?: string;
+      href: string | "/" | null;
+      target?: boolean;
+      buttonVariant?: ButtonVariant;
+    }> | null;
+  } | {
+    _type: "faqs";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    faqs: Array<{
+      _id: string;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<{
+          isExternal?: boolean;
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "post";
+          };
+          href: string | "/" | null;
+          target?: boolean;
+          _type: "link";
+          _key: string;
         }> | null;
-      }
-    | {
-        _type: 'form-newsletter';
+        level?: number;
+        _type: "block";
         _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        stackAlign: 'center' | 'left' | null;
-        consentText: string | null;
-        buttonText: string | null;
-        successMessage: string | null;
-      }
-    | {
-        _type: 'grid-row';
+      } | {
         _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        gridColumns: 'grid-cols-2' | 'grid-cols-3' | 'grid-cols-4' | null;
-        columns: Array<
-          | {
-              _type: 'grid-card';
-              _key: string;
-              title: string | null;
-              excerpt: string | null;
-              image: {
-                asset: {
-                  _id: string;
-                  url: string | null;
-                  mimeType: string | null;
-                  metadata: {
-                    lqip: string | null;
-                    dimensions: {
-                      width: number | null;
-                      height: number | null;
-                    } | null;
-                  } | null;
-                } | null;
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                alt?: string;
-                _type: 'image';
-              } | null;
-              link: {
-                _key: null;
-                _type: 'link';
-                isExternal?: boolean;
-                internalLink?:
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'page';
-                    }
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'post';
-                    };
-                anchor?: string;
-                title?: string;
-                href: string | '/' | null;
-                target?: boolean;
-                buttonVariant?: ButtonVariant;
-              } | null;
-            }
-          | {
-              _type: 'grid-post';
-              _key: string;
-              post: {
-                title: string | null;
-                slug: Slug | null;
-                excerpt: string | null;
-                image: {
-                  asset: {
-                    _id: string;
-                    url: string | null;
-                    mimeType: string | null;
-                    metadata: {
-                      lqip: string | null;
-                      dimensions: {
-                        width: number | null;
-                        height: number | null;
-                      } | null;
-                    } | null;
-                  } | null;
-                  media?: unknown;
-                  hotspot?: SanityImageHotspot;
-                  crop?: SanityImageCrop;
-                  alt?: string;
-                  _type: 'image';
-                } | null;
-                categories: Array<{
-                  _id: string;
-                  title: string | null;
-                }> | null;
-              } | null;
-            }
-          | {
-              _type: 'pricing-card';
-              _key: string;
-              title: string | null;
-              tagLine: string | null;
-              price: {
-                value?: number;
-                period?: string;
-              } | null;
-              list: Array<string> | null;
-              excerpt: string | null;
-              link: {
-                _key: null;
-                _type: 'link';
-                isExternal?: boolean;
-                internalLink?:
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'page';
-                    }
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'post';
-                    };
-                anchor?: string;
-                title?: string;
-                href: string | '/' | null;
-                target?: boolean;
-                buttonVariant?: ButtonVariant;
-              } | null;
-            }
-        > | null;
-      }
-    | {
-        _type: 'hero-1';
+        _type: "code";
+        language?: string;
+        filename?: string;
+        code?: string;
+        highlightedLines?: Array<number>;
+        markDefs: null;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
         _key: string;
-        tagLine: string | null;
+        markDefs: null;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+        markDefs: null;
+      }> | null;
+    }> | null;
+  } | {
+    _type: "form-contact-map";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    heading: string | null;
+    body: string | null;
+    formspreeFormId: string | null;
+    submitButtonLabel: string | null;
+    successMessage: string | null;
+    locationName: string | null;
+    address: string | null;
+    latitude: number | null;
+    longitude: number | null;
+    mapZoom: number | null;
+  } | {
+    _type: "form-newsletter";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    stackAlign: "center" | "left" | null;
+    consentText: string | null;
+    buttonText: string | null;
+    successMessage: string | null;
+  } | {
+    _type: "grid-row";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    gridColumns: "grid-cols-2" | "grid-cols-3" | "grid-cols-4" | null;
+    columns: Array<{
+      _type: "grid-card";
+      _key: string;
+      title: string | null;
+      excerpt: string | null;
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      } | null;
+      link: {
+        _key: null;
+        _type: "link";
+        isExternal?: boolean;
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "post";
+        };
+        anchor?: string;
+        title?: string;
+        href: string | "/" | null;
+        target?: boolean;
+        buttonVariant?: ButtonVariant;
+      } | null;
+    } | {
+      _type: "grid-post";
+      _key: string;
+      post: {
         title: string | null;
-        body: Array<
-          | {
-              children?: Array<{
-                marks?: Array<string>;
-                text?: string;
-                _type: 'span';
-                _key: string;
-              }>;
-              style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-              listItem?: 'bullet' | 'number';
-              markDefs: Array<{
-                isExternal?: boolean;
-                internalLink?:
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'page';
-                    }
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'post';
-                    };
-                href: string | '/' | null;
-                target?: boolean;
-                _type: 'link';
-                _key: string;
-              }> | null;
-              level?: number;
-              _type: 'block';
-              _key: string;
-            }
-          | {
-              _key: string;
-              _type: 'code';
-              language?: string;
-              filename?: string;
-              code?: string;
-              highlightedLines?: Array<number>;
-              markDefs: null;
-            }
-          | {
-              asset: {
-                _id: string;
-                url: string | null;
-                mimeType: string | null;
-                metadata: {
-                  lqip: string | null;
-                  dimensions: {
-                    width: number | null;
-                    height: number | null;
-                  } | null;
-                } | null;
-              } | null;
-              media?: unknown;
-              hotspot?: SanityImageHotspot;
-              crop?: SanityImageCrop;
-              alt?: string;
-              _type: 'image';
-              _key: string;
-              markDefs: null;
-            }
-          | {
-              videoId?: string;
-              _type: 'youtube';
-              _key: string;
-              markDefs: null;
-            }
-        > | null;
+        slug: Slug | null;
+        excerpt: string | null;
         image: {
           asset: {
             _id: string;
@@ -2316,384 +1781,480 @@ export type PAGE_QUERYResult = {
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           alt?: string;
-          _type: 'image';
+          _type: "image";
         } | null;
-        links: Array<{
-          _key: string;
-          _type: 'link';
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          anchor?: string;
-          title?: string;
-          href: string | '/' | null;
-          target?: boolean;
-          buttonVariant?: ButtonVariant;
+        categories: Array<{
+          _id: string;
+          title: string | null;
         }> | null;
-      }
-    | {
-        _type: 'hero-2';
+      } | null;
+    } | {
+      _type: "pricing-card";
+      _key: string;
+      title: string | null;
+      tagLine: string | null;
+      price: {
+        value?: number;
+        period?: string;
+      } | null;
+      list: Array<string> | null;
+      excerpt: string | null;
+      link: {
+        _key: null;
+        _type: "link";
+        isExternal?: boolean;
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "post";
+        };
+        anchor?: string;
+        title?: string;
+        href: string | "/" | null;
+        target?: boolean;
+        buttonVariant?: ButtonVariant;
+      } | null;
+    }> | null;
+  } | {
+    _type: "hero-1";
+    _key: string;
+    tagLine: string | null;
+    title: string | null;
+    body: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
         _key: string;
-        tagLine: string | null;
-        title: string | null;
-        body: Array<
-          | {
-              children?: Array<{
-                marks?: Array<string>;
-                text?: string;
-                _type: 'span';
-                _key: string;
-              }>;
-              style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-              listItem?: 'bullet' | 'number';
-              markDefs: Array<{
-                isExternal?: boolean;
-                internalLink?:
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'page';
-                    }
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'post';
-                    };
-                href: string | '/' | null;
-                target?: boolean;
-                _type: 'link';
-                _key: string;
-              }> | null;
-              level?: number;
-              _type: 'block';
-              _key: string;
-            }
-          | {
-              _key: string;
-              _type: 'code';
-              language?: string;
-              filename?: string;
-              code?: string;
-              highlightedLines?: Array<number>;
-              markDefs: null;
-            }
-          | {
-              asset: {
-                _id: string;
-                url: string | null;
-                mimeType: string | null;
-                metadata: {
-                  lqip: string | null;
-                  dimensions: {
-                    width: number | null;
-                    height: number | null;
-                  } | null;
-                } | null;
-              } | null;
-              media?: unknown;
-              hotspot?: SanityImageHotspot;
-              crop?: SanityImageCrop;
-              alt?: string;
-              _type: 'image';
-              _key: string;
-              markDefs: null;
-            }
-          | {
-              videoId?: string;
-              _type: 'youtube';
-              _key: string;
-              markDefs: null;
-            }
-        > | null;
-        links: Array<{
-          _key: string;
-          _type: 'link';
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          anchor?: string;
-          title?: string;
-          href: string | '/' | null;
-          target?: boolean;
-          buttonVariant?: ButtonVariant;
-        }> | null;
-      }
-    | {
-        _type: 'hero-full';
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs: Array<{
+        isExternal?: boolean;
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "post";
+        };
+        href: string | "/" | null;
+        target?: boolean;
+        _type: "link";
         _key: string;
-        tagLine: string | null;
-        title: string | null;
-        body: Array<
-          | {
-              children?: Array<{
-                marks?: Array<string>;
-                text?: string;
-                _type: 'span';
-                _key: string;
-              }>;
-              style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-              listItem?: 'bullet' | 'number';
-              markDefs: Array<{
-                isExternal?: boolean;
-                internalLink?:
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'page';
-                    }
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'post';
-                    };
-                href: string | '/' | null;
-                target?: boolean;
-                _type: 'link';
-                _key: string;
-              }> | null;
-              level?: number;
-              _type: 'block';
-              _key: string;
-            }
-          | {
-              _key: string;
-              _type: 'code';
-              language?: string;
-              filename?: string;
-              code?: string;
-              highlightedLines?: Array<number>;
-              markDefs: null;
-            }
-          | {
-              asset: {
-                _id: string;
-                url: string | null;
-                mimeType: string | null;
-                metadata: {
-                  lqip: string | null;
-                  dimensions: {
-                    width: number | null;
-                    height: number | null;
-                  } | null;
-                } | null;
-              } | null;
-              media?: unknown;
-              hotspot?: SanityImageHotspot;
-              crop?: SanityImageCrop;
-              alt?: string;
-              _type: 'image';
-              _key: string;
-              markDefs: null;
-            }
-          | {
-              videoId?: string;
-              _type: 'youtube';
-              _key: string;
-              markDefs: null;
-            }
-        > | null;
-        images: Array<{
-          asset: {
-            _id: string;
-            url: string | null;
-            mimeType: string | null;
-            metadata: {
-              lqip: string | null;
-              dimensions: {
-                width: number | null;
-                height: number | null;
-              } | null;
-            } | null;
-          } | null;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: 'image';
-          _key: string;
-        }> | null;
-        image: {
-          asset: {
-            _id: string;
-            url: string | null;
-            mimeType: string | null;
-            metadata: {
-              lqip: string | null;
-              dimensions: {
-                width: number | null;
-                height: number | null;
-              } | null;
-            } | null;
-          } | null;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: 'image';
-        } | null;
-        height: '60vh' | '70vh' | 'screen' | null;
-        overlay: boolean | null;
-        overlayStrength: number | null;
-        contentAlignment: 'center' | 'left' | 'right' | null;
-      }
-    | {
-        _type: 'logo-cloud-1';
-        _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        title: string | null;
-        images: Array<{
-          asset: {
-            _id: string;
-            url: string | null;
-            mimeType: string | null;
-            metadata: {
-              lqip: string | null;
-              dimensions: {
-                width: number | null;
-                height: number | null;
-              } | null;
-            } | null;
-          } | null;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: 'image';
-          _key: string;
-        }> | null;
-      }
-    | {
-        _type: 'lottie-animation';
-        _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        sectionWidth: 'default' | 'narrow' | null;
-        animationAlign: 'center' | 'left' | 'right' | null;
-        verticalSpacing: 'comfortable' | 'compact' | 'none' | 'roomy' | null;
-        animationSize: 'full' | 'large' | 'medium' | 'small' | null;
-        ariaLabel: string | null;
-        animation: {
-          asset: {
-            _id: string;
-            url: string | null;
-            mimeType: string | null;
-            size: number | null;
-            originalFilename: string | null;
+      }> | null;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      _key: string;
+      _type: "code";
+      language?: string;
+      filename?: string;
+      code?: string;
+      highlightedLines?: Array<number>;
+      markDefs: null;
+    } | {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
           } | null;
         } | null;
-      }
-    | {
-        _type: 'menu-section';
-        _key: string;
-        padding: SectionPadding | null;
-        background: {
-          style: 'color' | 'image' | 'texture' | null;
-          colorVariant:
-            | 'accent'
-            | 'background'
-            | 'card'
-            | 'charcoal'
-            | 'cream'
-            | 'destructive'
-            | 'espresso'
-            | 'muted'
-            | 'primary'
-            | 'sage'
-            | 'secondary'
-            | null;
-          texturePreset: 'canvas' | 'linen' | 'paper' | null;
-          textureTint:
-            | 'accent'
-            | 'background'
-            | 'card'
-            | 'charcoal'
-            | 'cream'
-            | 'destructive'
-            | 'espresso'
-            | 'muted'
-            | 'primary'
-            | 'sage'
-            | 'secondary'
-            | null;
-          customImage: {
-            asset: {
-              _id: string;
-              url: string | null;
-              mimeType: string | null;
-              metadata: {
-                lqip: string | null;
-                dimensions: {
-                  width: number | null;
-                  height: number | null;
-                } | null;
-              } | null;
-            } | null;
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt: string | null;
-            opacity: number | null;
-            _type: 'image';
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      markDefs: null;
+    } | {
+      videoId?: string;
+      _type: "youtube";
+      _key: string;
+      markDefs: null;
+    }> | null;
+    image: {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
           } | null;
         } | null;
-        eyebrow: string | null;
-        title: string | null;
-        sectionId: string | null;
-        intro: string | null;
-        headingFont: 'sans' | 'serif' | null;
-        displayMode: 'combined' | 'image' | 'structured' | null;
-        menuImages: Array<{
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    } | null;
+    links: Array<{
+      _key: string;
+      _type: "link";
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      anchor?: string;
+      title?: string;
+      href: string | "/" | null;
+      target?: boolean;
+      buttonVariant?: ButtonVariant;
+    }> | null;
+  } | {
+    _type: "hero-2";
+    _key: string;
+    tagLine: string | null;
+    title: string | null;
+    body: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs: Array<{
+        isExternal?: boolean;
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "post";
+        };
+        href: string | "/" | null;
+        target?: boolean;
+        _type: "link";
+        _key: string;
+      }> | null;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      _key: string;
+      _type: "code";
+      language?: string;
+      filename?: string;
+      code?: string;
+      highlightedLines?: Array<number>;
+      markDefs: null;
+    } | {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      markDefs: null;
+    } | {
+      videoId?: string;
+      _type: "youtube";
+      _key: string;
+      markDefs: null;
+    }> | null;
+    links: Array<{
+      _key: string;
+      _type: "link";
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      anchor?: string;
+      title?: string;
+      href: string | "/" | null;
+      target?: boolean;
+      buttonVariant?: ButtonVariant;
+    }> | null;
+  } | {
+    _type: "hero-full";
+    _key: string;
+    tagLine: string | null;
+    title: string | null;
+    body: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs: Array<{
+        isExternal?: boolean;
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "post";
+        };
+        href: string | "/" | null;
+        target?: boolean;
+        _type: "link";
+        _key: string;
+      }> | null;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      _key: string;
+      _type: "code";
+      language?: string;
+      filename?: string;
+      code?: string;
+      highlightedLines?: Array<number>;
+      markDefs: null;
+    } | {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      markDefs: null;
+    } | {
+      videoId?: string;
+      _type: "youtube";
+      _key: string;
+      markDefs: null;
+    }> | null;
+    images: Array<{
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }> | null;
+    image: {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    } | null;
+    height: "60vh" | "70vh" | "screen" | null;
+    overlay: boolean | null;
+    overlayStrength: number | null;
+    contentAlignment: "center" | "left" | "right" | null;
+  } | {
+    _type: "logo-cloud-1";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    title: string | null;
+    images: Array<{
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }> | null;
+  } | {
+    _type: "lottie-animation";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    sectionWidth: "default" | "narrow" | null;
+    animationAlign: "center" | "left" | "right" | null;
+    verticalSpacing: "comfortable" | "compact" | "none" | "roomy" | "tight" | null;
+    animationSize: "full" | "large" | "medium" | "small" | null;
+    ariaLabel: string | null;
+    animation: {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        size: number | null;
+        originalFilename: string | null;
+      } | null;
+    } | null;
+    animationDark: {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        size: number | null;
+        originalFilename: string | null;
+      } | null;
+    } | null;
+  } | {
+    _type: "menu-section";
+    _key: string;
+    padding: SectionPadding | null;
+    background: {
+      style: "color" | "image" | "texture" | null;
+      colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+      texturePreset: "canvas" | "linen" | "paper" | null;
+      textureTint: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+      customImage: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt: string | null;
+        opacity: number | null;
+        _type: "image";
+      } | null;
+    } | null;
+    eyebrow: string | null;
+    title: string | null;
+    sectionId: string | null;
+    intro: string | null;
+    headingFont: "sans" | "serif" | null;
+    displayMode: "combined" | "image" | "structured" | null;
+    menuImages: Array<{
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        metadata: {
+          lqip: string | null;
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string | null;
+      focus?: string;
+      _type: "menuImage";
+      _key: string;
+    }> | null;
+    imagePlacement: "left" | "right" | "split" | null;
+    imageLayout: "inline" | "stacked" | null;
+    categories: Array<{
+      title: string | null;
+      description: string | null;
+      items: Array<{
+        _key: string;
+        name: string | null;
+        description: string | null;
+        price: string | null;
+        dietary: string | null;
+        itemImage: {
           asset: {
             _id: string;
             url: string | null;
@@ -2710,519 +2271,423 @@ export type PAGE_QUERYResult = {
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           alt: string | null;
-          focus?: string;
-          _type: 'menuImage';
-          _key: string;
-        }> | null;
-        imagePlacement: 'left' | 'right' | 'split' | null;
-        imageLayout: 'inline' | 'stacked' | null;
-        categories: Array<{
-          title: string | null;
-          description: string | null;
-          items: Array<{
+          _type: "image";
+        } | null;
+      }> | null;
+    }> | null;
+    lottieAnimation: {
+      asset: {
+        _id: string;
+        url: string | null;
+        mimeType: string | null;
+        size: number | null;
+        originalFilename: string | null;
+      } | null;
+    } | null;
+    lottiePlacement: "aside" | "heading" | null;
+  } | {
+    _type: "reviews-carousel";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    sectionId: string | null;
+    eyebrow: string | null;
+    heading: string | null;
+    intro: string | null;
+    placeId: string | null;
+    languageCode: string | null;
+    maximumReviews: number | null;
+    minimumRating: "3" | "4" | "5" | "any" | null;
+    sortOrder: "most_relevant" | "newest" | null;
+    cta: {
+      _key: null;
+      _type: "link";
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      anchor?: string;
+      title?: string;
+      href: string | "/" | null;
+      target?: boolean;
+      buttonVariant?: ButtonVariant;
+    } | null;
+  } | {
+    _type: "section-header";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    sectionWidth: "default" | "narrow" | null;
+    stackAlign: "center" | "left" | null;
+    tagLine: string | null;
+    title: string | null;
+    description: string | null;
+    link: null;
+  } | {
+    _type: "split-row";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    noGap: boolean | null;
+    splitColumns: Array<{
+      _type: "split-cards-list";
+      _key: string;
+      list: Array<{
+        tagLine: string | null;
+        title: string | null;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
             _key: string;
-            name: string | null;
-            description: string | null;
-            price: string | null;
-            dietary: string | null;
-            itemImage: {
-              asset: {
-                _id: string;
-                url: string | null;
-                mimeType: string | null;
-                metadata: {
-                  lqip: string | null;
-                  dimensions: {
-                    width: number | null;
-                    height: number | null;
-                  } | null;
-                } | null;
-              } | null;
-              media?: unknown;
-              hotspot?: SanityImageHotspot;
-              crop?: SanityImageCrop;
-              alt: string | null;
-              _type: 'image';
-            } | null;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs: Array<{
+            isExternal?: boolean;
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "post";
+            };
+            href: string | "/" | null;
+            target?: boolean;
+            _type: "link";
+            _key: string;
           }> | null;
-        }> | null;
-        lottieAnimation: {
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          _key: string;
+          _type: "code";
+          language?: string;
+          filename?: string;
+          code?: string;
+          highlightedLines?: Array<number>;
+          markDefs: null;
+        } | {
           asset: {
             _id: string;
             url: string | null;
             mimeType: string | null;
-            size: number | null;
-            originalFilename: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+          markDefs: null;
+        } | {
+          videoId?: string;
+          _type: "youtube";
+          _key: string;
+          markDefs: null;
+        }> | null;
+      }> | null;
+    } | {
+      _type: "split-content";
+      _key: string;
+      sticky: boolean | null;
+      padding: SectionPadding | null;
+      colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+      tagLine: string | null;
+      title: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<{
+          isExternal?: boolean;
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "post";
+          };
+          href: string | "/" | null;
+          target?: boolean;
+          _type: "link";
+          _key: string;
+        }> | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        _key: string;
+        _type: "code";
+        language?: string;
+        filename?: string;
+        code?: string;
+        highlightedLines?: Array<number>;
+        markDefs: null;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
           } | null;
         } | null;
-        lottiePlacement: 'aside' | 'heading' | null;
-      }
-    | {
-        _type: 'section-header';
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
         _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        sectionWidth: 'default' | 'narrow' | null;
-        stackAlign: 'center' | 'left' | null;
-        tagLine: string | null;
+        markDefs: null;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+        markDefs: null;
+      }> | null;
+      link: {
+        _key: null;
+        _type: "link";
+        isExternal?: boolean;
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "post";
+        };
+        anchor?: string;
+        title?: string;
+        href: string | "/" | null;
+        target?: boolean;
+        buttonVariant?: ButtonVariant;
+      } | null;
+    } | {
+      _type: "split-image";
+      _key: string;
+      image: {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      } | null;
+    } | {
+      _type: "split-info-list";
+      _key: string;
+      list: Array<{
+        image: {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        } | null;
         title: string | null;
-        description: string | null;
-        link: null;
-      }
-    | {
-        _type: 'split-row';
-        _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        noGap: boolean | null;
-        splitColumns: Array<
-          | {
-              _type: 'split-cards-list';
-              _key: string;
-              list: Array<{
-                tagLine: string | null;
-                title: string | null;
-                body: Array<
-                  | {
-                      children?: Array<{
-                        marks?: Array<string>;
-                        text?: string;
-                        _type: 'span';
-                        _key: string;
-                      }>;
-                      style?:
-                        | 'blockquote'
-                        | 'h1'
-                        | 'h2'
-                        | 'h3'
-                        | 'h4'
-                        | 'normal';
-                      listItem?: 'bullet' | 'number';
-                      markDefs: Array<{
-                        isExternal?: boolean;
-                        internalLink?:
-                          | {
-                              _ref: string;
-                              _type: 'reference';
-                              _weak?: boolean;
-                              [internalGroqTypeReferenceTo]?: 'page';
-                            }
-                          | {
-                              _ref: string;
-                              _type: 'reference';
-                              _weak?: boolean;
-                              [internalGroqTypeReferenceTo]?: 'post';
-                            };
-                        href: string | '/' | null;
-                        target?: boolean;
-                        _type: 'link';
-                        _key: string;
-                      }> | null;
-                      level?: number;
-                      _type: 'block';
-                      _key: string;
-                    }
-                  | {
-                      _key: string;
-                      _type: 'code';
-                      language?: string;
-                      filename?: string;
-                      code?: string;
-                      highlightedLines?: Array<number>;
-                      markDefs: null;
-                    }
-                  | {
-                      asset: {
-                        _id: string;
-                        url: string | null;
-                        mimeType: string | null;
-                        metadata: {
-                          lqip: string | null;
-                          dimensions: {
-                            width: number | null;
-                            height: number | null;
-                          } | null;
-                        } | null;
-                      } | null;
-                      media?: unknown;
-                      hotspot?: SanityImageHotspot;
-                      crop?: SanityImageCrop;
-                      alt?: string;
-                      _type: 'image';
-                      _key: string;
-                      markDefs: null;
-                    }
-                  | {
-                      videoId?: string;
-                      _type: 'youtube';
-                      _key: string;
-                      markDefs: null;
-                    }
-                > | null;
-              }> | null;
-            }
-          | {
-              _type: 'split-content';
-              _key: string;
-              sticky: boolean | null;
-              padding: SectionPadding | null;
-              colorVariant:
-                | 'accent'
-                | 'background'
-                | 'card'
-                | 'charcoal'
-                | 'cream'
-                | 'destructive'
-                | 'espresso'
-                | 'muted'
-                | 'primary'
-                | 'sage'
-                | 'secondary'
-                | null;
-              tagLine: string | null;
-              title: string | null;
-              body: Array<
-                | {
-                    children?: Array<{
-                      marks?: Array<string>;
-                      text?: string;
-                      _type: 'span';
-                      _key: string;
-                    }>;
-                    style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-                    listItem?: 'bullet' | 'number';
-                    markDefs: Array<{
-                      isExternal?: boolean;
-                      internalLink?:
-                        | {
-                            _ref: string;
-                            _type: 'reference';
-                            _weak?: boolean;
-                            [internalGroqTypeReferenceTo]?: 'page';
-                          }
-                        | {
-                            _ref: string;
-                            _type: 'reference';
-                            _weak?: boolean;
-                            [internalGroqTypeReferenceTo]?: 'post';
-                          };
-                      href: string | '/' | null;
-                      target?: boolean;
-                      _type: 'link';
-                      _key: string;
-                    }> | null;
-                    level?: number;
-                    _type: 'block';
-                    _key: string;
-                  }
-                | {
-                    _key: string;
-                    _type: 'code';
-                    language?: string;
-                    filename?: string;
-                    code?: string;
-                    highlightedLines?: Array<number>;
-                    markDefs: null;
-                  }
-                | {
-                    asset: {
-                      _id: string;
-                      url: string | null;
-                      mimeType: string | null;
-                      metadata: {
-                        lqip: string | null;
-                        dimensions: {
-                          width: number | null;
-                          height: number | null;
-                        } | null;
-                      } | null;
-                    } | null;
-                    media?: unknown;
-                    hotspot?: SanityImageHotspot;
-                    crop?: SanityImageCrop;
-                    alt?: string;
-                    _type: 'image';
-                    _key: string;
-                    markDefs: null;
-                  }
-                | {
-                    videoId?: string;
-                    _type: 'youtube';
-                    _key: string;
-                    markDefs: null;
-                  }
-              > | null;
-              link: {
-                _key: null;
-                _type: 'link';
-                isExternal?: boolean;
-                internalLink?:
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'page';
-                    }
-                  | {
-                      _ref: string;
-                      _type: 'reference';
-                      _weak?: boolean;
-                      [internalGroqTypeReferenceTo]?: 'post';
-                    };
-                anchor?: string;
-                title?: string;
-                href: string | '/' | null;
-                target?: boolean;
-                buttonVariant?: ButtonVariant;
+        body: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+          listItem?: "bullet" | "number";
+          markDefs: Array<{
+            isExternal?: boolean;
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "post";
+            };
+            href: string | "/" | null;
+            target?: boolean;
+            _type: "link";
+            _key: string;
+          }> | null;
+          level?: number;
+          _type: "block";
+          _key: string;
+        } | {
+          _key: string;
+          _type: "code";
+          language?: string;
+          filename?: string;
+          code?: string;
+          highlightedLines?: Array<number>;
+          markDefs: null;
+        } | {
+          asset: {
+            _id: string;
+            url: string | null;
+            mimeType: string | null;
+            metadata: {
+              lqip: string | null;
+              dimensions: {
+                width: number | null;
+                height: number | null;
               } | null;
-            }
-          | {
-              _type: 'split-image';
-              _key: string;
-              image: {
-                asset: {
-                  _id: string;
-                  url: string | null;
-                  mimeType: string | null;
-                  metadata: {
-                    lqip: string | null;
-                    dimensions: {
-                      width: number | null;
-                      height: number | null;
-                    } | null;
-                  } | null;
-                } | null;
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                alt?: string;
-                _type: 'image';
-              } | null;
-            }
-          | {
-              _type: 'split-info-list';
-              _key: string;
-              list: Array<{
-                image: {
-                  asset: {
-                    _id: string;
-                    url: string | null;
-                    mimeType: string | null;
-                    metadata: {
-                      lqip: string | null;
-                      dimensions: {
-                        width: number | null;
-                        height: number | null;
-                      } | null;
-                    } | null;
-                  } | null;
-                  media?: unknown;
-                  hotspot?: SanityImageHotspot;
-                  crop?: SanityImageCrop;
-                  alt?: string;
-                  _type: 'image';
-                } | null;
-                title: string | null;
-                body: Array<
-                  | {
-                      children?: Array<{
-                        marks?: Array<string>;
-                        text?: string;
-                        _type: 'span';
-                        _key: string;
-                      }>;
-                      style?:
-                        | 'blockquote'
-                        | 'h1'
-                        | 'h2'
-                        | 'h3'
-                        | 'h4'
-                        | 'normal';
-                      listItem?: 'bullet' | 'number';
-                      markDefs: Array<{
-                        isExternal?: boolean;
-                        internalLink?:
-                          | {
-                              _ref: string;
-                              _type: 'reference';
-                              _weak?: boolean;
-                              [internalGroqTypeReferenceTo]?: 'page';
-                            }
-                          | {
-                              _ref: string;
-                              _type: 'reference';
-                              _weak?: boolean;
-                              [internalGroqTypeReferenceTo]?: 'post';
-                            };
-                        href: string | '/' | null;
-                        target?: boolean;
-                        _type: 'link';
-                        _key: string;
-                      }> | null;
-                      level?: number;
-                      _type: 'block';
-                      _key: string;
-                    }
-                  | {
-                      _key: string;
-                      _type: 'code';
-                      language?: string;
-                      filename?: string;
-                      code?: string;
-                      highlightedLines?: Array<number>;
-                      markDefs: null;
-                    }
-                  | {
-                      asset: {
-                        _id: string;
-                        url: string | null;
-                        mimeType: string | null;
-                        metadata: {
-                          lqip: string | null;
-                          dimensions: {
-                            width: number | null;
-                            height: number | null;
-                          } | null;
-                        } | null;
-                      } | null;
-                      media?: unknown;
-                      hotspot?: SanityImageHotspot;
-                      crop?: SanityImageCrop;
-                      alt?: string;
-                      _type: 'image';
-                      _key: string;
-                      markDefs: null;
-                    }
-                  | {
-                      videoId?: string;
-                      _type: 'youtube';
-                      _key: string;
-                      markDefs: null;
-                    }
-                > | null;
-                tags: Array<string> | null;
-              }> | null;
-            }
-        > | null;
-      }
-    | {
-        _type: 'timeline-row';
-        _key: string;
-        padding: SectionPadding | null;
-        colorVariant:
-          | 'accent'
-          | 'background'
-          | 'card'
-          | 'charcoal'
-          | 'cream'
-          | 'destructive'
-          | 'espresso'
-          | 'muted'
-          | 'primary'
-          | 'sage'
-          | 'secondary'
-          | null;
-        timelines: Array<{
-          title: string | null;
-          tagLine: string | null;
-          body: Array<
-            | {
-                children?: Array<{
-                  marks?: Array<string>;
-                  text?: string;
-                  _type: 'span';
-                  _key: string;
-                }>;
-                style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-                listItem?: 'bullet' | 'number';
-                markDefs: Array<{
-                  isExternal?: boolean;
-                  internalLink?:
-                    | {
-                        _ref: string;
-                        _type: 'reference';
-                        _weak?: boolean;
-                        [internalGroqTypeReferenceTo]?: 'page';
-                      }
-                    | {
-                        _ref: string;
-                        _type: 'reference';
-                        _weak?: boolean;
-                        [internalGroqTypeReferenceTo]?: 'post';
-                      };
-                  href: string | '/' | null;
-                  target?: boolean;
-                  _type: 'link';
-                  _key: string;
-                }> | null;
-                level?: number;
-                _type: 'block';
-                _key: string;
-              }
-            | {
-                _key: string;
-                _type: 'code';
-                language?: string;
-                filename?: string;
-                code?: string;
-                highlightedLines?: Array<number>;
-                markDefs: null;
-              }
-            | {
-                asset: {
-                  _id: string;
-                  url: string | null;
-                  mimeType: string | null;
-                  metadata: {
-                    lqip: string | null;
-                    dimensions: {
-                      width: number | null;
-                      height: number | null;
-                    } | null;
-                  } | null;
-                } | null;
-                media?: unknown;
-                hotspot?: SanityImageHotspot;
-                crop?: SanityImageCrop;
-                alt?: string;
-                _type: 'image';
-                _key: string;
-                markDefs: null;
-              }
-            | {
-                videoId?: string;
-                _type: 'youtube';
-                _key: string;
-                markDefs: null;
-              }
-          > | null;
+            } | null;
+          } | null;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+          markDefs: null;
+        } | {
+          videoId?: string;
+          _type: "youtube";
+          _key: string;
+          markDefs: null;
         }> | null;
-      }
-  > | null;
+        tags: Array<string> | null;
+      }> | null;
+    }> | null;
+  } | {
+    _type: "timeline-row";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    timelines: Array<{
+      title: string | null;
+      tagLine: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs: Array<{
+          isExternal?: boolean;
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "post";
+          };
+          href: string | "/" | null;
+          target?: boolean;
+          _type: "link";
+          _key: string;
+        }> | null;
+        level?: number;
+        _type: "block";
+        _key: string;
+      } | {
+        _key: string;
+        _type: "code";
+        language?: string;
+        filename?: string;
+        code?: string;
+        highlightedLines?: Array<number>;
+        markDefs: null;
+      } | {
+        asset: {
+          _id: string;
+          url: string | null;
+          mimeType: string | null;
+          metadata: {
+            lqip: string | null;
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+        markDefs: null;
+      } | {
+        videoId?: string;
+        _type: "youtube";
+        _key: string;
+        markDefs: null;
+      }> | null;
+    }> | null;
+  }> | null;
   meta_title: string | null;
   meta_description: string | null;
   noindex: boolean | null;
@@ -3268,79 +2733,72 @@ export type POST_QUERYResult = {
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
   } | null;
-  body: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-        listItem?: 'bullet' | 'number';
-        markDefs: Array<{
-          isExternal?: boolean;
-          internalLink?:
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'page';
-              }
-            | {
-                _ref: string;
-                _type: 'reference';
-                _weak?: boolean;
-                [internalGroqTypeReferenceTo]?: 'post';
-              };
-          href: string | '/' | null;
-          target?: boolean;
-          _type: 'link';
-          _key: string;
-        }> | null;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        _key: string;
-        _type: 'code';
-        language?: string;
-        filename?: string;
-        code?: string;
-        highlightedLines?: Array<number>;
-        markDefs: null;
-      }
-    | {
-        asset: {
-          _id: string;
-          url: string | null;
-          mimeType: string | null;
-          metadata: {
-            lqip: string | null;
-            dimensions: {
-              width: number | null;
-              height: number | null;
-            } | null;
-          } | null;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs: Array<{
+      isExternal?: boolean;
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "post";
+      };
+      href: string | "/" | null;
+      target?: boolean;
+      _type: "link";
+      _key: string;
+    }> | null;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    _key: string;
+    _type: "code";
+    language?: string;
+    filename?: string;
+    code?: string;
+    highlightedLines?: Array<number>;
+    markDefs: null;
+  } | {
+    asset: {
+      _id: string;
+      url: string | null;
+      mimeType: string | null;
+      metadata: {
+        lqip: string | null;
+        dimensions: {
+          width: number | null;
+          height: number | null;
         } | null;
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-        markDefs: null;
-      }
-    | {
-        videoId?: string;
-        _type: 'youtube';
-        _key: string;
-        markDefs: null;
-      }
-  > | null;
+      } | null;
+    } | null;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+    markDefs: null;
+  } | {
+    videoId?: string;
+    _type: "youtube";
+    _key: string;
+    markDefs: null;
+  }> | null;
   author: {
     name: string | null;
     image: {
@@ -3360,7 +2818,7 @@ export type POST_QUERYResult = {
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       alt: string | null;
-      _type: 'image';
+      _type: "image";
     } | null;
   } | null;
   _createdAt: string;
@@ -3382,12 +2840,11 @@ export type POST_QUERYResult = {
   } | null;
 } | null;
 // Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug)] | order(_createdAt desc){    title,    slug,    excerpt,    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },}
+// Query: *[_type == "post" && defined(slug)] | order(_createdAt desc){    title,    slug,    excerpt,    image{        ...,  asset->{    _id,    url,    mimeType,    metadata {      lqip,      dimensions {        width,        height      }    }  }    },    _createdAt,}
 export type POSTS_QUERYResult = Array<{
   title: string | null;
   slug: Slug | null;
   excerpt: string | null;
-  _createdAt: string;
   image: {
     asset: {
       _id: string;
@@ -3405,8 +2862,9 @@ export type POSTS_QUERYResult = Array<{
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
-    _type: 'image';
+    _type: "image";
   } | null;
+  _createdAt: string;
 }>;
 // Variable: POSTS_SLUGS_QUERY
 // Query: *[_type == "post" && defined(slug)]{slug}
@@ -3418,7 +2876,7 @@ export type POSTS_SLUGS_QUERYResult = Array<{
 // Variable: SETTINGS_QUERY
 // Query: *[_type == "settings"][0]{  _type,  siteName,  logo{    dark{      ...,      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      }    },    light{      ...,      asset->{        _id,        url,        mimeType,        metadata {          lqip,          dimensions {            width,            height          }        }      }    },    width,    height,  },  copyright}
 export type SETTINGS_QUERYResult = {
-  _type: 'settings';
+  _type: "settings";
   siteName: string | null;
   logo: {
     dark: {
@@ -3437,7 +2895,7 @@ export type SETTINGS_QUERYResult = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
-      _type: 'image';
+      _type: "image";
     } | null;
     light: {
       asset: {
@@ -3455,7 +2913,7 @@ export type SETTINGS_QUERYResult = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
-      _type: 'image';
+      _type: "image";
     } | null;
     width: number | null;
     height: number | null;
@@ -3464,17 +2922,17 @@ export type SETTINGS_QUERYResult = {
 } | null;
 
 // Query TypeMap
-import '@sanity/client';
-declare module '@sanity/client' {
+import "@sanity/client";
+declare module "@sanity/client" {
   interface SanityQueries {
     "\n    *[_type == 'page'] | order(slug.current) {\n      'url': $baseUrl + select(slug.current == 'index' => '', '/' + slug.current),\n      'lastModified': _updatedAt,\n      'changeFrequency': 'daily',\n      'priority': select(\n        slug.current == 'index' => 1,\n        0.5\n      )\n    }\n  ": PagesQueryResult;
     "\n    *[_type == 'post'] | order(_updatedAt desc) {\n      'url': $baseUrl + '/news/' + slug.current,\n      'lastModified': _updatedAt,\n      'changeFrequency': 'weekly',\n      'priority': 0.7\n    }\n  ": PostsQueryResult;
-    '\n  *[_type == "navigation"]{\n    _type,\n    _key,\n    links[]{\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  }\n': NAVIGATION_QUERYResult;
-    '\n  *[_type == "page" && slug.current == $slug][0]{\n    blocks[]{\n      \n  _type == "hero-1" => {\n    _type,\n    _key,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    links[]{\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == "hero-2" => {\n    _type,\n    _key,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    links[]{\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == "hero-full" => {\n    _type,\n    _key,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    images[]{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    height,\n    overlay,\n    overlayStrength,\n    contentAlignment,\n  }\n,\n      \n  _type == "section-header" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    sectionWidth,\n    stackAlign,\n    tagLine,\n    title,\n    description,\n    link{\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == "lottie-animation" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    sectionWidth,\n    animationAlign,\n    verticalSpacing,\n    animationSize,\n    ariaLabel,\n    animation{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        size,\n        originalFilename\n      }\n    }\n  }\n,\n      \n  _type == "split-row" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    noGap,\n    splitColumns[]{\n      \n  _type == "split-content" => {\n    _type,\n    _key,\n    sticky,\n    padding,\n    colorVariant,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    link{\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == "split-cards-list" => {\n    _type,\n    _key,\n    list[]{\n      tagLine,\n      title,\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n    },\n  }\n,\n      \n  _type == "split-image" => {\n    _type,\n    _key,\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n  }\n,\n      \n  _type == "split-info-list" => {\n    _type,\n    _key,\n    list[]{\n      image{\n        \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n      },\n      title,\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n      tags[],\n    },\n  }\n,\n    },\n  }\n,\n      \n  _type == "grid-row" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    gridColumns,\n    columns[]{\n      \n  _type == "grid-card" => {\n    _type,\n    _key,\n    title,\n    excerpt,\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    link{\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == "pricing-card" => {\n    _type,\n    _key,\n    title,\n    tagLine,\n    price,\n    list[],\n    excerpt,\n    link{\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == "grid-post" => {\n    _type,\n    _key,\n    post->{\n      title,\n      slug,\n      excerpt,\n      image{\n        \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n      },\n      categories[]->{\n        _id,\n        title,\n      },\n    },\n  }\n,\n    },\n  }\n,\n      \n  _type == "carousel-1" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    size,\n    orientation,\n    indicators,\n    images[]{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n  }\n,\n      \n  _type == "carousel-2" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    testimonial[]->{\n      _id,\n      name,\n      title,\n      image{\n        \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n      },\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n      rating,\n    },\n  }\n,\n      \n  _type == "timeline-row" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    timelines[]{\n      title,\n      tagLine,\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n    },\n  }\n,\n      \n  _type == "cta-1" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    sectionWidth,\n    stackAlign,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    links[]{\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == "logo-cloud-1" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    title,\n    images[]{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n  }\n,\n      \n  _type == "faqs" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    faqs[]->{\n      _id,\n      title,\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n    },\n  }\n,\n      \n  _type == "form-newsletter" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    stackAlign,\n    consentText,\n    buttonText,\n    successMessage,\n  }\n,\n      \n  _type == "all-posts" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n  }\n,\n      \n  _type == "menu-section" => {\n    _type,\n    _key,\n    padding,\n    background{\n      style,\n      colorVariant,\n      texturePreset,\n      textureTint,\n      customImage{\n        \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n,\n        alt,\n        opacity\n      }\n    },\n    eyebrow,\n    title,\n    sectionId,\n    intro,\n    headingFont,\n    displayMode,\n    menuImages[]{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n,\n      alt\n    },\n    imagePlacement,\n    imageLayout,\n    categories[]{\n      title,\n      description,\n      items[]{\n        _key,\n        name,\n        description,\n        price,\n        dietary,\n        itemImage{\n          \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n,\n          alt\n        }\n      }\n    },\n    lottieAnimation{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        size,\n        originalFilename\n      }\n    },\n    lottiePlacement\n  }\n,\n    },\n    meta_title,\n    meta_description,\n    noindex,\n    ogImage {\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n    }\n  }\n': PAGE_QUERYResult;
-    '*[_type == "page" && defined(slug)]{slug}': PAGES_SLUGS_QUERYResult;
-    '*[_type == "post" && slug.current == $slug][0]{\n    title,\n    slug,\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == "link" => {\n      \n    _key,\n    ...,\n    "href": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => "#" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == "index" => "/#" + anchor,\n      defined(anchor) && @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current + "#" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => "/" + @.internalLink->slug.current + "#" + anchor,\n      @.internalLink->slug.current == "index" => "/",\n      @.internalLink->_type == "post" => "/news/" + @.internalLink->slug.current,\n      "/" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == "image" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    author->{\n      name,\n      image {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      }\n    },\n    _createdAt,\n    _updatedAt,\n    meta_title,\n    meta_description,\n    noindex,\n    ogImage {\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n    }\n}': POST_QUERYResult;
-    '*[_type == "post" && defined(slug)] | order(_createdAt desc){\n    title,\n    slug,\n    excerpt,\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n}': POSTS_QUERYResult;
-    '*[_type == "post" && defined(slug)]{slug}': POSTS_SLUGS_QUERYResult;
-    '*[_type == "settings"][0]{\n  _type,\n  siteName,\n  logo{\n    dark{\n      ...,\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    light{\n      ...,\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    width,\n    height,\n  },\n  copyright\n}': SETTINGS_QUERYResult;
+    "\n  *[_type == \"navigation\"]{\n    _type,\n    _key,\n    links[]{\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  }\n": NAVIGATION_QUERYResult;
+    "\n  *[_type == \"page\" && slug.current == $slug][0]{\n    blocks[]{\n      \n  _type == \"hero-1\" => {\n    _type,\n    _key,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    links[]{\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == \"hero-2\" => {\n    _type,\n    _key,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    links[]{\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == \"hero-full\" => {\n    _type,\n    _key,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    images[]{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    height,\n    overlay,\n    overlayStrength,\n    contentAlignment,\n  }\n,\n      \n  _type == \"section-header\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    sectionWidth,\n    stackAlign,\n    tagLine,\n    title,\n    description,\n    link{\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == \"lottie-animation\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    sectionWidth,\n    animationAlign,\n    verticalSpacing,\n    animationSize,\n    ariaLabel,\n    animation{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        size,\n        originalFilename\n      }\n    },\n    animationDark{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        size,\n        originalFilename\n      }\n    }\n  }\n,\n      \n  _type == \"split-row\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    noGap,\n    splitColumns[]{\n      \n  _type == \"split-content\" => {\n    _type,\n    _key,\n    sticky,\n    padding,\n    colorVariant,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    link{\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == \"split-cards-list\" => {\n    _type,\n    _key,\n    list[]{\n      tagLine,\n      title,\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n    },\n  }\n,\n      \n  _type == \"split-image\" => {\n    _type,\n    _key,\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n  }\n,\n      \n  _type == \"split-info-list\" => {\n    _type,\n    _key,\n    list[]{\n      image{\n        \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n      },\n      title,\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n      tags[],\n    },\n  }\n,\n    },\n  }\n,\n      \n  _type == \"grid-row\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    gridColumns,\n    columns[]{\n      \n  _type == \"grid-card\" => {\n    _type,\n    _key,\n    title,\n    excerpt,\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    link{\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == \"pricing-card\" => {\n    _type,\n    _key,\n    title,\n    tagLine,\n    price,\n    list[],\n    excerpt,\n    link{\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == \"grid-post\" => {\n    _type,\n    _key,\n    post->{\n      title,\n      slug,\n      excerpt,\n      image{\n        \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n      },\n      categories[]->{\n        _id,\n        title,\n      },\n    },\n  }\n,\n    },\n  }\n,\n      \n  _type == \"carousel-1\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    size,\n    orientation,\n    indicators,\n    images[]{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n  }\n,\n      \n  _type == \"carousel-2\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    testimonial[]->{\n      _id,\n      name,\n      title,\n      image{\n        \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n      },\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n      rating,\n    },\n  }\n,\n      \n  _type == \"reviews-carousel\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    sectionId,\n    eyebrow,\n    heading,\n    intro,\n    placeId,\n    languageCode,\n    maximumReviews,\n    minimumRating,\n    sortOrder,\n    cta {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == \"timeline-row\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    timelines[]{\n      title,\n      tagLine,\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n    },\n  }\n,\n      \n  _type == \"cta-1\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    sectionWidth,\n    stackAlign,\n    tagLine,\n    title,\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    links[]{\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    },\n  }\n,\n      \n  _type == \"logo-cloud-1\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    title,\n    images[]{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n  }\n,\n      \n  _type == \"faqs\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    faqs[]->{\n      _id,\n      title,\n      body[]{\n        \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n      },\n    },\n  }\n,\n      \n  _type == \"form-newsletter\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    stackAlign,\n    consentText,\n    buttonText,\n    successMessage,\n  }\n,\n      \n  _type == \"form-contact-map\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n    heading,\n    body,\n    formspreeFormId,\n    submitButtonLabel,\n    successMessage,\n    locationName,\n    address,\n    latitude,\n    longitude,\n    mapZoom,\n  }\n,\n      \n  _type == \"all-posts\" => {\n    _type,\n    _key,\n    padding,\n    colorVariant,\n  }\n,\n      \n  _type == \"menu-section\" => {\n    _type,\n    _key,\n    padding,\n    background{\n      style,\n      colorVariant,\n      texturePreset,\n      textureTint,\n      customImage{\n        \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n,\n        alt,\n        opacity\n      }\n    },\n    eyebrow,\n    title,\n    sectionId,\n    intro,\n    headingFont,\n    displayMode,\n    menuImages[]{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n,\n      alt\n    },\n    imagePlacement,\n    imageLayout,\n    categories[]{\n      title,\n      description,\n      items[]{\n        _key,\n        name,\n        description,\n        price,\n        dietary,\n        itemImage{\n          \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n,\n          alt\n        }\n      }\n    },\n    lottieAnimation{\n      asset->{\n        _id,\n        url,\n        mimeType,\n        size,\n        originalFilename\n      }\n    },\n    lottiePlacement\n  }\n,\n    },\n    meta_title,\n    meta_description,\n    noindex,\n    ogImage {\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n    }\n  }\n": PAGE_QUERYResult;
+    "*[_type == \"page\" && defined(slug)]{slug}": PAGES_SLUGS_QUERYResult;
+    "*[_type == \"post\" && slug.current == $slug][0]{\n    title,\n    slug,\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    body[]{\n      \n  ...,\n  markDefs[]{\n    ...,\n    _type == \"link\" => {\n      \n    _key,\n    ...,\n    \"href\": select(\n      isExternal => href,\n      defined(anchor) && !defined(internalLink) => \"#\" + anchor,\n      defined(href) && !defined(internalLink) => href,\n      defined(anchor) && @.internalLink->slug.current == \"index\" => \"/#\" + anchor,\n      defined(anchor) && @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current + \"#\" + anchor,\n      defined(anchor) && defined(@.internalLink->slug.current) => \"/\" + @.internalLink->slug.current + \"#\" + anchor,\n      @.internalLink->slug.current == \"index\" => \"/\",\n      @.internalLink->_type == \"post\" => \"/news/\" + @.internalLink->slug.current,\n      \"/\" + @.internalLink->slug.current\n    )\n\n    }\n  },\n  _type == \"image\" => {\n    \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n  }\n\n    },\n    author->{\n      name,\n      image {\n        ...,\n        asset->{\n          _id,\n          url,\n          mimeType,\n          metadata {\n            lqip,\n            dimensions {\n              width,\n              height\n            }\n          }\n        },\n        alt\n      }\n    },\n    _createdAt,\n    _updatedAt,\n    meta_title,\n    meta_description,\n    noindex,\n    ogImage {\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      },\n    }\n}": POST_QUERYResult;
+    "*[_type == \"post\" && defined(slug)] | order(_createdAt desc){\n    title,\n    slug,\n    excerpt,\n    image{\n      \n  ...,\n  asset->{\n    _id,\n    url,\n    mimeType,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height\n      }\n    }\n  }\n\n    },\n    _createdAt,\n}": POSTS_QUERYResult;
+    "*[_type == \"post\" && defined(slug)]{slug}": POSTS_SLUGS_QUERYResult;
+    "*[_type == \"settings\"][0]{\n  _type,\n  siteName,\n  logo{\n    dark{\n      ...,\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    light{\n      ...,\n      asset->{\n        _id,\n        url,\n        mimeType,\n        metadata {\n          lqip,\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    width,\n    height,\n  },\n  copyright\n}": SETTINGS_QUERYResult;
   }
 }

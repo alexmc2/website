@@ -137,6 +137,7 @@ All environment variables and their descriptions:
 - `GOOGLE_PLACES_API_KEY` - server-side Google Places API key with the Places API enabled. Needed to fetch live reviews.
 - `GOOGLE_PLACES_PLACE_ID` - default Google Place ID for your location (can be overridden per block in Sanity).
 - `GOOGLE_PLACES_LANGUAGE` - optional fallback locale (e.g. `en-GB`) used when a block does not specify a language code.
+- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` - browser-restricted key used by the contact map block to render the embedded Google Map.
 
 ## Examples
 

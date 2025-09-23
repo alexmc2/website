@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 import DesktopNav from '@/components/header/desktop-nav';
 import MobileNav from '@/components/header/mobile-nav';
 import Logo from '@/components/logo';
-import { ModeToggle } from '@/components/menu-toggle';
+// import { ModeToggle } from '@/components/menu-toggle';
 import { cn } from '@/lib/utils';
 import { NAVIGATION_QUERYResult, SETTINGS_QUERYResult } from '@/sanity.types';
 
@@ -24,6 +25,12 @@ export default function HeaderClient({
 
   const [overHero, setOverHero] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const { setTheme } = useTheme();
+
+  useEffect(() => {
+    setTheme('light');
+  }, [setTheme]);
 
   const onHome = pathname === '/';
   const headerRef = useRef<HTMLElement | null>(null);
@@ -113,6 +120,8 @@ export default function HeaderClient({
               navigation={navigation}
               isSolid={!(onHome && overHero)}
             />
+            {/* Theme toggle temporarily disabled */}
+            {/*
             <ModeToggle
               className={cn(
                 'transition-colors duration-300',
@@ -121,6 +130,7 @@ export default function HeaderClient({
                   : 'text-foreground hover:text-foreground'
               )}
             />
+            */}
           </div>
 
           <div
@@ -129,6 +139,8 @@ export default function HeaderClient({
               onHome && overHero ? 'text-white' : 'text-foreground'
             )}
           >
+            {/* Theme toggle temporarily disabled */}
+            {/*
             <ModeToggle
               className={cn(
                 'transition-colors duration-300',
@@ -137,6 +149,7 @@ export default function HeaderClient({
                   : 'text-foreground hover:text-foreground'
               )}
             />
+            */}
             <MobileNav navigation={navigation} settings={settings} />
           </div>
         </div>

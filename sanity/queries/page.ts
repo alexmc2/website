@@ -14,6 +14,7 @@ import { cta1Query } from "./cta/cta-1";
 import { logoCloud1Query } from "./logo-cloud/logo-cloud-1";
 import { faqsQuery } from "./faqs";
 import { formNewsletterQuery } from "./forms/newsletter";
+import { formContactMapQuery } from "./forms/contact-map";
 import { allPostsQuery } from "./all-posts";
 import { menuSectionQuery } from "./menu-section";
 import { lottieAnimationQuery } from "./lottie-animation";
@@ -36,6 +37,7 @@ export const PAGE_QUERY = groq`
       ${logoCloud1Query},
       ${faqsQuery},
       ${formNewsletterQuery},
+      ${formContactMapQuery},
       ${allPostsQuery},
       ${menuSectionQuery},
     },

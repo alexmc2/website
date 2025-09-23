@@ -40,6 +40,7 @@ import cta1 from "./schemas/blocks/cta/cta-1";
 import logoCloud1 from "./schemas/blocks/logo-cloud/logo-cloud-1";
 import faqs from "./schemas/blocks/faqs";
 import newsletter from "./schemas/blocks/forms/newsletter";
+import contactMap from "./schemas/blocks/forms/contact-map";
 import allPosts from "./schemas/blocks/all-posts";
 import menuSection from "./schemas/blocks/menu-section";
 import lottieAnimation from "./schemas/blocks/lottie-animation";
@@ -86,6 +87,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     logoCloud1,
     faqs,
     newsletter,
+    contactMap,
     allPosts,
     menuSection,
     lottieAnimation,
