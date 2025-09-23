@@ -9,6 +9,10 @@ export const COLOR_VARIANTS = [
   { title: "Accent", value: "accent" },
   { title: "Destructive", value: "destructive" },
   { title: "Muted", value: "muted" },
+  { title: "Warm Cream", value: "cream" },
+  { title: "Dark Espresso", value: "espresso" },
+  { title: "Herbal Sage", value: "sage" },
+  { title: "Soft Charcoal", value: "charcoal" },
 ];
 
 export const colorVariant = defineType({

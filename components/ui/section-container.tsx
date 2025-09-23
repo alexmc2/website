@@ -7,6 +7,7 @@ interface SectionContainerProps {
   padding?: SectionPadding | null;
   children: React.ReactNode;
   className?: string;
+  id?: string | null;
 }
 
 export default function SectionContainer({
@@ -14,9 +15,11 @@ export default function SectionContainer({
   padding,
   children,
   className,
+  id,
 }: SectionContainerProps) {
   return (
     <div
+      id={id ?? undefined}
       className={cn(
         `bg-${color} relative`,
         padding?.top ? "pt-16 xl:pt-20" : undefined,

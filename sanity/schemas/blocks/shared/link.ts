@@ -20,6 +20,23 @@ export default defineType({
       hidden: ({ parent }) => parent?.isExternal,
     }),
     defineField({
+      name: "anchor",
+      type: "string",
+      title: "Section Anchor",
+      description:
+        "Optional anchor ID to scroll to a section on the selected page (e.g. menus).",
+      hidden: ({ parent }) => parent?.isExternal,
+      validation: (rule) =>
+        rule
+          .optional()
+          .regex(/^[a-z0-9-]+$/, {
+            name: "anchor",
+            invert: false,
+            message: "Use lowercase letters, numbers, and hyphens only.",
+          })
+          .warning("Use lowercase letters, numbers, and hyphens only."),
+    }),
+    defineField({
       name: "title",
       type: "string",
     }),

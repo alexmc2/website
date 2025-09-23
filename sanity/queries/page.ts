@@ -15,6 +15,7 @@ import { faqsQuery } from "./faqs";
 import { formNewsletterQuery } from "./forms/newsletter";
 import { allPostsQuery } from "./all-posts";
 import { menuSectionQuery } from "./menu-section";
+import { lottieAnimationQuery } from "./lottie-animation";
 
 export const PAGE_QUERY = groq`
   *[_type == "page" && slug.current == $slug][0]{
@@ -23,6 +24,7 @@ export const PAGE_QUERY = groq`
       ${hero2Query},
       ${heroFullQuery},
       ${sectionHeaderQuery},
+      ${lottieAnimationQuery},
       ${splitRowQuery},
       ${gridRowQuery},
       ${carousel1Query},

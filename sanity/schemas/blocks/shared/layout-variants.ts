@@ -4,6 +4,19 @@ export const STACK_ALIGN = [
   { title: "Center", value: "center" },
 ];
 
+export const MEDIA_ALIGN = [
+  { title: "Left", value: "left" },
+  { title: "Center", value: "center" },
+  { title: "Right", value: "right" },
+];
+
+export const LOTTIE_SIZE = [
+  { title: "Small", value: "small" },
+  { title: "Medium", value: "medium" },
+  { title: "Large", value: "large" },
+  { title: "Full Width", value: "full" },
+];
+
 export const SECTION_WIDTH = [
   { title: "Default", value: "default" },
   { title: "Narrow", value: "narrow" },

@@ -194,7 +194,7 @@ export function HeroFullCarousel({
               event.preventDefault();
               handlePrev();
             }}
-            className="left-6 top-1/2 -translate-y-1/2 z-30 cursor-pointer rounded-full border border-slate-600 bg-transparent text-slate-300 transition-all duration-300 ease-out delay-75 hover:bg-white/10 hover:text-white hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="left-6 top-1/2 -translate-y-1/2 z-30 cursor-pointer rounded-full border border-slate-600 bg-transparent text-slate-300 transition-all duration-300 ease-out delay-75 hover:bg-white/10 hover:text-white hover:border-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           />
 
           <CarouselNext
@@ -203,7 +203,7 @@ export function HeroFullCarousel({
               event.preventDefault();
               handleNext();
             }}
-            className="right-6 top-1/2 -translate-y-1/2 z-30 cursor-pointer rounded-full border border-slate-600 bg-transparent text-slate-300 transition-all duration-300 ease-out delay-75 hover:bg-white/10 hover:text-white hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="right-6 top-1/2 -translate-y-1/2 z-30 cursor-pointer rounded-full border border-slate-600 bg-transparent text-slate-300 transition-all duration-300 ease-out delay-75 hover:bg-white/10 hover:text-white hover:border-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           />
         </>
       )}

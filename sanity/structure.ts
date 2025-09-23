@@ -8,6 +8,7 @@ import {
   Quote,
   Menu,
   Settings,
+  Newspaper,
 } from "lucide-react";
 
 export const structure = (S: any, context: any) =>
@@ -22,27 +23,36 @@ export const structure = (S: any, context: any) =>
         context,
       }),
       S.listItem()
-        .title("Posts")
-        .schemaType("post")
+        .title("News")
+        .icon(Newspaper)
         .child(
-          S.documentTypeList("post")
-            .title("Post")
-            .defaultOrdering([{ field: "_createdAt", direction: "desc" }]) // Default ordering
+          S.list()
+            .title("News")
+            .items([
+              S.listItem()
+                .title("Posts")
+                .schemaType("post")
+                .child(
+                  S.documentTypeList("post")
+                    .title("Posts")
+                    .defaultOrdering([{ field: "_createdAt", direction: "desc" }])
+                ),
+              orderableDocumentListDeskItem({
+                type: "category",
+                title: "Categories",
+                icon: BookA,
+                S,
+                context,
+              }),
+              orderableDocumentListDeskItem({
+                type: "author",
+                title: "Authors",
+                icon: User,
+                S,
+                context,
+              }),
+            ])
         ),
-      orderableDocumentListDeskItem({
-        type: "category",
-        title: "Categories",
-        icon: BookA,
-        S,
-        context,
-      }),
-      orderableDocumentListDeskItem({
-        type: "author",
-        title: "Authors",
-        icon: User,
-        S,
-        context,
-      }),
       orderableDocumentListDeskItem({
         type: "faq",
         title: "FAQs",

@@ -5,6 +5,7 @@ import { UtensilsCrossed } from "lucide-react";
 const TEXTURE_OPTIONS = [
   { title: "Soft Paper", value: "paper" },
   { title: "Canvas Weave", value: "canvas" },
+  { title: "Linen Crosshatch", value: "linen" },
 ];
 
 const DISPLAY_MODE_OPTIONS = [
@@ -115,7 +116,23 @@ export default defineType({
       name: "title",
       type: "string",
       description: "Primary section heading displayed to guests.",
-      validation: (rule) => rule.required().error("Please add a section title."),
+      validation: (rule) => rule.optional(),
+    }),
+    defineField({
+      name: "sectionId",
+      type: "string",
+      title: "Section Anchor ID",
+      description:
+        "Set a unique, lowercase anchor (e.g. menus) so navigation links can scroll to this section.",
+      validation: (rule) =>
+        rule
+          .optional()
+          .regex(/^[a-z0-9-]+$/, {
+            name: "anchor",
+            invert: false,
+            message: "Use lowercase letters, numbers, and hyphens only.",
+          })
+          .error("Use lowercase letters, numbers, and hyphens only."),
     }),
     defineField({
       name: "intro",
@@ -147,19 +164,67 @@ export default defineType({
       initialValue: "structured",
     }),
     defineField({
-      name: "menuImage",
-      type: "image",
-      title: "Menu Image Upload",
-      description: "Upload a high-quality scan or photo of the menu.",
-      options: { hotspot: true },
-      fields: [
-        defineField({
-          name: "alt",
-          type: "string",
-          title: "Alternative Text",
-          description: "Describe the image for guests using assistive tech.",
+      name: "menuImages",
+      type: "array",
+      title: "Menu Images",
+      description: "Upload menu scans or detail shots (multiple images allowed).",
+      of: [
+        defineArrayMember({
+          type: "image",
+          name: "menuImage",
+          title: "Menu Image",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              type: "string",
+              title: "Alternative Text",
+              description: "Describe the image for guests using assistive tech.",
+            }),
+            defineField({
+              name: "focus",
+              type: "string",
+              title: "Focus Label",
+              description: "Optional label to help editors differentiate images.",
+            }),
+          ],
         }),
       ],
+      options: {
+        layout: "grid",
+      },
+      validation: (rule) => rule.max(6),
+      hidden: ({ parent }) => parent?.displayMode === "structured",
+    }),
+    defineField({
+      name: "imagePlacement",
+      type: "string",
+      title: "Image Placement",
+      description: "Choose where menu images should appear on desktop layouts.",
+      options: {
+        list: [
+          { title: "Right Column", value: "right" },
+          { title: "Left Column", value: "left" },
+          { title: "Both Sides", value: "split" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "right",
+      hidden: ({ parent }) => parent?.displayMode === "structured",
+    }),
+    defineField({
+      name: "imageLayout",
+      type: "string",
+      title: "Image Layout",
+      description: "Display images stacked or side-by-side when space allows.",
+      options: {
+        list: [
+          { title: "Stacked", value: "stacked" },
+          { title: "Inline Row", value: "inline" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "stacked",
       hidden: ({ parent }) => parent?.displayMode === "structured",
     }),
     defineField({

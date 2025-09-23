@@ -21,13 +21,16 @@ export const menuSectionQuery = groq`
     },
     eyebrow,
     title,
+    sectionId,
     intro,
     headingFont,
     displayMode,
-    menuImage{
+    menuImages[]{
       ${imageQuery},
       alt
     },
+    imagePlacement,
+    imageLayout,
     categories[]{
       title,
       description,

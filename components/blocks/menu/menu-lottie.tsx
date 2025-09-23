@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 const LottiePlayer = dynamic(() => import("lottie-react"), {
@@ -13,11 +13,12 @@ interface MenuLottieProps {
   src: string;
   className?: string;
   ariaLabel?: string;
+  style?: CSSProperties;
 }
 
 type AnimationData = Record<string, unknown> | null;
 
-export default function MenuLottie({ src, className, ariaLabel }: MenuLottieProps) {
+export default function MenuLottie({ src, className, ariaLabel, style }: MenuLottieProps) {
   const [animationData, setAnimationData] = useState<AnimationData>(null);
 
   useEffect(() => {
@@ -65,6 +66,7 @@ export default function MenuLottie({ src, className, ariaLabel }: MenuLottieProp
       className={cn("pointer-events-none", className)}
       aria-label={ariaLabel}
       aria-hidden={!ariaLabel}
+      style={style}
     />
   );
 }
