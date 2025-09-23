@@ -26,8 +26,10 @@ export const menuSectionQuery = groq`
     headingFont,
     displayMode,
     menuImages[]{
+      _key,
       ${imageQuery},
-      alt
+      alt,
+      focus
     },
     imagePlacement,
     imageLayout,

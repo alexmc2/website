@@ -152,6 +152,17 @@ export type AllPosts = {
   colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
 };
 
+export type FormContact = {
+  _type: "form-contact";
+  padding?: SectionPadding;
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  heading?: string;
+  body?: string;
+  formspreeFormId?: string;
+  submitButtonLabel?: string;
+  successMessage?: string;
+};
+
 export type FormContactMap = {
   _type: "form-contact-map";
   padding?: SectionPadding;
@@ -161,6 +172,18 @@ export type FormContactMap = {
   formspreeFormId?: string;
   submitButtonLabel?: string;
   successMessage?: string;
+  locationName?: string;
+  address?: string;
+  latitude?: number;
+  longitude?: number;
+  mapZoom?: number;
+};
+
+export type LocationMap = {
+  _type: "location-map";
+  padding?: SectionPadding;
+  colorVariant?: "background" | "primary" | "secondary" | "card" | "accent" | "destructive" | "muted" | "cream" | "espresso" | "sage" | "charcoal";
+  locationLabel?: string;
   locationName?: string;
   address?: string;
   latitude?: number;
@@ -1683,6 +1706,16 @@ export type PAGE_QUERYResult = {
       }> | null;
     }> | null;
   } | {
+    _type: "form-contact";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    heading: string | null;
+    body: string | null;
+    formspreeFormId: string | null;
+    submitButtonLabel: string | null;
+    successMessage: string | null;
+  } | {
     _type: "form-contact-map";
     _key: string;
     padding: SectionPadding | null;
@@ -1692,6 +1725,17 @@ export type PAGE_QUERYResult = {
     formspreeFormId: string | null;
     submitButtonLabel: string | null;
     successMessage: string | null;
+    locationName: string | null;
+    address: string | null;
+    latitude: number | null;
+    longitude: number | null;
+    mapZoom: number | null;
+  } | {
+    _type: "location-map";
+    _key: string;
+    padding: SectionPadding | null;
+    colorVariant: "accent" | "background" | "card" | "charcoal" | "cream" | "destructive" | "espresso" | "muted" | "primary" | "sage" | "secondary" | null;
+    locationLabel: string | null;
     locationName: string | null;
     address: string | null;
     latitude: number | null;

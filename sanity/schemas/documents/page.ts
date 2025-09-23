@@ -56,7 +56,9 @@ export default defineType({
         { type: "logo-cloud-1" },
         { type: "faqs" },
         { type: "form-newsletter" },
-        { type: "form-contact-map" },
+        { type: "form-contact" },
+        { type: "location-map" },
+        { type: "form-contact-map", hidden: () => true },
         { type: "all-posts" },
       ],
       options: {
@@ -125,7 +127,7 @@ export default defineType({
             {
               name: "forms",
               title: "Forms",
-              of: ["form-newsletter", "form-contact-map"],
+              of: ["form-newsletter", "form-contact", "location-map"],
             },
             {
               name: "all-posts",

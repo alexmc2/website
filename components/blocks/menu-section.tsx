@@ -1,57 +1,58 @@
 // components/blocks/menu-section.tsx
-import Image from "next/image";
-import { stegaClean } from "next-sanity";
-import { cn } from "@/lib/utils";
-import SectionContainer from "@/components/ui/section-container";
-import { FadeIn } from "@/components/ui/fade.in";
-import { urlFor } from "@/sanity/lib/image";
-import type { PAGE_QUERYResult, ColorVariant } from "@/sanity.types";
-import type { CSSProperties } from "react";
-import MenuLottie from "@/components/blocks/menu/menu-lottie";
+import Image from 'next/image';
+import { stegaClean } from 'next-sanity';
+import { cn } from '@/lib/utils';
+import SectionContainer from '@/components/ui/section-container';
+import { FadeIn } from '@/components/ui/fade.in';
+import { urlFor } from '@/sanity/lib/image';
+import type { PAGE_QUERYResult, ColorVariant } from '@/sanity.types';
+import type { CSSProperties } from 'react';
+import MenuLottie from '@/components/blocks/menu/menu-lottie';
 
 type MenuSectionProps = Extract<
-  NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number],
-  { _type: "menu-section" }
+  NonNullable<NonNullable<PAGE_QUERYResult>['blocks']>[number],
+  { _type: 'menu-section' }
 >;
 
-type MenuImageType = NonNullable<MenuSectionProps["menuImages"]>[number];
-type MenuCategoryType = NonNullable<MenuSectionProps["categories"]>[number];
-type MenuItemType = NonNullable<NonNullable<MenuCategoryType["items"]>[number]>;
+type MenuImageType = NonNullable<MenuSectionProps['menuImages']>[number];
+type MenuCategoryType = NonNullable<MenuSectionProps['categories']>[number];
+type MenuItemType = NonNullable<NonNullable<MenuCategoryType['items']>[number]>;
 
 const TEXTURE_STYLE_MAP: Record<string, CSSProperties> = {
   paper: {
     backgroundImage:
-      "radial-gradient(circle at 1.5px 1.5px, var(--menu-texture-color, rgba(148, 163, 184, 0.18)) 1.5px, transparent 0)",
-    backgroundSize: "34px 34px",
+      'radial-gradient(circle at 1.5px 1.5px, var(--menu-texture-color, rgba(148, 163, 184, 0.18)) 1.5px, transparent 0)',
+    backgroundSize: '34px 34px',
     opacity: 0.6,
   },
   canvas: {
     backgroundImage:
-      "linear-gradient(90deg, var(--menu-texture-color, rgba(100, 116, 139, 0.12)) 1px, transparent 1px), linear-gradient(180deg, var(--menu-texture-color, rgba(100, 116, 139, 0.12)) 1px, transparent 1px)",
-    backgroundSize: "36px 36px",
+      'linear-gradient(90deg, var(--menu-texture-color, rgba(100, 116, 139, 0.12)) 1px, transparent 1px), linear-gradient(180deg, var(--menu-texture-color, rgba(100, 116, 139, 0.12)) 1px, transparent 1px)',
+    backgroundSize: '36px 36px',
     opacity: 0.5,
   },
   linen: {
     backgroundImage:
-      "linear-gradient(135deg, var(--menu-texture-color, rgba(148, 163, 184, 0.11)) 25%, transparent 25%), linear-gradient(225deg, var(--menu-texture-color, rgba(148, 163, 184, 0.11)) 25%, transparent 25%), linear-gradient(45deg, var(--menu-texture-color, rgba(148, 163, 184, 0.11)) 25%, transparent 25%), linear-gradient(315deg, var(--menu-texture-color, rgba(148, 163, 184, 0.11)) 25%, transparent 25%)",
-    backgroundPosition: "7px 0, 7px 0, 0 0, 0 0",
-    backgroundSize: "14px 14px",
+      'linear-gradient(135deg, var(--menu-texture-color, rgba(148, 163, 184, 0.11)) 25%, transparent 25%), linear-gradient(225deg, var(--menu-texture-color, rgba(148, 163, 184, 0.11)) 25%, transparent 25%), linear-gradient(45deg, var(--menu-texture-color, rgba(148, 163, 184, 0.11)) 25%, transparent 25%), linear-gradient(315deg, var(--menu-texture-color, rgba(148, 163, 184, 0.11)) 25%, transparent 25%)',
+    backgroundPosition: '7px 0, 7px 0, 0 0, 0 0',
+    backgroundSize: '14px 14px',
     opacity: 0.55,
   },
 };
 
 const HEADING_FONT_CLASS: Record<string, string> = {
-  serif: "font-serif text-balance",
-  sans: "font-sans text-balance",
+  serif: 'font-serif text-balance',
+  sans: 'font-sans text-balance',
 };
 
-const DISPLAY_MODE_DEFAULT = "structured" satisfies MenuSectionProps["displayMode"];
-const IMAGE_PLACEMENT_DEFAULT = "right" satisfies Exclude<
-  MenuSectionProps["imagePlacement"],
+const DISPLAY_MODE_DEFAULT =
+  'structured' satisfies MenuSectionProps['displayMode'];
+const IMAGE_PLACEMENT_DEFAULT = 'right' satisfies Exclude<
+  MenuSectionProps['imagePlacement'],
   null | undefined
 >;
-const IMAGE_LAYOUT_DEFAULT = "stacked" satisfies Exclude<
-  MenuSectionProps["imageLayout"],
+const IMAGE_LAYOUT_DEFAULT = 'stacked' satisfies Exclude<
+  MenuSectionProps['imageLayout'],
   null | undefined
 >;
 
@@ -59,11 +60,7 @@ function toColorVariant(value?: string | null): ColorVariant | undefined {
   return value ? (value as ColorVariant) : undefined;
 }
 
-function MenuImageCard({
-  image,
-}: {
-  image: MenuImageType;
-}) {
+function MenuImageCard({ image }: { image: MenuImageType }) {
   if (!image?.asset?._id) {
     return null;
   }
@@ -80,11 +77,11 @@ function MenuImageCard({
           .height(Math.round(aspect * 1400))
           .quality(85)
           .url()}
-        alt={image.alt || "Menu presentation"}
+        alt={image.alt || 'Menu presentation'}
         width={width}
         height={height}
         className="h-auto w-full object-cover"
-        placeholder={image.asset.metadata?.lqip ? "blur" : undefined}
+        placeholder={image.asset.metadata?.lqip ? 'blur' : undefined}
         blurDataURL={image.asset.metadata?.lqip || undefined}
         sizes="(min-width: 1024px) 480px, 100vw"
         loading="lazy"
@@ -99,7 +96,7 @@ function MenuImageGallery({
   className,
 }: {
   images: MenuImageType[];
-  layout: "stacked" | "inline";
+  layout: 'stacked' | 'inline';
   className?: string;
 }) {
   if (images.length === 0) {
@@ -107,24 +104,20 @@ function MenuImageGallery({
   }
 
   const containerClass =
-    layout === "inline"
-      ? "grid gap-6 sm:grid-cols-2"
-      : "flex flex-col gap-6";
+    layout === 'inline' ? 'grid gap-6 sm:grid-cols-2' : 'flex flex-col gap-6';
 
   return (
     <div className={cn(containerClass, className)}>
-      {images.map((image, index) => (
-        <MenuImageCard image={image} key={image?._key || index} />
-      ))}
+      {images.map((image, index) => {
+        const fallbackKey = image?.asset?._id ?? `menu-image-${index}`;
+        const key = image?._key ?? fallbackKey;
+        return <MenuImageCard image={image} key={key} />;
+      })}
     </div>
   );
 }
 
-function ItemImage({
-  image,
-}: {
-  image: MenuItemType["itemImage"];
-}) {
+function ItemImage({ image }: { image: MenuItemType['itemImage'] }) {
   if (!image?.asset?._id) {
     return null;
   }
@@ -140,11 +133,11 @@ function ItemImage({
         .height(Math.round(aspect * 320))
         .quality(80)
         .url()}
-      alt={image.alt || ""}
+      alt={image.alt || ''}
       width={width}
       height={height}
       className="h-20 w-20 flex-none rounded-2xl object-cover shadow-sm"
-      placeholder={image.asset.metadata?.lqip ? "blur" : undefined}
+      placeholder={image.asset.metadata?.lqip ? 'blur' : undefined}
       blurDataURL={image.asset.metadata?.lqip || undefined}
       loading="lazy"
     />
@@ -169,124 +162,163 @@ export default function MenuSection({
 }: MenuSectionProps) {
   const anchorId = sectionId ? stegaClean(sectionId) : undefined;
   const sanitizedStyle = stegaClean(background?.style) as
-    | "color"
-    | "texture"
-    | "image"
+    | 'color'
+    | 'texture'
+    | 'image'
     | null;
 
   const resolvedColorVariant = toColorVariant(
-    sanitizedStyle === "color"
+    sanitizedStyle === 'color'
       ? stegaClean(background?.colorVariant)
-      : sanitizedStyle === "texture"
-      ? stegaClean(background?.textureTint)
-      : undefined
+      : sanitizedStyle === 'texture'
+        ? stegaClean(background?.textureTint)
+        : undefined
   );
   const colorVariant =
-    resolvedColorVariant || (sanitizedStyle === "texture" ? ("muted" satisfies ColorVariant) : undefined);
+    resolvedColorVariant ||
+    (sanitizedStyle === 'texture'
+      ? ('muted' satisfies ColorVariant)
+      : undefined);
 
   const texturePreset = stegaClean(background?.texturePreset);
   const textureStyle =
-    sanitizedStyle === "texture" && texturePreset
+    sanitizedStyle === 'texture' && texturePreset
       ? TEXTURE_STYLE_MAP[texturePreset as keyof typeof TEXTURE_STYLE_MAP]
       : undefined;
   const textureTintToken =
-    sanitizedStyle === "texture" && colorVariant
+    sanitizedStyle === 'texture' && colorVariant
       ? `color-mix(in srgb, var(--color-${colorVariant}) 55%, transparent)`
       : undefined;
   const textureOverlayStyle: CSSProperties | undefined = textureStyle
     ? {
         ...textureStyle,
-        ...(textureTintToken ? { ["--menu-texture-color" as const]: textureTintToken } : {}),
+        ...(textureTintToken
+          ? { ['--menu-texture-color' as const]: textureTintToken }
+          : {}),
       }
     : undefined;
 
   const customBackgroundImage =
-    sanitizedStyle === "image" ? background?.customImage : undefined;
+    sanitizedStyle === 'image' ? background?.customImage : undefined;
   const backgroundOpacity =
     customBackgroundImage?.opacity && customBackgroundImage.opacity > 0
       ? customBackgroundImage.opacity
       : 0.35;
 
-  const sanitizedDisplayMode = (stegaClean(displayMode) || DISPLAY_MODE_DEFAULT) as
-    | "structured"
-    | "image"
-    | "combined";
-  const showStructured = sanitizedDisplayMode === "structured" || sanitizedDisplayMode === "combined";
-  const showImages = sanitizedDisplayMode === "image" || sanitizedDisplayMode === "combined";
+  const sanitizedDisplayMode = (stegaClean(displayMode) ||
+    DISPLAY_MODE_DEFAULT) as 'structured' | 'image' | 'combined';
+  const showStructured =
+    sanitizedDisplayMode === 'structured' ||
+    sanitizedDisplayMode === 'combined';
+  const showImages =
+    sanitizedDisplayMode === 'image' || sanitizedDisplayMode === 'combined';
 
-  const sanitizedHeadingFont = (stegaClean(headingFont) || "sans") as keyof typeof HEADING_FONT_CLASS;
-  const headingFontClass = HEADING_FONT_CLASS[sanitizedHeadingFont] || HEADING_FONT_CLASS.sans;
+  const sanitizedHeadingFont = (stegaClean(headingFont) ||
+    'sans') as keyof typeof HEADING_FONT_CLASS;
+  const headingFontClass =
+    HEADING_FONT_CLASS[sanitizedHeadingFont] || HEADING_FONT_CLASS.sans;
 
-  const filteredCategories = (categories || []).filter((category): category is MenuCategoryType => {
-    if (!category) {
-      return false;
+  const filteredCategories = (categories || []).filter(
+    (category): category is MenuCategoryType => {
+      if (!category) {
+        return false;
+      }
+      const hasItems = (category.items || []).some((item) =>
+        Boolean(item?.name)
+      );
+      return Boolean(category.title) || hasItems;
     }
-    const hasItems = (category.items || []).some((item) => Boolean(item?.name));
-    return Boolean(category.title) || hasItems;
-  });
+  );
 
   const lottieUrl = lottieAnimation?.asset?.url;
-  const lottiePosition = (stegaClean(lottiePlacement) || "heading") as "heading" | "aside";
-  const shouldShowHeadingLottie = Boolean(lottieUrl && lottiePosition === "heading");
-  const shouldShowAsideLottie = Boolean(lottieUrl && lottiePosition === "aside");
+  const lottiePosition = (stegaClean(lottiePlacement) || 'heading') as
+    | 'heading'
+    | 'aside';
+  const shouldShowHeadingLottie = Boolean(
+    lottieUrl && lottiePosition === 'heading'
+  );
+  const shouldShowAsideLottie = Boolean(
+    lottieUrl && lottiePosition === 'aside'
+  );
 
   const images = showImages
     ? (menuImages || []).filter(
-        (image): image is NonNullable<MenuSectionProps["menuImages"]>[number] => Boolean(image?.asset?._id)
+        (image): image is NonNullable<MenuSectionProps['menuImages']>[number] =>
+          Boolean(image?.asset?._id)
       )
     : [];
 
-  const rawPlacement = (stegaClean(imagePlacement) || IMAGE_PLACEMENT_DEFAULT) as
-    | "left"
-    | "right"
-    | "split";
-  const effectivePlacement = rawPlacement === "split" && images.length <= 1 ? "right" : rawPlacement;
+  const rawPlacement = (stegaClean(imagePlacement) ||
+    IMAGE_PLACEMENT_DEFAULT) as 'left' | 'right' | 'split';
+  const effectivePlacement =
+    rawPlacement === 'split' && images.length <= 1 ? 'right' : rawPlacement;
 
-  const sanitizedImageLayout = (stegaClean(imageLayout) || IMAGE_LAYOUT_DEFAULT) as "stacked" | "inline";
+  const sanitizedImageLayout = (stegaClean(imageLayout) ||
+    IMAGE_LAYOUT_DEFAULT) as 'stacked' | 'inline';
 
   const leftImages =
-    effectivePlacement === "left"
+    effectivePlacement === 'left'
       ? images
-      : effectivePlacement === "split"
-      ? images.filter((_, index) => index % 2 === 0)
-      : [];
+      : effectivePlacement === 'split'
+        ? images.filter((_, index) => index % 2 === 0)
+        : [];
 
   const rightImages =
-    effectivePlacement === "right"
+    effectivePlacement === 'right'
       ? images
-      : effectivePlacement === "split"
-      ? images.filter((_, index) => index % 2 === 1)
-      : [];
+      : effectivePlacement === 'split'
+        ? images.filter((_, index) => index % 2 === 1)
+        : [];
 
   const hasLeftColumn = leftImages.length > 0;
   const hasRightColumn = rightImages.length > 0;
   const hasStructuredContent = showStructured && filteredCategories.length > 0;
-  const hasHeadingContent = Boolean(eyebrow || title || intro || shouldShowHeadingLottie);
+  const hasHeadingContent = Boolean(
+    eyebrow || title || intro || shouldShowHeadingLottie
+  );
   const hasCentralColumn = hasHeadingContent || hasStructuredContent;
 
-  const columnsCount = (hasLeftColumn ? 1 : 0) + (hasCentralColumn ? 1 : 0) + (hasRightColumn ? 1 : 0);
+  const columnsCount =
+    (hasLeftColumn ? 1 : 0) +
+    (hasCentralColumn ? 1 : 0) +
+    (hasRightColumn ? 1 : 0);
 
   const gridColumnsClass = cn(
-    "relative z-10 grid gap-12 lg:gap-20",
-    columnsCount === 3 && "lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)_minmax(0,0.6fr)]",
-    columnsCount === 2 && hasLeftColumn && hasCentralColumn && "lg:grid-cols-[minmax(0,0.65fr)_minmax(0,1fr)]",
-    columnsCount === 2 && hasCentralColumn && hasRightColumn && "lg:grid-cols-[minmax(0,1fr)_minmax(0,0.65fr)]",
-    columnsCount === 2 && !hasCentralColumn && hasLeftColumn && hasRightColumn && "lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]",
-    (columnsCount === 1 || columnsCount === 0) && "lg:grid-cols-1",
-    columnsCount === 1 && hasRightColumn && "lg:justify-items-end",
-    columnsCount === 1 && hasLeftColumn && "lg:justify-items-start"
+    'relative z-10 grid gap-12 lg:gap-20',
+    columnsCount === 3 &&
+      'lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)_minmax(0,0.6fr)]',
+    columnsCount === 2 &&
+      hasLeftColumn &&
+      hasCentralColumn &&
+      'lg:grid-cols-[minmax(0,0.65fr)_minmax(0,1fr)]',
+    columnsCount === 2 &&
+      hasCentralColumn &&
+      hasRightColumn &&
+      'lg:grid-cols-[minmax(0,1fr)_minmax(0,0.65fr)]',
+    columnsCount === 2 &&
+      !hasCentralColumn &&
+      hasLeftColumn &&
+      hasRightColumn &&
+      'lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]',
+    (columnsCount === 1 || columnsCount === 0) && 'lg:grid-cols-1',
+    columnsCount === 1 && hasRightColumn && 'lg:justify-items-end',
+    columnsCount === 1 && hasLeftColumn && 'lg:justify-items-start'
   );
 
   const singleColumnLayout = columnsCount === 1;
 
-  const fallbackAsideToCenter = shouldShowAsideLottie && !hasLeftColumn && !hasRightColumn;
+  const fallbackAsideToCenter =
+    shouldShowAsideLottie && !hasLeftColumn && !hasRightColumn;
 
   return (
     <SectionContainer
       id={anchorId || undefined}
       color={colorVariant}
       padding={padding}
-      className={cn("overflow-hidden", sanitizedStyle === "image" && "bg-background")}
+      className={cn(
+        'overflow-hidden',
+        sanitizedStyle === 'image' && 'bg-background'
+      )}
     >
       <div className="relative">
         {textureOverlayStyle ? (
@@ -303,21 +335,23 @@ export default function MenuSection({
                 .width(2400)
                 .height(
                   Math.round(
-                    ((customBackgroundImage.asset.metadata?.dimensions?.height || 1600) /
-                      (customBackgroundImage.asset.metadata?.dimensions?.width || 1600)) *
+                    ((customBackgroundImage.asset.metadata?.dimensions
+                      ?.height || 1600) /
+                      (customBackgroundImage.asset.metadata?.dimensions
+                        ?.width || 1600)) *
                       2400
                   )
                 )
                 .quality(60)
                 .url()}
-              alt={customBackgroundImage.alt || "Decorative menu background"}
+              alt={customBackgroundImage.alt || 'Decorative menu background'}
               fill
               className="object-cover"
               priority={false}
             />
             <div
               className="absolute inset-0 bg-background"
-              style={{ opacity: backgroundOpacity, mixBlendMode: "multiply" }}
+              style={{ opacity: backgroundOpacity, mixBlendMode: 'multiply' }}
             />
           </div>
         ) : null}
@@ -328,11 +362,14 @@ export default function MenuSection({
               <MenuImageGallery
                 images={leftImages}
                 layout={sanitizedImageLayout}
-                className={cn(singleColumnLayout && "lg:mr-auto")}
+                className={cn(singleColumnLayout && 'lg:mr-auto')}
               />
-              {shouldShowAsideLottie && effectivePlacement === "left" ? (
+              {shouldShowAsideLottie && effectivePlacement === 'left' ? (
                 <div className="w-32 sm:w-40 lg:w-44">
-                  <MenuLottie src={lottieUrl!} ariaLabel="Decorative animation" />
+                  <MenuLottie
+                    src={lottieUrl!}
+                    ariaLabel="Decorative animation"
+                  />
                 </div>
               ) : null}
             </FadeIn>
@@ -351,14 +388,14 @@ export default function MenuSection({
                       {eyebrow}
                     </FadeIn>
                   ) : null}
-                  {(title || intro) ? (
+                  {title || intro ? (
                     <div className="flex flex-col gap-6">
                       {title ? (
                         <FadeIn
                           as="h2"
                           delay={240}
                           className={cn(
-                            "text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight",
+                            'text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight',
                             headingFontClass
                           )}
                         >
@@ -378,7 +415,10 @@ export default function MenuSection({
                   ) : null}
                   {shouldShowHeadingLottie ? (
                     <FadeIn delay={320} className="w-40 sm:w-48">
-                      <MenuLottie src={lottieUrl!} ariaLabel="Menu accent animation" />
+                      <MenuLottie
+                        src={lottieUrl!}
+                        ariaLabel="Menu accent animation"
+                      />
                     </FadeIn>
                   ) : null}
                 </div>
@@ -388,9 +428,12 @@ export default function MenuSection({
                 <div className="space-y-12">
                   {filteredCategories.map((category, index) => {
                     const categoryKey =
-                      category && typeof category === "object" && "_key" in category && category._key
+                      category &&
+                      typeof category === 'object' &&
+                      '_key' in category &&
+                      category._key
                         ? String(category._key)
-                        : `${category?.title || "category"}-${index}`;
+                        : `${category?.title || 'category'}-${index}`;
 
                     return (
                       <FadeIn
@@ -398,8 +441,8 @@ export default function MenuSection({
                         key={categoryKey}
                         delay={360 + index * 140}
                         className={cn(
-                          "border-t border-border/30 pt-10",
-                          index === 0 && "border-t-0 pt-0"
+                          'border-t border-border/30 pt-10',
+                          index === 0 && 'border-t-0 pt-0'
                         )}
                       >
                         <div className="flex flex-col gap-3">
@@ -409,7 +452,9 @@ export default function MenuSection({
                             </h3>
                           ) : null}
                           {category?.description ? (
-                            <p className="text-sm text-muted-foreground">{category.description}</p>
+                            <p className="text-sm text-muted-foreground">
+                              {category.description}
+                            </p>
                           ) : null}
                         </div>
                         <div className="mt-6 divide-y divide-border/20">
@@ -418,19 +463,28 @@ export default function MenuSection({
                               return null;
                             }
                             return (
-                              <article key={item._key || item.name} className="py-6">
+                              <article
+                                key={item._key || item.name}
+                                className="py-6"
+                              >
                                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                                   <div className="flex gap-4">
-                                    {item.itemImage ? <ItemImage image={item.itemImage} /> : null}
+                                    {item.itemImage ? (
+                                      <ItemImage image={item.itemImage} />
+                                    ) : null}
                                     <div className="space-y-2">
                                       <div className="flex items-baseline justify-between gap-4">
-                                        <h4 className="text-lg font-medium text-foreground">{item.name}</h4>
+                                        <h4 className="text-lg font-medium text-foreground">
+                                          {item.name}
+                                        </h4>
                                         <span className="text-base font-semibold tracking-wide text-foreground sm:text-right">
                                           {item.price}
                                         </span>
                                       </div>
                                       {item.description ? (
-                                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                                        <p className="text-sm text-muted-foreground">
+                                          {item.description}
+                                        </p>
                                       ) : null}
                                       {item.dietary ? (
                                         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
@@ -452,7 +506,10 @@ export default function MenuSection({
 
               {fallbackAsideToCenter ? (
                 <FadeIn delay={380} className="self-end w-32 sm:w-40">
-                  <MenuLottie src={lottieUrl!} ariaLabel="Decorative animation" />
+                  <MenuLottie
+                    src={lottieUrl!}
+                    ariaLabel="Decorative animation"
+                  />
                 </FadeIn>
               ) : null}
             </FadeIn>
@@ -463,18 +520,24 @@ export default function MenuSection({
               <MenuImageGallery
                 images={rightImages}
                 layout={sanitizedImageLayout}
-                className={cn(singleColumnLayout && "lg:ml-auto")}
+                className={cn(singleColumnLayout && 'lg:ml-auto')}
               />
-              {shouldShowAsideLottie && effectivePlacement !== "left" ? (
+              {shouldShowAsideLottie && effectivePlacement !== 'left' ? (
                 <div className="self-end w-32 sm:w-40 lg:w-48">
-                  <MenuLottie src={lottieUrl!} ariaLabel="Decorative animation" />
+                  <MenuLottie
+                    src={lottieUrl!}
+                    ariaLabel="Decorative animation"
+                  />
                 </div>
               ) : null}
             </FadeIn>
           ) : null}
         </div>
 
-        {!hasCentralColumn && !hasLeftColumn && !hasRightColumn && images.length > 0 ? (
+        {!hasCentralColumn &&
+        !hasLeftColumn &&
+        !hasRightColumn &&
+        images.length > 0 ? (
           <FadeIn delay={160} className="relative z-10 mt-12">
             <MenuImageGallery images={images} layout={sanitizedImageLayout} />
           </FadeIn>
