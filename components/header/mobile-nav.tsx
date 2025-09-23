@@ -55,6 +55,7 @@ export default function MobileNav({
                   <Link
                     onClick={() => setOpen(false)}
                     href={navItem.href || "#"}
+                    scroll={navItem.href?.includes("#") ? false : true}
                     target={navItem.target ? "_blank" : undefined}
                     rel={navItem.target ? "noopener noreferrer" : undefined}
                     className={cn(

@@ -5,6 +5,7 @@ import SectionContainer from "@/components/ui/section-container";
 import MenuLottie from "@/components/blocks/menu/menu-lottie";
 
 import type { ColorVariant, PAGE_QUERYResult } from "@/sanity.types";
+import type { CSSProperties } from "react";
 
 type LottieAnimationProps = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number],
@@ -24,21 +25,35 @@ const SIZE_CLASS_MAP: Record<"small" | "medium" | "large" | "full", string> = {
   full: "w-full max-w-none",
 };
 
+const HEIGHT_CLASS_MAP: Record<"small" | "medium" | "large" | "full", string> = {
+  small: "h-20 sm:h-24",
+  medium: "h-24 sm:h-28 md:h-32",
+  large: "h-28 sm:h-32 md:h-40",
+  full: "h-28 sm:h-36 md:h-44",
+};
+
+const FILLED_SIZE_STYLE = {
+  width: "100%",
+  height: "100%",
+} satisfies CSSProperties;
+
 const TOP_SPACING_CLASS_MAP: Record<
-  "none" | "compact" | "comfortable" | "roomy",
+  "none" | "tight" | "compact" | "comfortable" | "roomy",
   string
 > = {
   none: "pt-0",
+  tight: "pt-3 md:pt-4",
   compact: "pt-6 md:pt-8",
   comfortable: "pt-10 md:pt-12",
   roomy: "pt-14 md:pt-16",
 };
 
 const BOTTOM_SPACING_CLASS_MAP: Record<
-  "none" | "compact" | "comfortable" | "roomy",
+  "none" | "tight" | "compact" | "comfortable" | "roomy",
   string
 > = {
   none: "pb-0",
+  tight: "pb-3 md:pb-4",
   compact: "pb-6 md:pb-8",
   comfortable: "pb-10 md:pb-12",
   roomy: "pb-14 md:pb-16",
@@ -69,6 +84,7 @@ export default function LottieAnimationBlock({
     | "full";
   const spacing = (stegaClean(verticalSpacing) || "compact") as
     | "none"
+    | "tight"
     | "compact"
     | "comfortable"
     | "roomy";
@@ -99,7 +115,20 @@ export default function LottieAnimationBlock({
             size !== "full" ? "w-full" : undefined
           )}
         >
-          <MenuLottie src={src} className="w-full h-auto" ariaLabel={label} />
+          <div
+            className={cn(
+              "relative flex w-full items-center justify-center overflow-hidden",
+              HEIGHT_CLASS_MAP[size]
+            )}
+          >
+            <MenuLottie
+              src={src}
+              className="h-full w-full"
+              ariaLabel={label}
+              style={FILLED_SIZE_STYLE}
+              preserveAspectRatio="xMidYMid slice"
+            />
+          </div>
         </div>
       </div>
     </SectionContainer>

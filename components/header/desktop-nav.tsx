@@ -1,5 +1,6 @@
 // components/header/desktop-nav.tsx
 import Link from "next/link";
+
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { NAVIGATION_QUERYResult } from "@/sanity.types";
@@ -8,28 +9,47 @@ type SanityLink = NonNullable<NAVIGATION_QUERYResult[0]["links"]>[number];
 
 export default function DesktopNav({
   navigation,
+  isSolid,
 }: {
   navigation: NAVIGATION_QUERYResult;
+  isSolid: boolean;
 }) {
   return (
-    <div className="hidden xl:flex items-center gap-7 text-primary">
-      {navigation[0]?.links?.map((navItem: SanityLink) => (
-        <Link
-          key={navItem._key}
-          href={navItem.href || "#"}
-          target={navItem.target ? "_blank" : undefined}
-          rel={navItem.target ? "noopener noreferrer" : undefined}
-          className={cn(
-            buttonVariants({
-              variant: navItem.buttonVariant || "default",
-            }),
-            navItem.buttonVariant === "ghost" &&
-              "transition-colors hover:text-foreground/80 text-foreground/60 text-sm p-0 h-auto hover:bg-transparent"
-          )}
-        >
-          {navItem.title}
-        </Link>
-      ))}
+    <div
+      className={cn(
+        "hidden items-center gap-7 xl:flex",
+        isSolid ? "text-foreground" : "text-white"
+      )}
+    >
+      {navigation[0]?.links?.map((navItem: SanityLink) => {
+        const hasHash = Boolean(navItem.href && navItem.href.includes("#"));
+        const isGhostVariant = !navItem.buttonVariant || navItem.buttonVariant === "ghost";
+
+        return (
+          <Link
+            key={navItem._key}
+            href={navItem.href || "#"}
+            scroll={hasHash ? false : true}
+            target={navItem.target ? "_blank" : undefined}
+            rel={navItem.target ? "noopener noreferrer" : undefined}
+            className={cn(
+              buttonVariants({
+                variant: navItem.buttonVariant || "ghost",
+              }),
+              "text-lg font-semibold tracking-tight transition-colors",
+              isGhostVariant &&
+                "p-0 h-auto bg-transparent hover:bg-transparent",
+              isGhostVariant
+                ? isSolid
+                  ? "text-foreground/80 hover:text-foreground"
+                  : "text-white drop-shadow hover:text-white/90"
+                : undefined
+            )}
+          >
+            {navItem.title}
+          </Link>
+        );
+      })}
     </div>
   );
 }

@@ -2,6 +2,20 @@
 import { cn } from "@/lib/utils";
 import { SectionPadding, ColorVariant } from "@/sanity.types";
 
+const BACKGROUND_CLASS_MAP = {
+  background: "bg-background",
+  primary: "bg-primary",
+  secondary: "bg-secondary",
+  card: "bg-card",
+  accent: "bg-accent",
+  destructive: "bg-destructive",
+  muted: "bg-muted",
+  cream: "bg-cream",
+  espresso: "bg-espresso",
+  sage: "bg-sage",
+  charcoal: "bg-charcoal",
+} as const satisfies Record<ColorVariant, string>;
+
 interface SectionContainerProps {
   color?: ColorVariant | null;
   padding?: SectionPadding | null;
@@ -17,11 +31,14 @@ export default function SectionContainer({
   className,
   id,
 }: SectionContainerProps) {
+  const backgroundClass = BACKGROUND_CLASS_MAP[color ?? "background"];
+
   return (
     <div
       id={id ?? undefined}
       className={cn(
-        `bg-${color} relative`,
+        "relative",
+        backgroundClass,
         padding?.top ? "pt-16 xl:pt-20" : undefined,
         padding?.bottom ? "pb-16 xl:pb-20" : undefined,
         className

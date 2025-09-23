@@ -49,6 +49,7 @@ export default defineType({
       options: {
         list: [
           { title: "None", value: "none" },
+          { title: "Tight", value: "tight" },
           { title: "Compact", value: "compact" },
           { title: "Comfortable", value: "comfortable" },
           { title: "Roomy", value: "roomy" },

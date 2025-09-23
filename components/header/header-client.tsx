@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import DesktopNav from "@/components/header/desktop-nav";
@@ -24,6 +25,8 @@ export default function HeaderClient({
   settings,
 }: HeaderClientProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const headerIsSolid = isScrolled || pathname !== "/";
 
   useEffect(() => {
     const updateScrollState = () => setIsScrolled(window.scrollY > 48);
@@ -38,15 +41,15 @@ export default function HeaderClient({
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-50 w-full border-b transition-all duration-500",
-          isScrolled
-            ? "border-white/10 bg-background/90 shadow-lg supports-[backdrop-filter]:backdrop-blur"
+          headerIsSolid
+            ? "border-white/10 bg-background/90 shadow-xs supports-[backdrop-filter]:backdrop-blur"
             : "border-transparent bg-transparent shadow-none",
         )}
       >
         <div
           className={cn(
             "container flex h-14 items-center justify-between gap-6 transition-colors duration-500",
-            isScrolled ? "text-foreground" : "text-white",
+            headerIsSolid ? "text-foreground" : "text-white",
           )}
         >
           <Link
@@ -57,11 +60,11 @@ export default function HeaderClient({
             <Logo settings={settings} />
           </Link>
           <div className="hidden items-center gap-6 xl:flex">
-            <DesktopNav navigation={navigation} />
+            <DesktopNav navigation={navigation} isSolid={headerIsSolid} />
             <ModeToggle
               className={cn(
                 "transition-colors duration-300",
-                isScrolled
+                headerIsSolid
                   ? "text-foreground hover:text-foreground"
                   : "text-white/90 hover:text-white",
               )}
@@ -70,13 +73,13 @@ export default function HeaderClient({
           <div
             className={cn(
               "flex items-center gap-2 xl:hidden",
-              isScrolled ? "text-foreground" : "text-white",
+              headerIsSolid ? "text-foreground" : "text-white",
             )}
           >
             <ModeToggle
               className={cn(
                 "transition-colors duration-300",
-                isScrolled
+                headerIsSolid
                   ? "text-foreground hover:text-foreground"
                   : "text-white/90 hover:text-white",
               )}

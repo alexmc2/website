@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useState, type CSSProperties } from "react";
+import type { RendererSettings } from "lottie-web";
 import { cn } from "@/lib/utils";
 
 const LottiePlayer = dynamic(() => import("lottie-react"), {
@@ -14,11 +15,18 @@ interface MenuLottieProps {
   className?: string;
   ariaLabel?: string;
   style?: CSSProperties;
+  preserveAspectRatio?: RendererSettings["preserveAspectRatio"];
 }
 
 type AnimationData = Record<string, unknown> | null;
 
-export default function MenuLottie({ src, className, ariaLabel, style }: MenuLottieProps) {
+export default function MenuLottie({
+  src,
+  className,
+  ariaLabel,
+  style,
+  preserveAspectRatio,
+}: MenuLottieProps) {
   const [animationData, setAnimationData] = useState<AnimationData>(null);
 
   useEffect(() => {
@@ -58,6 +66,10 @@ export default function MenuLottie({ src, className, ariaLabel, style }: MenuLot
     return null;
   }
 
+  const rendererSettings: RendererSettings | undefined = preserveAspectRatio
+    ? { preserveAspectRatio }
+    : undefined;
+
   return (
     <LottiePlayer
       animationData={animationData}
@@ -67,6 +79,7 @@ export default function MenuLottie({ src, className, ariaLabel, style }: MenuLot
       aria-label={ariaLabel}
       aria-hidden={!ariaLabel}
       style={style}
+      rendererSettings={rendererSettings}
     />
   );
 }

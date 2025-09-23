@@ -23,25 +23,28 @@ export default function SectionHeader({
   const align = stegaClean(stackAlign);
   const color = stegaClean(colorVariant);
 
+  const showDescription = Boolean(description);
+  const showTagLine = Boolean(tagLine);
+
   return (
     <SectionContainer color={color} padding={padding}>
       <div
         className={cn(
           align === "center" ? "max-w-[48rem] text-center mx-auto" : undefined,
-          isNarrow ? "max-w-[48rem] mx-auto" : undefined
+          isNarrow ? "max-w-[48rem] mx-auto" : undefined,
+          "flex flex-col gap-4",
+          color === "primary" ? "text-background" : undefined
         )}
       >
-        <div
-          className={cn(color === "primary" ? "text-background" : undefined)}
-        >
-          {tagLine && (
-            <h1 className="leading-[0] mb-4">
-              <span className="text-base font-semibold">{tagLine}</span>
-            </h1>
-          )}
-          <h2 className="text-3xl md:text-5xl mb-4">{title}</h2>
-        </div>
-        <p>{description}</p>
+        {showTagLine ? (
+          <h1 className="leading-[0] mt-0 mb-0">
+            <span className="text-base font-semibold">{tagLine}</span>
+          </h1>
+        ) : null}
+        {title ? (
+          <h2 className="text-3xl md:text-5xl mt-0 mb-0">{title}</h2>
+        ) : null}
+        {showDescription ? <p>{description}</p> : null}
       </div>
     </SectionContainer>
   );
