@@ -21,6 +21,15 @@ export const lottieAnimationQuery = groq`
         size,
         originalFilename
       }
+    },
+    animationDark{
+      asset->{
+        _id,
+        url,
+        mimeType,
+        size,
+        originalFilename
+      }
     }
   }
 `;

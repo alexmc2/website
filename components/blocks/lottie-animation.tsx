@@ -10,7 +10,13 @@ import type { CSSProperties } from "react";
 type LottieAnimationProps = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number],
   { _type: "lottie-animation" }
->;
+> & {
+  animationDark?: {
+    asset?: {
+      url?: string | null;
+    } | null;
+  } | null;
+};
 
 const ALIGN_CLASS_MAP: Record<"left" | "center" | "right", string> = {
   left: "ml-0 mr-auto",
@@ -67,6 +73,7 @@ export default function LottieAnimationBlock({
   animationSize,
   verticalSpacing,
   animation,
+  animationDark,
   ariaLabel,
 }: LottieAnimationProps) {
   const resolvedColor = (stegaClean(colorVariant) || undefined) as
@@ -91,6 +98,7 @@ export default function LottieAnimationBlock({
   const hasTopPadding = Boolean(padding?.top);
   const hasBottomPadding = Boolean(padding?.bottom);
   const src = animation?.asset?.url || undefined;
+  const srcDark = animationDark?.asset?.url || undefined;
   const label = (stegaClean(ariaLabel) || undefined) as string | undefined;
 
   if (!src) {
@@ -123,6 +131,7 @@ export default function LottieAnimationBlock({
           >
             <MenuLottie
               src={src}
+              srcDark={srcDark}
               className="h-full w-full"
               ariaLabel={label}
               style={FILLED_SIZE_STYLE}

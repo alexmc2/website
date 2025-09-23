@@ -1,8 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import type { RendererSettings } from "lottie-web";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
 const LottiePlayer = dynamic(() => import("lottie-react"), {
@@ -12,6 +13,7 @@ const LottiePlayer = dynamic(() => import("lottie-react"), {
 
 interface MenuLottieProps {
   src: string;
+  srcDark?: string;
   className?: string;
   ariaLabel?: string;
   style?: CSSProperties;
@@ -22,24 +24,40 @@ type AnimationData = Record<string, unknown> | null;
 
 export default function MenuLottie({
   src,
+  srcDark,
   className,
   ariaLabel,
   style,
   preserveAspectRatio,
 }: MenuLottieProps) {
   const [animationData, setAnimationData] = useState<AnimationData>(null);
+  const { resolvedTheme } = useTheme();
 
-  useEffect(() => {
-    if (!src) {
-      return;
+  const activeSrc = useMemo(() => {
+    if (resolvedTheme === "dark" && srcDark) {
+      return srcDark;
     }
 
+    return src;
+  }, [resolvedTheme, src, srcDark]);
+
+  useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
 
+    if (!activeSrc) {
+      setAnimationData(null);
+      return () => {
+        isMounted = false;
+        controller.abort();
+      };
+    }
+
+    setAnimationData(null);
+
     const fetchAnimation = async () => {
       try {
-        const response = await fetch(src, { signal: controller.signal });
+        const response = await fetch(activeSrc, { signal: controller.signal });
         if (!response.ok) {
           return;
         }
@@ -60,7 +78,7 @@ export default function MenuLottie({
       isMounted = false;
       controller.abort();
     };
-  }, [src]);
+  }, [activeSrc]);
 
   if (!animationData) {
     return null;

@@ -80,6 +80,15 @@ export default defineType({
       validation: (rule) => rule.required().error("A Lottie animation is required."),
     }),
     defineField({
+      name: "animationDark",
+      type: "file",
+      title: "Dark Mode Lottie Animation",
+      description: "Optional animation used when the site is in dark mode.",
+      options: {
+        accept: "application/json",
+      },
+    }),
+    defineField({
       name: "ariaLabel",
       type: "string",
       title: "Accessible Label",

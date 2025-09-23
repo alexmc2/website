@@ -1,19 +1,15 @@
-// components/header/header-client.tsx
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 
-import DesktopNav from "@/components/header/desktop-nav";
-import MobileNav from "@/components/header/mobile-nav";
-import Logo from "@/components/logo";
-import { ModeToggle } from "@/components/menu-toggle";
-import { cn } from "@/lib/utils";
-import {
-  NAVIGATION_QUERYResult,
-  SETTINGS_QUERYResult,
-} from "@/sanity.types";
+import DesktopNav from '@/components/header/desktop-nav';
+import MobileNav from '@/components/header/mobile-nav';
+import Logo from '@/components/logo';
+import { ModeToggle } from '@/components/menu-toggle';
+import { cn } from '@/lib/utils';
+import { NAVIGATION_QUERYResult, SETTINGS_QUERYResult } from '@/sanity.types';
 
 type HeaderClientProps = {
   navigation: NAVIGATION_QUERYResult;
@@ -24,70 +20,129 @@ export default function HeaderClient({
   navigation,
   settings,
 }: HeaderClientProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const headerIsSolid = isScrolled || pathname !== "/";
+
+  const [overHero, setOverHero] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const onHome = pathname === '/';
+  const headerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const updateScrollState = () => setIsScrolled(window.scrollY > 48);
-    updateScrollState();
+    if (!onHome) {
+      setOverHero(false);
+      setScrolled(true);
+      return;
+    }
 
-    window.addEventListener("scroll", updateScrollState, { passive: true });
-    return () => window.removeEventListener("scroll", updateScrollState);
-  }, []);
+    const heroEl =
+      document.getElementById('hero') ||
+      (document.querySelector('[data-hero]') as HTMLElement | null);
+
+    const BUFFER = 64; // flip solid slightly before hero ends
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
+      setScrolled(window.scrollY > 8); // tiny scroll → frosted
+
+      if (heroEl) {
+        const rect = heroEl.getBoundingClientRect();
+        const headerH = headerRef.current?.offsetHeight ?? 96;
+        const isOver =
+          rect.bottom > headerH + BUFFER && rect.top < window.innerHeight;
+        setOverHero(isOver);
+      } else {
+        setOverHero(false);
+      }
+    };
+
+    const onScrollOrResize = () => {
+      if (!raf) raf = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize);
+    const ro = heroEl ? new ResizeObserver(onScrollOrResize) : null;
+    if (heroEl) ro!.observe(heroEl);
+    if (headerRef.current) ro?.observe(headerRef.current);
+
+    return () => {
+      window.removeEventListener('scroll', onScrollOrResize);
+      window.removeEventListener('resize', onScrollOrResize);
+      ro?.disconnect();
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [onHome]);
+
+  // Transparent at top, frosted when scrolling over hero, solid elsewhere
+  const headerClass =
+    onHome && overHero
+      ? scrolled
+        ? 'border-transparent bg-background/10 supports-[backdrop-filter]:backdrop-blur-md'
+        : 'border-transparent bg-transparent'
+      : 'border-white/10 bg-background shadow-xs supports-[backdrop-filter]:backdrop-blur';
+
+  // Force white text when over hero
+  const textClass = onHome && overHero ? 'text-white' : 'text-foreground';
 
   return (
     <>
       <header
+        ref={headerRef}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 w-full border-b transition-all duration-500",
-          headerIsSolid
-            ? "border-white/10 bg-background/90 shadow-xs supports-[backdrop-filter]:backdrop-blur"
-            : "border-transparent bg-transparent shadow-none",
+          'fixed inset-x-0 top-0 z-50 w-full border-b transition-all duration-500',
+          headerClass
         )}
       >
         <div
           className={cn(
-            "container flex h-14 items-center justify-between gap-6 transition-colors duration-500",
-            headerIsSolid ? "text-foreground" : "text-white",
+            'container flex h-16 items-center justify-between gap-6 transition-colors duration-500',
+            textClass
           )}
         >
           <Link
             href="/"
             aria-label="Home page"
             className="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.01]"
-          >
-            <Logo settings={settings} />
-          </Link>
+          ></Link>
+
           <div className="hidden items-center gap-6 xl:flex">
-            <DesktopNav navigation={navigation} isSolid={headerIsSolid} />
+            <DesktopNav
+              navigation={navigation}
+              isSolid={!(onHome && overHero)}
+            />
             <ModeToggle
               className={cn(
-                "transition-colors duration-300",
-                headerIsSolid
-                  ? "text-foreground hover:text-foreground"
-                  : "text-white/90 hover:text-white",
+                'transition-colors duration-300',
+                onHome && overHero
+                  ? 'text-white/90 hover:text-white'
+                  : 'text-foreground hover:text-foreground'
               )}
             />
           </div>
+
           <div
             className={cn(
-              "flex items-center gap-2 xl:hidden",
-              headerIsSolid ? "text-foreground" : "text-white",
+              'flex items-center gap-2 xl:hidden',
+              onHome && overHero ? 'text-white' : 'text-foreground'
             )}
           >
             <ModeToggle
               className={cn(
-                "transition-colors duration-300",
-                headerIsSolid
-                  ? "text-foreground hover:text-foreground"
-                  : "text-white/90 hover:text-white",
+                'transition-colors duration-300',
+                onHome && overHero
+                  ? 'text-white/90 hover:text-white'
+                  : 'text-foreground hover:text-foreground'
               )}
             />
             <MobileNav navigation={navigation} settings={settings} />
           </div>
         </div>
       </header>
+
+      {/* Spacer so content doesn’t jump under fixed header */}
       <div aria-hidden className="h-14 w-full" />
     </>
   );

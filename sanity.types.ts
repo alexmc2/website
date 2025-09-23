@@ -3387,6 +3387,7 @@ export type POSTS_QUERYResult = Array<{
   title: string | null;
   slug: Slug | null;
   excerpt: string | null;
+  _createdAt: string;
   image: {
     asset: {
       _id: string;

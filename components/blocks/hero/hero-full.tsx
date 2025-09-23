@@ -45,12 +45,13 @@ export default function HeroFull({
         ? 'text-center'
         : 'text-center';
 
-  const heroImages = (images && images.length ? images : image ? [image] : []).filter(
-    (img) => img?.asset?._id
-  );
+  const heroImages = (
+    images && images.length ? images : image ? [image] : []
+  ).filter((img) => img?.asset?._id);
 
   return (
     <section
+      id="hero" // ← add this here
       className={cn(
         'relative w-full overflow-hidden',
         isFullScreen && '-mt-14 min-h-[calc(100vh+3.5rem)]'
@@ -74,7 +75,9 @@ export default function HeroFull({
                   placeholder={
                     heroImages[0]?.asset?.metadata?.lqip ? 'blur' : undefined
                   }
-                  blurDataURL={heroImages[0]?.asset?.metadata?.lqip || undefined}
+                  blurDataURL={
+                    heroImages[0]?.asset?.metadata?.lqip || undefined
+                  }
                 />
               </div>
             )
@@ -102,11 +105,7 @@ export default function HeroFull({
               </FadeIn>
             )}
             {title && (
-              <FadeIn
-                as="h1"
-                delay={200}
-                className="mt-4 text-5xl md:text-7xl"
-              >
+              <FadeIn as="h1" delay={200} className="mt-4 text-5xl md:text-7xl">
                 {title}
               </FadeIn>
             )}

@@ -13,6 +13,7 @@ import {
 import { StarRating } from "@/components/ui/star-rating";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { FadeIn } from "@/components/ui/fade.in";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import type { ColorVariant, SectionPadding, Link as SanityLink } from "@/sanity.types";
@@ -155,21 +156,36 @@ export default async function ReviewsCarousel(block: ReviewsCarouselBlock) {
       id={sectionId}
       className="py-16 lg:py-24"
     >
-      <div className="mx-auto flex max-w-5xl flex-col gap-12 text-center">
+      <FadeIn
+        as="div"
+        delay={120}
+        className="mx-auto flex max-w-5xl flex-col gap-12 text-center"
+      >
         <div className="space-y-6">
           {eyebrow ? (
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            <FadeIn
+              as="p"
+              delay={160}
+              className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground"
+            >
               {eyebrow}
-            </p>
+            </FadeIn>
           ) : null}
 
           {heading ? (
-            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            <FadeIn
+              as="h2"
+              delay={200}
+              className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            >
               {heading}
-            </h2>
+            </FadeIn>
           ) : null}
 
-          <div className="flex flex-col items-center gap-4 text-muted-foreground">
+          <FadeIn
+            delay={240}
+            className="flex flex-col items-center gap-4 text-muted-foreground"
+          >
             {typeof averageRating === "number" && averageRating > 0 ? (
               <div className="flex flex-col items-center gap-1">
                 <div className="flex items-center justify-center gap-4">
@@ -185,29 +201,33 @@ export default async function ReviewsCarousel(block: ReviewsCarouselBlock) {
               </div>
             ) : null}
             {intro ? <p className="max-w-2xl text-base leading-relaxed">{intro}</p> : null}
-          </div>
+          </FadeIn>
         </div>
 
         {error ? (
-          <p className="mx-auto max-w-xl rounded-2xl bg-destructive/5 p-6 text-sm text-destructive">
+          <FadeIn
+            as="p"
+            delay={320}
+            className="mx-auto max-w-xl rounded-2xl bg-destructive/5 p-6 text-sm text-destructive"
+          >
             {error}
-          </p>
+          </FadeIn>
         ) : null}
 
         {hasCarousel ? (
-          <div className="relative">
+          <FadeIn delay={360} className="relative">
             <Carousel
-              className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8"
+              className="mx-auto max-w-5xl"
               opts={{ loop: reviews.length > 1 }}
             >
-              <CarouselContent className="ml-0 gap-6">
+              <CarouselContent className="ml-0 gap-6 px-6 md:gap-8 md:px-8 lg:gap-10 lg:px-10">
                 {reviews.map((review) => (
                   <CarouselItem
                     key={review.id}
                     className={cn(
                       "basis-full pl-0",
                       reviews.length > 1
-                        ? "md:basis-1/2 lg:basis-1/3 md:px-2 lg:px-3"
+                        ? "md:basis-1/2 lg:basis-1/3"
                         : undefined,
                       "flex"
                     )}
@@ -232,15 +252,19 @@ export default async function ReviewsCarousel(block: ReviewsCarouselBlock) {
                 <CarouselDots className="static mt-12 flex justify-center" />
               ) : null}
             </Carousel>
-          </div>
+          </FadeIn>
         ) : !error ? (
-          <p className="mx-auto max-w-xl text-sm text-muted-foreground">
+          <FadeIn
+            as="p"
+            delay={360}
+            className="mx-auto max-w-xl text-sm text-muted-foreground"
+          >
             Google has not returned any public reviews yet. Check back soon.
-          </p>
+          </FadeIn>
         ) : null}
 
         {ctaHref ? (
-          <div className="flex justify-center">
+          <FadeIn as="div" delay={420} className="flex justify-center">
             <Button
               asChild
               variant={buttonVariant ?? "default"}
@@ -253,13 +277,13 @@ export default async function ReviewsCarousel(block: ReviewsCarouselBlock) {
                 {ctaLabel}
               </Link>
             </Button>
-          </div>
+          </FadeIn>
         ) : null}
 
-        <p className="text-xs text-muted-foreground">
+        <FadeIn as="p" delay={520} className="text-xs text-muted-foreground">
           Reviews provided by Google and subject to Google Maps Platform Terms.
-        </p>
-      </div>
+        </FadeIn>
+      </FadeIn>
     </SectionContainer>
   );
 }

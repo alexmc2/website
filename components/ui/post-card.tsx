@@ -1,13 +1,11 @@
-// components/ui/post-card.tsx
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import { ChevronRight } from "lucide-react";
-import { POSTS_QUERYResult } from "@/sanity.types";
+import { cn, formatDate } from '@/lib/utils';
+import Image from 'next/image';
+import { urlFor } from '@/sanity/lib/image';
+import { POSTS_QUERYResult } from '@/sanity.types';
 
 type PostCard = NonNullable<POSTS_QUERYResult[number]>;
 
-interface PostCardProps extends Omit<PostCard, "slug"> {
+interface PostCardProps extends Omit<PostCard, 'slug'> {
   className?: string;
 }
 
@@ -16,43 +14,56 @@ export default function PostCard({
   title,
   excerpt,
   image,
+  _createdAt,
 }: PostCardProps) {
+  const formattedDate = _createdAt ? formatDate(_createdAt) : null;
+
   return (
     <div
       className={cn(
-        "flex w-full flex-col justify-between overflow-hidden transition ease-in-out group border rounded-3xl p-4 hover:border-primary",
+        'group flex h-full w-full flex-col overflow-hidden rounded-3xl border border-border/60 bg-background/70 shadow-sm p-5 transition-all duration-200 ease-out hover:-translate-y-1 hover:border-primary/10 hover:bg-background/70 hover:shadow-lg',
         className
       )}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-4">
         {image && image.asset?._id && (
-          <div className="mb-4 relative h-[15rem] sm:h-[20rem] md:h-[25rem] lg:h-[9.5rem] xl:h-[12rem] rounded-2xl overflow-hidden">
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
             <Image
               src={urlFor(image).url()}
-              alt={image.alt || ""}
-              placeholder={image?.asset?.metadata?.lqip ? "blur" : undefined}
-              blurDataURL={image?.asset?.metadata?.lqip || ""}
+              alt={image.alt || ''}
+              placeholder={image?.asset?.metadata?.lqip ? 'blur' : undefined}
+              blurDataURL={image?.asset?.metadata?.lqip || ''}
               fill
-              style={{
-                objectFit: "cover",
-              }}
-              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover"
+              sizes="(min-width: 1280px) 22vw, (min-width: 768px) 45vw, 90vw"
               quality={100}
             />
           </div>
         )}
-        {title && (
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="font-bold text-[1.5rem] leading-[1.2]">{title}</h3>
-          </div>
+        {formattedDate && (
+          <time
+            className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+            dateTime={_createdAt}
+          >
+            {formattedDate}
+          </time>
         )}
-        {excerpt && <p>{excerpt}</p>}
-      </div>
-      <div className="mt-3 xl:mt-6 w-10 h-10 border rounded-full flex items-center justify-center group-hover:border-primary/20 transition-all">
-        <ChevronRight
-          className="text-border group-hover:text-primary/20 transition-all"
-          size={24}
-        />
+        {title && (
+          <h3 className={cn('text-xl font-semibold leading-snug')}>{title}</h3>
+        )}
+        {excerpt && (
+          <p
+            className="text-sm text-muted-foreground"
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+            }}
+          >
+            {excerpt}
+          </p>
+        )}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { stegaClean } from "next-sanity";
 import PortableTextRenderer from "@/components/portable-text-renderer";
+import { FadeIn } from "@/components/ui/fade.in";
 import { PAGE_QUERYResult } from "@/sanity.types";
 
 type Hero2Props = Extract<
@@ -14,22 +15,26 @@ export default function Hero2({ tagLine, title, body, links }: Hero2Props) {
   return (
     <div className="container dark:bg-background py-20 lg:pt-40 text-center">
       {tagLine && (
-        <h1 className="leading-[0] font-sans animate-fade-up [animation-delay:100ms] opacity-0">
+        <FadeIn as="h1" delay={120} className="leading-[0] font-sans">
           <span className="text-base font-semibold">{tagLine}</span>
-        </h1>
+        </FadeIn>
       )}
       {title && (
-        <h2 className="mt-6 font-bold leading-[1.1] text-4xl md:text-5xl lg:text-6xl animate-fade-up [animation-delay:200ms] opacity-0">
+        <FadeIn
+          as="h2"
+          delay={220}
+          className="mt-6 text-4xl font-bold leading-[1.1] md:text-5xl lg:text-6xl"
+        >
           {title}
-        </h2>
+        </FadeIn>
       )}
       {body && (
-        <div className="text-lg mt-6 max-w-2xl mx-auto animate-fade-up [animation-delay:300ms] opacity-0">
+        <FadeIn as="div" delay={320} className="mx-auto mt-6 max-w-2xl text-lg">
           <PortableTextRenderer value={body} />
-        </div>
+        </FadeIn>
       )}
       {links && links.length > 0 && (
-        <div className="mt-10 flex flex-wrap gap-4 justify-center animate-fade-up [animation-delay:400ms] opacity-0">
+        <FadeIn as="div" delay={420} className="mt-10 flex flex-wrap justify-center gap-4">
           {links.map((link) => (
             <Button
               key={link.title}
@@ -45,7 +50,7 @@ export default function Hero2({ tagLine, title, body, links }: Hero2Props) {
               </Link>
             </Button>
           ))}
-        </div>
+        </FadeIn>
       )}
     </div>
   );

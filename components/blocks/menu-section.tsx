@@ -3,6 +3,7 @@ import Image from "next/image";
 import { stegaClean } from "next-sanity";
 import { cn } from "@/lib/utils";
 import SectionContainer from "@/components/ui/section-container";
+import { FadeIn } from "@/components/ui/fade.in";
 import { urlFor } from "@/sanity/lib/image";
 import type { PAGE_QUERYResult, ColorVariant } from "@/sanity.types";
 import type { CSSProperties } from "react";
@@ -323,7 +324,7 @@ export default function MenuSection({
 
         <div className={gridColumnsClass}>
           {hasLeftColumn ? (
-            <aside className="flex flex-col gap-8">
+            <FadeIn as="aside" delay={120} className="flex flex-col gap-8">
               <MenuImageGallery
                 images={leftImages}
                 layout={sanitizedImageLayout}
@@ -334,38 +335,51 @@ export default function MenuSection({
                   <MenuLottie src={lottieUrl!} ariaLabel="Decorative animation" />
                 </div>
               ) : null}
-            </aside>
+            </FadeIn>
           ) : null}
 
           {hasCentralColumn ? (
-            <div className="flex flex-col gap-10">
+            <FadeIn as="div" delay={160} className="flex flex-col gap-10">
               {hasHeadingContent ? (
                 <div className="flex flex-col gap-6">
                   {eyebrow ? (
-                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+                    <FadeIn
+                      as="p"
+                      delay={200}
+                      className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground"
+                    >
                       {eyebrow}
-                    </p>
+                    </FadeIn>
                   ) : null}
                   {(title || intro) ? (
                     <div className="flex flex-col gap-6">
                       {title ? (
-                        <h2 className={cn(
-                          "text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight",
-                          headingFontClass
-                        )}
+                        <FadeIn
+                          as="h2"
+                          delay={240}
+                          className={cn(
+                            "text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight",
+                            headingFontClass
+                          )}
                         >
                           {title}
-                        </h2>
+                        </FadeIn>
                       ) : null}
                       {intro ? (
-                        <p className="max-w-xl text-lg text-muted-foreground">{intro}</p>
+                        <FadeIn
+                          as="p"
+                          delay={280}
+                          className="max-w-xl text-lg text-muted-foreground"
+                        >
+                          {intro}
+                        </FadeIn>
                       ) : null}
                     </div>
                   ) : null}
                   {shouldShowHeadingLottie ? (
-                    <div className="w-40 sm:w-48">
+                    <FadeIn delay={320} className="w-40 sm:w-48">
                       <MenuLottie src={lottieUrl!} ariaLabel="Menu accent animation" />
-                    </div>
+                    </FadeIn>
                   ) : null}
                 </div>
               ) : null}
@@ -379,8 +393,10 @@ export default function MenuSection({
                         : `${category?.title || "category"}-${index}`;
 
                     return (
-                      <section
+                      <FadeIn
+                        as="section"
                         key={categoryKey}
+                        delay={360 + index * 140}
                         className={cn(
                           "border-t border-border/30 pt-10",
                           index === 0 && "border-t-0 pt-0"
@@ -428,22 +444,22 @@ export default function MenuSection({
                             );
                           })}
                         </div>
-                      </section>
+                      </FadeIn>
                     );
                   })}
                 </div>
               ) : null}
 
               {fallbackAsideToCenter ? (
-                <div className="self-end w-32 sm:w-40">
+                <FadeIn delay={380} className="self-end w-32 sm:w-40">
                   <MenuLottie src={lottieUrl!} ariaLabel="Decorative animation" />
-                </div>
+                </FadeIn>
               ) : null}
-            </div>
+            </FadeIn>
           ) : null}
 
           {hasRightColumn ? (
-            <aside className="flex flex-col gap-8">
+            <FadeIn as="aside" delay={200} className="flex flex-col gap-8">
               <MenuImageGallery
                 images={rightImages}
                 layout={sanitizedImageLayout}
@@ -454,14 +470,14 @@ export default function MenuSection({
                   <MenuLottie src={lottieUrl!} ariaLabel="Decorative animation" />
                 </div>
               ) : null}
-            </aside>
+            </FadeIn>
           ) : null}
         </div>
 
         {!hasCentralColumn && !hasLeftColumn && !hasRightColumn && images.length > 0 ? (
-          <div className="relative z-10 mt-12">
+          <FadeIn delay={160} className="relative z-10 mt-12">
             <MenuImageGallery images={images} layout={sanitizedImageLayout} />
-          </div>
+          </FadeIn>
         ) : null}
       </div>
     </SectionContainer>

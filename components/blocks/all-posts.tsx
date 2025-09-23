@@ -31,6 +31,7 @@ export default async function AllPosts({
               title={post?.title ?? ''}
               excerpt={post?.excerpt ?? ''}
               image={post?.image ?? null}
+              _createdAt={post?._createdAt ?? ''}
             />
           </Link>
         ))}

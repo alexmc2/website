@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import SectionContainer from "@/components/ui/section-container";
 import { stegaClean } from "next-sanity";
 
+import { FadeIn } from "@/components/ui/fade.in";
 import { PAGE_QUERYResult } from "@/sanity.types";
 
 type SectionHeaderProps = Extract<
@@ -37,14 +38,20 @@ export default function SectionHeader({
         )}
       >
         {showTagLine ? (
-          <h1 className="leading-[0] mt-0 mb-0">
+          <FadeIn as="h1" delay={100} className="mt-0 mb-0 leading-[0]">
             <span className="text-base font-semibold">{tagLine}</span>
-          </h1>
+          </FadeIn>
         ) : null}
         {title ? (
-          <h2 className="text-3xl md:text-5xl mt-0 mb-0">{title}</h2>
+          <FadeIn as="h2" delay={200} className="mt-0 mb-0 text-3xl md:text-5xl">
+            {title}
+          </FadeIn>
         ) : null}
-        {showDescription ? <p>{description}</p> : null}
+        {showDescription ? (
+          <FadeIn as="p" delay={300} className="text-base">
+            {description}
+          </FadeIn>
+        ) : null}
       </div>
     </SectionContainer>
   );
