@@ -5,8 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-sans);
-  --font-display: var(--font-display);
+  --font-sans: 'M PLUS Rounded 1c', 'Poppins', 'Inter', 'Segoe UI',
+    system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-display: 'Poppins', 'M PLUS Rounded 1c', 'Inter', 'Segoe UI',
+    system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 
   /* Custom animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;

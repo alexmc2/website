@@ -1,9 +1,5 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
-import {
-  M_PLUS_Rounded_1c as FontSans,
-  Poppins as FontDisplay,
-} from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -31,18 +27,6 @@ export const metadata: Metadata = {
   robots: !isProduction ? 'noindex, nofollow' : 'index, follow',
 };
 
-const fontSans = FontSans({
-  subsets: ['latin'],
-  weight: ['400', '500', '700', '800'],
-  variable: '--font-sans',
-});
-
-const fontDisplay = FontDisplay({
-  subsets: ['latin'],
-  weight: ['400', '700', '900'],
-  variable: '--font-display',
-});
-
 export default function RootLayout({
   children,
 }: {
@@ -52,11 +36,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <link rel="icon" href="/favicon.ico" />
       <body
-        className={cn(
-          'min-h-screen bg-background font-sans antialiased overscroll-none',
-          fontSans.variable,
-          fontDisplay.variable
-        )}
+        className={cn('min-h-screen bg-background font-sans antialiased overscroll-none')}
       >
         <ThemeProvider
           attribute="class"

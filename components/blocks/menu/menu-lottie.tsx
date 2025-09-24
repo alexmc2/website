@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
-import type { RendererSettings } from "lottie-web";
+import type { AnimationConfigWithData } from "lottie-web";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +10,10 @@ const LottiePlayer = dynamic(() => import("lottie-react"), {
   ssr: false,
   loading: () => null,
 });
+
+type RendererSettings = NonNullable<
+  AnimationConfigWithData["rendererSettings"]
+>;
 
 interface MenuLottieProps {
   src: string;

@@ -27,14 +27,15 @@ export default defineType({
         "Optional anchor ID to scroll to a section on the selected page (e.g. menus).",
       hidden: ({ parent }) => parent?.isExternal,
       validation: (rule) =>
-        rule
-          .optional()
-          .regex(/^[a-z0-9-]+$/, {
-            name: "anchor",
-            invert: false,
-            message: "Use lowercase letters, numbers, and hyphens only.",
-          })
-          .warning("Use lowercase letters, numbers, and hyphens only."),
+        rule.custom((value) => {
+          if (!value) {
+            return true;
+          }
+
+          return /^[a-z0-9-]+$/.test(value)
+            ? true
+            : { message: "Use lowercase letters, numbers, and hyphens only.", level: "warning" };
+        }),
     }),
     defineField({
       name: "title",

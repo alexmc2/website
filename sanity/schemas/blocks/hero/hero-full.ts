@@ -41,7 +41,8 @@ export default defineType({
       validation: (Rule) =>
         Rule.custom((images, context) => {
           if (images?.length) return true;
-          if (context.parent?.image) return true;
+          const parent = context.parent as { image?: unknown } | undefined;
+          if (parent?.image) return true;
           return "Add at least one hero image.";
         }),
     }),

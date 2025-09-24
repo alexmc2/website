@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade.in";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import type { ColorVariant, SectionPadding, Link as SanityLink } from "@/sanity.types";
+import type { PAGE_QUERYResult } from "@/sanity.types";
 import type { ReviewsSortOrder } from "@/lib/google/reviews";
 
 const INDICATOR_MIN_ITEMS = 2;
@@ -33,22 +33,11 @@ const SORT_ORDER_MAP: Record<string, ReviewsSortOrder> = {
   newest: "newest",
 };
 
-type ReviewsCarouselBlock = {
-  _key: string;
-  _type: "reviews-carousel";
-  padding?: SectionPadding | null;
-  colorVariant?: ColorVariant | null;
-  sectionId?: string | null;
-  eyebrow?: string | null;
-  heading?: string | null;
-  intro?: string | null;
-  placeId?: string | null;
-  languageCode?: string | null;
-  maximumReviews?: number | null;
-  minimumRating?: string | null;
-  sortOrder?: string | null;
-  cta?: SanityLink | null;
-};
+type PageBlock = NonNullable<
+  NonNullable<PAGE_QUERYResult>["blocks"]
+>[number];
+export type ReviewsCarouselBlock = Extract<PageBlock, { _type: "reviews-carousel" }>;
+type ReviewsCarouselLink = NonNullable<ReviewsCarouselBlock["cta"]>;
 
 function resolveMinimumRating(raw?: string | null): number | null {
   if (!raw) return null;
@@ -144,7 +133,7 @@ export default async function ReviewsCarousel(block: ReviewsCarouselBlock) {
   const ctaLabel = cta?.title ? stegaClean(cta.title) : "Read more reviews";
   const ctaTarget = cta?.target ? "_blank" : undefined;
   const buttonVariant = cta?.buttonVariant
-    ? (stegaClean(cta.buttonVariant) as SanityLink["buttonVariant"])
+    ? (stegaClean(cta.buttonVariant) as ReviewsCarouselLink["buttonVariant"])
     : "default";
 
   const hasCarousel = reviews.length > 0;

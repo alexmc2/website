@@ -1,21 +1,36 @@
 // app/api/newsletter/route.ts
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export const POST = async (request: Request) => {
-  const { email } = await request.json();
+  const apiKey = process.env.RESEND_API_KEY;
+  const audienceId = process.env.RESEND_AUDIENCE_ID;
 
-  // Create contact
+  if (!apiKey || !audienceId) {
+    console.error("Missing Resend configuration");
+    return Response.json(
+      { error: "Newsletter subscriptions are not configured." },
+      { status: 503 }
+    );
+  }
+
   try {
-    resend.contacts.create({
+    const { email } = await request.json();
+
+    if (!email || typeof email !== "string") {
+      return Response.json({ error: "Valid email is required." }, { status: 400 });
+    }
+
+    const resend = new Resend(apiKey);
+
+    await resend.contacts.create({
       email,
       unsubscribed: false,
-      audienceId: process.env.RESEND_AUDIENCE_ID!,
+      audienceId,
     });
 
     return Response.json({ success: true });
-  } catch (error: any) {
+  } catch (error) {
+    console.error("Newsletter subscription failed", error);
     return Response.json(
       { error: "Error subscribing to updates" },
       { status: 400 }

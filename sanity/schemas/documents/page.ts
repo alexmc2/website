@@ -58,7 +58,6 @@ export default defineType({
         { type: "form-newsletter" },
         { type: "form-contact" },
         { type: "location-map" },
-        { type: "form-contact-map", hidden: () => true },
         { type: "all-posts" },
       ],
       options: {

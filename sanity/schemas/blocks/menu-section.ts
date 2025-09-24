@@ -116,7 +116,6 @@ export default defineType({
       name: "title",
       type: "string",
       description: "Primary section heading displayed to guests.",
-      validation: (rule) => rule.optional(),
     }),
     defineField({
       name: "sectionId",
@@ -125,14 +124,15 @@ export default defineType({
       description:
         "Set a unique, lowercase anchor (e.g. menus) so navigation links can scroll to this section.",
       validation: (rule) =>
-        rule
-          .optional()
-          .regex(/^[a-z0-9-]+$/, {
-            name: "anchor",
-            invert: false,
-            message: "Use lowercase letters, numbers, and hyphens only.",
-          })
-          .error("Use lowercase letters, numbers, and hyphens only."),
+        rule.custom((value) => {
+          if (!value) {
+            return true;
+          }
+
+          return /^[a-z0-9-]+$/.test(value)
+            ? true
+            : "Use lowercase letters, numbers, and hyphens only.";
+        }),
     }),
     defineField({
       name: "intro",

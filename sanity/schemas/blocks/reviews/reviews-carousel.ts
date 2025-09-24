@@ -1,6 +1,6 @@
 // sanity/schemas/blocks/reviews/reviews-carousel.ts
 import { defineField, defineType } from "sanity";
-import { MessageSquareStar } from "lucide-react";
+import { Star } from "lucide-react";
 
 const MINIMUM_RATING_OPTIONS = [
   { title: "Show all ratings", value: "any" },
@@ -18,7 +18,7 @@ export default defineType({
   name: "reviews-carousel",
   title: "Reviews Carousel",
   type: "object",
-  icon: MessageSquareStar,
+  icon: Star,
   fields: [
     defineField({
       name: "padding",
@@ -38,14 +38,15 @@ export default defineType({
       description:
         "Optional anchor so navigation links can scroll to this section (e.g. reviews).",
       validation: (rule) =>
-        rule
-          .optional()
-          .regex(/^[a-z0-9-]+$/, {
-            name: "anchor",
-            invert: false,
-            message: "Use lowercase letters, numbers, and hyphens only.",
-          })
-          .error("Use lowercase letters, numbers, and hyphens only."),
+        rule.custom((value) => {
+          if (!value) {
+            return true;
+          }
+
+          return /^[a-z0-9-]+$/.test(value)
+            ? true
+            : "Use lowercase letters, numbers, and hyphens only.";
+        }),
     }),
     defineField({
       name: "eyebrow",
@@ -80,10 +81,14 @@ export default defineType({
       title: "Language Code",
       description: "ISO language code passed to Google (defaults to en-GB).",
       validation: (rule) =>
-        rule.optional().regex(/^[a-z]{2}(-[A-Z]{2})?$/, {
-          name: "language",
-          invert: false,
-          message: "Use locale formats like en or en-GB.",
+        rule.custom((value) => {
+          if (!value) {
+            return true;
+          }
+
+          return /^[a-z]{2}(-[A-Z]{2})?$/.test(value)
+            ? true
+            : "Use locale formats like en or en-GB.";
         }),
     }),
     defineField({
