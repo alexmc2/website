@@ -1,9 +1,11 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
 import './globals.css';
+import { Analytics } from '@vercel/analytics/next';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
+import { fontBody, fontHeading, fontSans } from '@/lib/fonts';
 
 const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === 'production';
 
@@ -36,7 +38,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <link rel="icon" href="/favicon.ico" />
       <body
-        className={cn('min-h-screen bg-background font-sans antialiased overscroll-none')}
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased overscroll-none',
+          fontHeading.variable,
+          fontBody.variable,
+          fontSans.variable
+        )}
       >
         <ThemeProvider
           attribute="class"
@@ -46,6 +53,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <Analytics />
         <Toaster position="top-center" richColors />
       </body>
     </html>
