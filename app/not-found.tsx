@@ -15,6 +15,7 @@ export default function NotFoundPage() {
       <Header />
       <Custom404 />
       <Footer />
+      
     </>
   );
 }
