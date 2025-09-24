@@ -21,7 +21,7 @@ export default function PostCard({
   return (
     <div
       className={cn(
-        'group flex h-full w-full flex-col overflow-hidden rounded-3xl border border-border/60 bg-background/70 shadow-sm p-5 transition-all duration-200 ease-out hover:-translate-y-1 hover:border-primary/10 hover:bg-background/70 hover:shadow-lg',
+        'group flex h-full w-full flex-col overflow-hidden rounded-3xl border border-border/60 bg-white shadow-sm p-5 transition-all duration-200 ease-out hover:-translate-y-1 hover:border-primary/10 hover:bg-background/70 hover:shadow-lg',
         className
       )}
     >

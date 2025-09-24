@@ -1,5 +1,6 @@
 // sanity/queries/lottie-animation.ts
 import { groq } from "next-sanity";
+import { bodyQuery } from "./shared/body";
 
 // @sanity-typegen-ignore
 export const lottieAnimationQuery = groq`
@@ -12,6 +13,12 @@ export const lottieAnimationQuery = groq`
     animationAlign,
     verticalSpacing,
     animationSize,
+    title[]{
+      ${bodyQuery}
+    },
+    textOrientation,
+    textPlacement,
+    textSpacing,
     ariaLabel,
     animation{
       asset->{

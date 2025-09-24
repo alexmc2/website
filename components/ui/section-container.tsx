@@ -10,6 +10,7 @@ const BACKGROUND_CLASS_MAP = {
   accent: "bg-accent",
   destructive: "bg-destructive",
   muted: "bg-muted",
+  white: "bg-white",
   cream: "bg-cream",
   espresso: "bg-espresso",
   sage: "bg-sage",

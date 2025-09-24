@@ -2,12 +2,14 @@
 import { stegaClean } from "next-sanity";
 import { cn } from "@/lib/utils";
 import SectionContainer from "@/components/ui/section-container";
+import PortableTextRenderer from "@/components/portable-text-renderer";
 import MenuLottie from "@/components/blocks/menu/menu-lottie";
 
 import type { ColorVariant, PAGE_QUERYResult } from "@/sanity.types";
 import type { CSSProperties } from "react";
+import type { PortableTextBlock } from "@portabletext/types";
 
-type LottieAnimationProps = Extract<
+type SanityLottieAnimationProps = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number],
   { _type: "lottie-animation" }
 > & {
@@ -17,6 +19,15 @@ type LottieAnimationProps = Extract<
     } | null;
   } | null;
 };
+
+type LottieAnimationProps = SanityLottieAnimationProps & {
+  title?: PortableTextBlock[] | null;
+  textOrientation?: "vertical" | "horizontal" | null;
+  textPlacement?: "before" | "after" | null;
+  textSpacing?: "none" | "tight" | "compact" | "comfortable" | "roomy" | null;
+};
+
+type SpacingScale = "none" | "tight" | "compact" | "comfortable" | "roomy";
 
 const ALIGN_CLASS_MAP: Record<"left" | "center" | "right", string> = {
   left: "ml-0 mr-auto",
@@ -43,10 +54,21 @@ const FILLED_SIZE_STYLE = {
   height: "100%",
 } satisfies CSSProperties;
 
-const TOP_SPACING_CLASS_MAP: Record<
-  "none" | "tight" | "compact" | "comfortable" | "roomy",
-  string
-> = {
+const STACK_GAP_CLASS_MAP: Record<SpacingScale, string> = {
+  none: "gap-0",
+  tight: "gap-3 md:gap-4",
+  compact: "gap-4 md:gap-6",
+  comfortable: "gap-6 md:gap-8",
+  roomy: "gap-8 md:gap-12",
+};
+
+const TEXT_ALIGN_CLASS_MAP: Record<"left" | "center" | "right", string> = {
+  left: "text-left",
+  center: "text-center",
+  right: "text-right",
+};
+
+const TOP_SPACING_CLASS_MAP: Record<SpacingScale, string> = {
   none: "pt-0",
   tight: "pt-3 md:pt-4",
   compact: "pt-6 md:pt-8",
@@ -54,10 +76,7 @@ const TOP_SPACING_CLASS_MAP: Record<
   roomy: "pt-14 md:pt-16",
 };
 
-const BOTTOM_SPACING_CLASS_MAP: Record<
-  "none" | "tight" | "compact" | "comfortable" | "roomy",
-  string
-> = {
+const BOTTOM_SPACING_CLASS_MAP: Record<SpacingScale, string> = {
   none: "pb-0",
   tight: "pb-3 md:pb-4",
   compact: "pb-6 md:pb-8",
@@ -75,6 +94,10 @@ export default function LottieAnimationBlock({
   animation,
   animationDark,
   ariaLabel,
+  title,
+  textOrientation,
+  textPlacement,
+  textSpacing,
 }: LottieAnimationProps) {
   const resolvedColor = (stegaClean(colorVariant) || undefined) as
     | ColorVariant
@@ -89,21 +112,63 @@ export default function LottieAnimationBlock({
     | "medium"
     | "large"
     | "full";
-  const spacing = (stegaClean(verticalSpacing) || "compact") as
-    | "none"
-    | "tight"
-    | "compact"
-    | "comfortable"
-    | "roomy";
+  const spacing = (stegaClean(verticalSpacing) || "compact") as SpacingScale;
   const hasTopPadding = Boolean(padding?.top);
   const hasBottomPadding = Boolean(padding?.bottom);
   const src = animation?.asset?.url || undefined;
   const srcDark = animationDark?.asset?.url || undefined;
   const label = (stegaClean(ariaLabel) || undefined) as string | undefined;
+  const hasText = Array.isArray(title) && title.length > 0;
+  const orientation = hasText
+    ? ((stegaClean(textOrientation) || "vertical") as
+        | "vertical"
+        | "horizontal")
+    : "vertical";
+  const placement = hasText
+    ? ((stegaClean(textPlacement) || "after") as "before" | "after")
+    : "after";
+  const textSpacingValue: SpacingScale = hasText
+    ? ((stegaClean(textSpacing) || "compact") as SpacingScale)
+    : "none";
+  const stackGapClass = hasText
+    ? STACK_GAP_CLASS_MAP[textSpacingValue]
+    : STACK_GAP_CLASS_MAP.none;
+  const isHorizontal = hasText && orientation === "horizontal";
+  const textAlignClass = TEXT_ALIGN_CLASS_MAP[align];
 
   if (!src) {
     return null;
   }
+
+  const renderText = () => {
+    if (!hasText) {
+      return null;
+    }
+
+    const wrapperClass = cn(
+      "w-full",
+      isHorizontal ? "mx-auto lg:mx-0 lg:flex-1 lg:max-w-xl" : ALIGN_CLASS_MAP[align],
+      isHorizontal ? undefined : SIZE_CLASS_MAP[size],
+      isHorizontal || size === "full" ? undefined : "w-full"
+    );
+
+    return (
+      <div className={wrapperClass}>
+        <div className={cn(textAlignClass, isHorizontal ? "lg:text-left" : undefined)}>
+          <PortableTextRenderer value={title ?? []} />
+        </div>
+      </div>
+    );
+  };
+
+  const animationWrapperClass = cn(
+    "w-full",
+    SIZE_CLASS_MAP[size],
+    size !== "full" ? "w-full" : undefined,
+    isHorizontal
+      ? "mx-auto lg:mx-0 lg:flex-1"
+      : ALIGN_CLASS_MAP[align]
+  );
 
   return (
     <SectionContainer
@@ -117,27 +182,30 @@ export default function LottieAnimationBlock({
       <div className={cn("w-full", width === "narrow" ? "max-w-4xl mx-auto" : undefined)}>
         <div
           className={cn(
-            "w-full",
-            ALIGN_CLASS_MAP[align],
-            SIZE_CLASS_MAP[size],
-            size !== "full" ? "w-full" : undefined
+            "flex w-full flex-col",
+            stackGapClass,
+            isHorizontal ? "lg:flex-row lg:items-center" : undefined
           )}
         >
-          <div
-            className={cn(
-              "relative flex w-full items-center justify-center overflow-hidden",
-              HEIGHT_CLASS_MAP[size]
-            )}
-          >
-            <MenuLottie
-              src={src}
-              srcDark={srcDark}
-              className="h-full w-full"
-              ariaLabel={label}
-              style={FILLED_SIZE_STYLE}
-              preserveAspectRatio="xMidYMid meet"
-            />
+          {hasText && placement === "before" ? renderText() : null}
+          <div className={animationWrapperClass}>
+            <div
+              className={cn(
+                "relative flex w-full items-center justify-center overflow-hidden",
+                HEIGHT_CLASS_MAP[size]
+              )}
+            >
+              <MenuLottie
+                src={src}
+                srcDark={srcDark}
+                className="h-full w-full"
+                ariaLabel={label}
+                style={FILLED_SIZE_STYLE}
+                preserveAspectRatio="xMidYMid meet"
+              />
+            </div>
           </div>
+          {hasText && placement === "after" ? renderText() : null}
         </div>
       </div>
     </SectionContainer>

@@ -9,6 +9,7 @@ export const COLOR_VARIANTS = [
   { title: "Accent", value: "accent" },
   { title: "Destructive", value: "destructive" },
   { title: "Muted", value: "muted" },
+  { title: "White", value: "white" },
   { title: "Warm Cream", value: "cream" },
   { title: "Dark Espresso", value: "espresso" },
   { title: "Herbal Sage", value: "sage" },

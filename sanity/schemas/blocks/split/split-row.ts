@@ -20,6 +20,23 @@ export default defineType({
       description: "Select a background color variant",
     }),
     defineField({
+      name: "sectionId",
+      type: "string",
+      title: "Section Anchor ID",
+      description:
+        "Set a unique, lowercase anchor (e.g. about-us) so navigation links can scroll to this section.",
+      validation: (rule) =>
+        rule.custom((value) => {
+          if (!value) {
+            return true;
+          }
+
+          return /^[a-z0-9-]+$/.test(value)
+            ? true
+            : "Use lowercase letters, numbers, and hyphens only.";
+        }),
+    }),
+    defineField({
       name: "noGap",
       type: "boolean",
       description: "Remove gap between columns",

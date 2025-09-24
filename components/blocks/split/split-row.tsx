@@ -1,43 +1,46 @@
 // components/blocks/split/split-row.tsx
-import { cn } from "@/lib/utils";
-import SectionContainer from "@/components/ui/section-container";
-import { stegaClean } from "next-sanity";
-import { PAGE_QUERYResult } from "@/sanity.types";
-import SplitContent from "./split-content";
-import SplitCardsList from "./split-cards-list";
-import SplitImage from "./split-image";
-import SplitInfoList from "./split-info-list";
+import { cn } from '@/lib/utils';
+import SectionContainer from '@/components/ui/section-container';
+import { stegaClean } from 'next-sanity';
+import { PAGE_QUERYResult } from '@/sanity.types';
+import SplitContent from './split-content';
+import SplitCardsList from './split-cards-list';
+import SplitImage from './split-image';
+import SplitInfoList from './split-info-list';
 
-type Block = NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number];
-type SplitRow = Extract<Block, { _type: "split-row" }>;
-type SplitColumn = NonNullable<NonNullable<SplitRow["splitColumns"]>[number]>;
+type Block = NonNullable<NonNullable<PAGE_QUERYResult>['blocks']>[number];
+type SplitRow = Extract<Block, { _type: 'split-row' }>;
+type SplitColumn = NonNullable<NonNullable<SplitRow['splitColumns']>[number]>;
+type SplitRowWithAnchor = SplitRow & { sectionId?: string | null };
 
 const componentMap: {
-  [K in SplitColumn["_type"]]: React.ComponentType<
+  [K in SplitColumn['_type']]: React.ComponentType<
     Extract<SplitColumn, { _type: K }>
   >;
 } = {
-  "split-content": SplitContent,
-  "split-cards-list": SplitCardsList,
-  "split-image": SplitImage,
-  "split-info-list": SplitInfoList,
+  'split-content': SplitContent,
+  'split-cards-list': SplitCardsList,
+  'split-image': SplitImage,
+  'split-info-list': SplitInfoList,
 };
 
 export default function SplitRow({
   padding,
   colorVariant,
+  sectionId,
   noGap,
   splitColumns,
-}: SplitRow) {
+}: SplitRowWithAnchor) {
   const color = stegaClean(colorVariant);
+  const anchorId = sectionId ? stegaClean(sectionId) : undefined;
 
   return (
-    <SectionContainer color={color} padding={padding}>
+    <SectionContainer color={color} padding={padding} id={anchorId}>
       {splitColumns && splitColumns?.length > 0 && (
         <div
           className={cn(
-            "grid grid-cols-1 lg:grid-cols-2",
-            noGap ? "gap-0" : "gap-12 lg:gap-20"
+            'grid grid-cols-1 lg:grid-cols-2',
+            noGap ? 'gap-0' : 'gap-12 lg:gap-20'
           )}
         >
           {splitColumns?.map((column) => {

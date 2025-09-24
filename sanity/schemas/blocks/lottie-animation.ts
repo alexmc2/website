@@ -70,6 +70,57 @@ export default defineType({
       initialValue: "medium",
     }),
     defineField({
+      name: "title",
+      type: "block-content",
+      title: "Title",
+      description: "Optional rich text displayed with the animation.",
+    }),
+    defineField({
+      name: "textOrientation",
+      type: "string",
+      title: "Text Orientation",
+      description: "Stack the title vertically or align it horizontally beside the animation.",
+      options: {
+        list: [
+          { title: "Vertical", value: "vertical" },
+          { title: "Horizontal", value: "horizontal" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "vertical",
+    }),
+    defineField({
+      name: "textPlacement",
+      type: "string",
+      title: "Text Placement",
+      description: "Control whether the title appears before or after the animation.",
+      options: {
+        list: [
+          { title: "Before Animation", value: "before" },
+          { title: "After Animation", value: "after" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "after",
+    }),
+    defineField({
+      name: "textSpacing",
+      type: "string",
+      title: "Text Spacing",
+      description: "Adjust spacing between the animation and title when shown.",
+      options: {
+        list: [
+          { title: "None", value: "none" },
+          { title: "Tight", value: "tight" },
+          { title: "Compact", value: "compact" },
+          { title: "Comfortable", value: "comfortable" },
+          { title: "Roomy", value: "roomy" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "compact",
+    }),
+    defineField({
       name: "animation",
       type: "file",
       title: "Lottie Animation",

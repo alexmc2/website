@@ -174,7 +174,7 @@ export default function ContactForm({
                     <textarea
                       {...field}
                       rows={5}
-                      className="flex min-h-[160px] w-full rounded-md border border-input bg-background px-3 py-3 text-base shadow-none transition-colors placeholder:text-muted-foreground focus-visible:border-slate-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-200 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="flex min-h-[160px] w-full rounded-md border border-input bg-white px-3 py-3 text-base shadow-none transition-colors placeholder:text-muted-foreground focus-visible:border-slate-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-200 disabled:cursor-not-allowed disabled:opacity-60"
                       placeholder="How can we help?"
                     />
                   </FormControl>
