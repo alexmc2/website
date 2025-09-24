@@ -134,7 +134,7 @@ export default function HeroFull({
               </FadeIn>
             )}
             {title && (
-              <FadeIn as="h1" delay={200} className="mt-4 text-5xl md:text-7xl">
+              <FadeIn as="h1" delay={200} className="mt-0 text-5xl md:text-7xl">
                 {title}
               </FadeIn>
             )}
@@ -142,7 +142,7 @@ export default function HeroFull({
               <FadeIn
                 as="div"
                 delay={260}
-                className="mt-6 sm:text-3xl text-2xl opacity-95"
+                className="mt-2 sm:text-3xl text-2xl opacity-95"
               >
                 <PortableTextRenderer value={body} />
               </FadeIn>

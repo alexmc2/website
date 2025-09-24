@@ -87,7 +87,7 @@
   content: '';
   position: absolute;
   inset: -8%;
-  border-radius: 5px;
+  border-radius: 25px;
   background: hsl(215 36% 11% / 0.28);
   opacity: 0.70;
   z-index: -1;
