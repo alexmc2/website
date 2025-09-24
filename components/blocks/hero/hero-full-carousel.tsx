@@ -20,6 +20,10 @@ type HeroCarouselImage = {
     _id?: string | null;
     metadata?: {
       lqip?: string | null;
+      dimensions?: {
+        width?: number | null;
+        height?: number | null;
+      } | null;
     } | null;
   } | null;
 } & Record<string, unknown>;

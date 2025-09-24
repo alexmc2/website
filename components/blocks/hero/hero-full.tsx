@@ -40,14 +40,39 @@ export default function HeroFull({
         : 'justify-center';
   const textAlign =
     contentAlignment === 'left'
-      ? 'lg:text-left'
+      ? 'text-center lg:text-left'
       : contentAlignment === 'right'
-        ? 'text-center'
+        ? 'text-center lg:text-right'
         : 'text-center';
+  const cardClasses = cn(
+    'w-full max-w-2xl rounded-3xl bg-white/15 px-4 py-6 text-white shadow-lg transition-colors',
+    'supports-[backdrop-filter]:bg-background/10 supports-[backdrop-filter]:backdrop-blur-lg supports-[backdrop-filter]:backdrop-saturate-150',
+    'sm:w-auto sm:px-8 sm:py-8'
+  );
 
   const heroImages = (
     images && images.length ? images : image ? [image] : []
   ).filter((img) => img?.asset?._id);
+
+  const buildHeroImageUrl = (img: (typeof heroImages)[number]) => {
+    if (!img?.asset?._id) {
+      return undefined;
+    }
+
+    const dimensions = img.asset?.metadata?.dimensions;
+    const maxWidth = Math.min(2200, Math.round(dimensions?.width ?? 2200));
+
+    return urlFor(img)
+      .width(maxWidth)
+      .fit('max')
+      .quality(80)
+      .url();
+  };
+
+  const primaryHeroImage = heroImages[0];
+  const primaryHeroImageUrl = primaryHeroImage
+    ? buildHeroImageUrl(primaryHeroImage)
+    : undefined;
 
   return (
     <section
@@ -63,20 +88,20 @@ export default function HeroFull({
           {heroImages.length > 1 ? (
             <HeroFullCarousel images={heroImages} />
           ) : (
-            heroImages[0] && (
+            primaryHeroImage && primaryHeroImageUrl && (
               <div className="relative h-full w-full overflow-hidden animate-zoom-in will-change-transform motion-reduce:animate-none">
                 <Image
-                  src={urlFor(heroImages[0]).url()}
-                  alt={heroImages[0].alt || ''}
+                  src={primaryHeroImageUrl}
+                  alt={primaryHeroImage.alt || ''}
                   fill
                   priority
                   className="object-cover"
                   sizes="100vw"
                   placeholder={
-                    heroImages[0]?.asset?.metadata?.lqip ? 'blur' : undefined
+                    primaryHeroImage?.asset?.metadata?.lqip ? 'blur' : undefined
                   }
                   blurDataURL={
-                    heroImages[0]?.asset?.metadata?.lqip || undefined
+                    primaryHeroImage?.asset?.metadata?.lqip || undefined
                   }
                 />
               </div>
@@ -92,9 +117,13 @@ export default function HeroFull({
       )}
       {(tagLine || title || body) && (
         <div
-          className={`absolute inset-0 z-20 flex items-center ${justify} px-6 lg:px-32`}
+          className={cn(
+            'absolute inset-0 z-20 flex px-6 pt-24 pb-16 sm:pt-32 lg:px-32',
+            'items-start lg:items-center lg:pt-0 lg:pb-0',
+            justify
+          )}
         >
-          <div className={`max-w-2xl text-white text-center   ${textAlign}`}>
+          <div className={cn(cardClasses, textAlign)}>
             {tagLine && (
               <FadeIn
                 as="p"
