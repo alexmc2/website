@@ -28,14 +28,18 @@ export default function Hero1({
       ? dimensions.width / dimensions.height
       : undefined;
   const targetHeight = aspectRatio ? Math.round(targetWidth / aspectRatio) : undefined;
-  const heroImageBuilder = urlFor(image)
-    .width(targetWidth)
-    .fit("max")
-    .quality(85);
-  const heroImageUrl = (targetHeight
-    ? heroImageBuilder.height(targetHeight)
-    : heroImageBuilder
-  ).url();
+
+  let heroImageUrl: string | undefined;
+  if (image?.asset?._id) {
+    const heroImageBuilder = urlFor(image)
+      .width(targetWidth)
+      .fit("max")
+      .quality(85);
+
+    heroImageUrl = targetHeight
+      ? heroImageBuilder.height(targetHeight).url()
+      : heroImageBuilder.url();
+  }
 
   return (
     <div className="container dark:bg-background py-20 lg:pt-40">
@@ -85,7 +89,7 @@ export default function Hero1({
           )}
         </div>
         <div className="flex flex-col justify-center">
-          {image && image.asset?._id && (
+          {image && image.asset?._id && heroImageUrl && (
             <FadeIn delay={520}>
               <Image
                 className="rounded-xl"
