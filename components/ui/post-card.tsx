@@ -36,7 +36,6 @@ export default function PostCard({
               fill
               className="object-cover"
               sizes="(min-width: 1280px) 22vw, (min-width: 768px) 45vw, 90vw"
-              quality={100}
             />
           </div>
         )}

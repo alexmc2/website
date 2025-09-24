@@ -50,7 +50,6 @@ export default function Logo({ settings }: { settings: SETTINGS_QUERYResult }) {
           : undefined
       }
       blurDataURL={logoToUse?.asset?.metadata?.lqip || undefined}
-      quality={100}
       priority
     />
   ) : (

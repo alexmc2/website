@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { fontBody, fontHeading, fontSans } from '@/lib/fonts';
+import { projectId } from '@/sanity/env';
 
 const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === 'production';
 
@@ -34,18 +35,32 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const sanityCdnOrigin = 'https://cdn.sanity.io';
+  const sanityApiOrigin = `https://${projectId}.api.sanity.io`;
+  const googleUserContentOrigin = 'https://lh3.googleusercontent.com';
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
         <link
           rel="preconnect"
-          href="https://lh3.googleusercontent.com"
-          crossOrigin=""
+          href={sanityCdnOrigin}
+          crossOrigin="anonymous"
         />
-        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
-        <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
+        <link
+          rel="preconnect"
+          href={sanityApiOrigin}
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href={googleUserContentOrigin}
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href={sanityCdnOrigin} />
+        <link rel="dns-prefetch" href={sanityApiOrigin} />
+        <link rel="dns-prefetch" href={googleUserContentOrigin} />
       </head>
       <body
         className={cn(

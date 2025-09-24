@@ -24,7 +24,6 @@ const portableTextComponents: PortableTextProps["components"] = {
             marginLeft: "auto",
             marginRight: "auto",
           }}
-          quality={100}
         />
       );
     },
