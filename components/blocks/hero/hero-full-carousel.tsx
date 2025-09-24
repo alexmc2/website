@@ -158,6 +158,15 @@ export function HeroFullCarousel({
             carouselImage?.asset?._id ||
             `hero-carousel-image-${index}`;
           const isActive = index === activeIndex;
+          const dimensions = carouselImage?.asset?.metadata?.dimensions as
+            | { width?: number | null; height?: number | null }
+            | undefined;
+          const maxWidth = Math.min(2200, Math.round(dimensions?.width ?? 2200));
+          const imageSrc = urlFor(carouselImage)
+            .width(maxWidth)
+            .fit('max')
+            .quality(80)
+            .url();
 
           return (
             <CarouselItem className="h-full !pl-0" key={key}>
@@ -168,10 +177,11 @@ export function HeroFullCarousel({
                 )}
               >
                 <Image
-                  src={urlFor(carouselImage).url()}
+                  src={imageSrc}
                   alt={carouselImage?.alt || ''}
                   fill
                   priority={index === 0}
+                  fetchPriority={index === 0 ? 'high' : 'auto'}
                   className="object-cover"
                   sizes="100vw"
                   placeholder={

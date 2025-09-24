@@ -20,6 +20,23 @@ export default function Hero1({
   image,
   links,
 }: Hero1Props) {
+  const dimensions = image?.asset?.metadata?.dimensions;
+  const intrinsicWidth = Math.round(dimensions?.width ?? 1600);
+  const targetWidth = Math.min(1600, Math.max(intrinsicWidth, 800));
+  const aspectRatio =
+    dimensions?.width && dimensions?.height
+      ? dimensions.width / dimensions.height
+      : undefined;
+  const targetHeight = aspectRatio ? Math.round(targetWidth / aspectRatio) : undefined;
+  const heroImageBuilder = urlFor(image)
+    .width(targetWidth)
+    .fit("max")
+    .quality(85);
+  const heroImageUrl = (targetHeight
+    ? heroImageBuilder.height(targetHeight)
+    : heroImageBuilder
+  ).url();
+
   return (
     <div className="container dark:bg-background py-20 lg:pt-40">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -72,13 +89,15 @@ export default function Hero1({
             <FadeIn delay={520}>
               <Image
                 className="rounded-xl"
-                src={urlFor(image).url()}
+                src={heroImageUrl}
                 alt={image.alt || ""}
-                width={image.asset?.metadata?.dimensions?.width || 800}
-                height={image.asset?.metadata?.dimensions?.height || 800}
+                width={targetWidth}
+                height={targetHeight ?? dimensions?.height ?? 800}
+                priority
+                fetchPriority="high"
+                sizes="(min-width: 1024px) 42vw, 92vw"
                 placeholder={image?.asset?.metadata?.lqip ? "blur" : undefined}
                 blurDataURL={image?.asset?.metadata?.lqip || ""}
-                quality={100}
               />
             </FadeIn>
           )}

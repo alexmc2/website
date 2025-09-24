@@ -88,6 +88,7 @@ export default function MenuLottie({
     return null;
   }
 
+  const hasAccessibleLabel = Boolean(ariaLabel?.trim());
   const rendererSettings: RendererSettings | undefined = preserveAspectRatio
     ? { preserveAspectRatio }
     : undefined;
@@ -98,8 +99,9 @@ export default function MenuLottie({
       loop
       autoplay
       className={cn("pointer-events-none", className)}
-      aria-label={ariaLabel}
-      aria-hidden={!ariaLabel}
+      role={hasAccessibleLabel ? "img" : undefined}
+      aria-label={hasAccessibleLabel ? ariaLabel : undefined}
+      aria-hidden={hasAccessibleLabel ? undefined : true}
       style={style}
       rendererSettings={rendererSettings}
     />

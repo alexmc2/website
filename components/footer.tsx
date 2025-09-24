@@ -36,7 +36,7 @@ export default async function Footer() {
                     variant: navItem.buttonVariant || "default",
                   }),
                   navItem.buttonVariant === "ghost" &&
-                    "transition-colors hover:text-foreground/80 text-foreground/60 text-sm p-0 h-auto hover:bg-transparent"
+                    "transition-colors text-foreground hover:text-foreground/80 text-sm p-0 h-auto hover:bg-transparent"
                 )}
               >
                 {navItem.title}
@@ -44,7 +44,7 @@ export default async function Footer() {
             ))}
           </div>
           <div className="flex w-full justify-center border-t border-foreground/10 pt-6 text-xs">
-            <div className="flex items-center gap-2 text-foreground/60">
+            <div className="flex items-center gap-2 text-foreground">
               <span>&copy; {new Date().getFullYear()}</span>
               {settings?.copyright && (
                 <span className="[&>p]:!m-0">

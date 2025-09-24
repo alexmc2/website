@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -7,7 +8,6 @@ import { useTheme } from 'next-themes';
 
 import DesktopNav from '@/components/header/desktop-nav';
 import MobileNav from '@/components/header/mobile-nav';
-import Logo from '@/components/logo';
 // import { ModeToggle } from '@/components/menu-toggle';
 import { cn } from '@/lib/utils';
 import { NAVIGATION_QUERYResult, SETTINGS_QUERYResult } from '@/sanity.types';
@@ -112,8 +112,20 @@ export default function HeaderClient({
           <Link
             href="/"
             aria-label="Home page"
-            className="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.01]"
-          ></Link>
+            className="flex items-center gap-3 transition-transform duration-300 hover:scale-[1.01]"
+          >
+            <span className="relative h-8 w-8 sm:h-10 sm:w-10">
+              <Image
+                src="/demo-logo.svg"
+                alt=""
+                fill
+                priority
+                sizes="(min-width: 640px) 40px, 32px"
+                className="pointer-events-none"
+              />
+            </span>
+            <span className="sr-only">Sanity Next.js Website home</span>
+          </Link>
 
           <div className="hidden items-center gap-6 xl:flex">
             <DesktopNav

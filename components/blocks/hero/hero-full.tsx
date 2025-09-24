@@ -40,14 +40,31 @@ export default function HeroFull({
         : 'justify-center';
   const textAlign =
     contentAlignment === 'left'
-      ? 'lg:text-left'
+      ? 'text-center lg:text-left'
       : contentAlignment === 'right'
-        ? 'text-center'
+        ? 'text-center lg:text-right'
         : 'text-center';
+  const cardBaseClasses =
+    'w-full max-w-2xl bg-black/15 sm:p-0 p-2 text-white shadow-lg transition-colors supports-[backdrop-filter]:bg-background/10 supports-[backdrop-filter]:backdrop-blur-md supports-[backdrop-filter]:backdrop-saturate-150 sm:w-auto sm:px-8 sm:py-8';
 
   const heroImages = (
     images && images.length ? images : image ? [image] : []
   ).filter((img) => img?.asset?._id);
+
+  const buildHeroImageUrl = (img: (typeof heroImages)[number]) => {
+    if (!img) {
+      return undefined;
+    }
+
+    const dimensions = img.asset?.metadata?.dimensions;
+    const maxWidth = Math.min(2200, Math.round(dimensions?.width ?? 2200));
+
+    return urlFor(img)
+      .width(maxWidth)
+      .fit('max')
+      .quality(80)
+      .url();
+  };
 
   return (
     <section
@@ -66,10 +83,11 @@ export default function HeroFull({
             heroImages[0] && (
               <div className="relative h-full w-full overflow-hidden animate-zoom-in will-change-transform motion-reduce:animate-none">
                 <Image
-                  src={urlFor(heroImages[0]).url()}
+                  src={buildHeroImageUrl(heroImages[0])!}
                   alt={heroImages[0].alt || ''}
                   fill
                   priority
+                  fetchPriority="high"
                   className="object-cover"
                   sizes="100vw"
                   placeholder={
@@ -98,7 +116,7 @@ export default function HeroFull({
             justify
           )}
         >
-          <div className={cn('max-w-2xl text-white text-center', textAlign)}>
+          <div className={cn(cardBaseClasses, textAlign)}>
             {tagLine && (
               <FadeIn
                 as="p"
