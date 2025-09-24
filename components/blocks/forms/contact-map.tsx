@@ -19,7 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { PAGE_QUERYResult } from "@/sanity.types";
+import { FormContactMap as SanityFormContactMap } from "@/sanity.types";
 
 const GOOGLE_MAPS_EMBED_BASE = "https://www.google.com/maps/embed/v1/place";
 
@@ -40,10 +40,7 @@ const contactFormSchema = z.object({
   }),
 });
 
-type FormContactMapProps = Extract<
-  NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number],
-  { _type: "form-contact-map" }
->;
+export type FormContactMapBlock = SanityFormContactMap & { _key: string };
 
 const cleanString = (value?: string | null) =>
   value ? stegaClean(value) : undefined;
@@ -61,7 +58,7 @@ export default function FormContactMap({
   latitude,
   longitude,
   mapZoom,
-}: FormContactMapProps) {
+}: FormContactMapBlock) {
   const cleanedColor = colorVariant ? stegaClean(colorVariant) : undefined;
   const cleanedHeading = cleanString(heading) ?? "Get in touch";
   const cleanedBody = cleanString(body);

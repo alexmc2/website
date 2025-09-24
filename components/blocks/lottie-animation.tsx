@@ -9,7 +9,7 @@ import type { ColorVariant, PAGE_QUERYResult } from "@/sanity.types";
 import type { CSSProperties } from "react";
 import type { PortableTextBlock } from "@portabletext/types";
 
-type SanityLottieAnimationProps = Extract<
+type LottieAnimationProps = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number],
   { _type: "lottie-animation" }
 > & {
@@ -18,13 +18,6 @@ type SanityLottieAnimationProps = Extract<
       url?: string | null;
     } | null;
   } | null;
-};
-
-type LottieAnimationProps = SanityLottieAnimationProps & {
-  title?: PortableTextBlock[] | null;
-  textOrientation?: "vertical" | "horizontal" | null;
-  textPlacement?: "before" | "after" | null;
-  textSpacing?: "none" | "tight" | "compact" | "comfortable" | "roomy" | null;
 };
 
 type SpacingScale = "none" | "tight" | "compact" | "comfortable" | "roomy";
@@ -45,7 +38,7 @@ const SIZE_CLASS_MAP: Record<"small" | "medium" | "large" | "full", string> = {
 const HEIGHT_CLASS_MAP: Record<"small" | "medium" | "large" | "full", string> = {
   small: "h-24 sm:h-28",
   medium: "h-32 sm:h-40 md:h-48",
-  large: "h-40 sm:h-52 md:h-64",
+  large: "h-44 sm:h-52 md:h-64",
   full: "h-48 sm:h-60 md:h-72 lg:h-80",
 };
 
@@ -155,7 +148,9 @@ export default function LottieAnimationBlock({
     return (
       <div className={wrapperClass}>
         <div className={cn(textAlignClass, isHorizontal ? "lg:text-left" : undefined)}>
-          <PortableTextRenderer value={title ?? []} />
+          <PortableTextRenderer
+            value={(title as PortableTextBlock[] | undefined) ?? []}
+          />
         </div>
       </div>
     );

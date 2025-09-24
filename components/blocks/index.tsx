@@ -16,13 +16,13 @@ import LogoCloud1 from "@/components/blocks/logo-cloud/logo-cloud-1";
 import FAQs from "@/components/blocks/faqs";
 import FormNewsletter from "@/components/blocks/forms/newsletter";
 import ContactForm, { ContactFormBlock } from "@/components/blocks/forms/contact-form";
-import FormContactMap from "@/components/blocks/forms/contact-map";
+import FormContactMap, { FormContactMapBlock } from "@/components/blocks/forms/contact-map";
 import LocationMap, { LocationMapBlock } from "@/components/blocks/location/location-map";
 import AllPosts from "@/components/blocks/all-posts";
 import MenuSection from "@/components/blocks/menu-section";
 
 type Block = NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number];
-type ExtendedBlock = Block | ContactFormBlock | LocationMapBlock;
+type ExtendedBlock = Block | ContactFormBlock | LocationMapBlock | FormContactMapBlock;
 
 const componentMap: {
   [K in ExtendedBlock["_type"]]: React.ComponentType<Extract<ExtendedBlock, { _type: K }>>;
