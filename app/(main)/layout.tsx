@@ -16,7 +16,9 @@ export default async function MainLayout({
     <>
       <Header />
       <main>{children}</main>
-      {isDraftMode && <SanityLive />}
+      {/* Always render SanityLive so production receives LCAPI events
+         and revalidates cached content automatically. */}
+      <SanityLive />
       {isDraftMode && (
         <>
           <DisableDraftMode />

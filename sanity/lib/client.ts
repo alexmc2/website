@@ -2,6 +2,7 @@
 import { createClient } from "next-sanity";
 
 import { apiVersion, dataset, projectId, useCdn } from "../env";
+import { siteUrl } from "@/lib/siteConfig";
 
 export const client = createClient({
   projectId,
@@ -10,6 +11,6 @@ export const client = createClient({
   useCdn,
   perspective: "published",
   stega: {
-    studioUrl: process.env.NEXT_PUBLIC_SITE_URL + "/studio",
+    studioUrl: `${siteUrl}/studio`,
   },
 });

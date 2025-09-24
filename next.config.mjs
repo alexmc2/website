@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  // Ensure SSR + proper hydration for styled-components v6 used by @sanity/ui (Studio)
+  // This mirrors the working project's configuration and is required in production.
+  compiler: {
+    styledComponents: true,
+  },
   async headers() {
     return [
       {
