@@ -157,7 +157,11 @@ export default function HeaderClient({
               )}
             />
             */}
-            <MobileNav navigation={navigation} settings={settings} />
+            <MobileNav
+              navigation={navigation}
+              settings={settings}
+              isSolid={!(onHome && overHero)}
+            />
           </div>
         </div>
       </header>

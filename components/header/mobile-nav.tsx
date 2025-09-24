@@ -21,9 +21,16 @@ type SanityLink = NonNullable<NAVIGATION_QUERYResult[0]["links"]>[number];
 export default function MobileNav({
   navigation,
   settings,
+  isSolid = true,
 }: {
   navigation: NAVIGATION_QUERYResult;
   settings: SETTINGS_QUERYResult;
+  /**
+   * When the header has a solid/light background (i.e. not over the hero)
+   * we want a dark icon and dark outline. When false (over hero),
+   * use white for both so the trigger is visible on imagery.
+   */
+  isSolid?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -32,9 +39,17 @@ export default function MobileNav({
         <Button
           aria-label="Open Menu"
           variant="ghost"
-          className="w-10 p-5 focus-visible:ring-1 focus-visible:ring-offset-1"
+          className={cn(
+            // Make the trigger a visible circular target
+            "size-9 rounded-full p-0 ring-1 transition-colors",
+            // Color of icon + outline depends on header background
+            isSolid
+              ? "text-slate-900 ring-slate-900"
+              : "text-white ring-white"
+          )}
         >
-          <AlignRight className="dark:text-white" />
+          {/* Inherit color from parent so it flips with `isSolid` */}
+          <AlignRight className="size-5" />
         </Button>
       </SheetTrigger>
       <SheetContent>
