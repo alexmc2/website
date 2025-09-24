@@ -28,6 +28,8 @@ export default function SplitContent({
   body,
   link,
 }: SplitContentProps) {
+  const linkTitle = stegaClean(link?.title);
+
   return (
     <div
       className={cn(
@@ -53,7 +55,7 @@ export default function SplitContent({
             title
           )}
         {body && <PortableTextRenderer value={body} />}
-        {link?.href && (
+        {link?.href && linkTitle && (
           <div className="flex flex-col">
             <Button
               className="mt-2"
@@ -64,8 +66,9 @@ export default function SplitContent({
               <Link
                 href={link.href}
                 target={link.target ? "_blank" : undefined}
+                rel={link.target ? "noopener noreferrer" : undefined}
               >
-                {link.title}
+                {linkTitle}
               </Link>
             </Button>
           </div>

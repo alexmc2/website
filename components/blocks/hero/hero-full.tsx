@@ -45,9 +45,9 @@ export default function HeroFull({
         ? 'text-center lg:text-right'
         : 'text-center';
   const cardClasses = cn(
-    'w-full max-w-2xl rounded-3xl bg-white/15 px-4 py-6 text-white shadow-lg transition-colors',
-    'supports-[backdrop-filter]:bg-background/10 supports-[backdrop-filter]:backdrop-blur-lg supports-[backdrop-filter]:backdrop-saturate-150',
-    'sm:w-auto sm:px-8 sm:py-8'
+    'hero-blur w-full text-white sm:w-auto',
+    'max-w-2xl sm:max-w-3xl',
+    textAlign
   );
 
   const heroImages = (
@@ -123,7 +123,7 @@ export default function HeroFull({
             justify
           )}
         >
-          <div className={cn(cardClasses, textAlign)}>
+          <div className={cardClasses}>
             {tagLine && (
               <FadeIn
                 as="p"
