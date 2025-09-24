@@ -92,9 +92,13 @@ export default function HeroFull({
       )}
       {(tagLine || title || body) && (
         <div
-          className={`absolute inset-0 z-20 flex items-center ${justify} px-6 lg:px-32`}
+          className={cn(
+            'absolute inset-0 z-20 flex px-6 pt-24 pb-16 sm:pt-32 lg:px-32',
+            'items-start lg:items-center lg:pt-0 lg:pb-0',
+            justify
+          )}
         >
-          <div className={`max-w-2xl text-white text-center   ${textAlign}`}>
+          <div className={cn('max-w-2xl text-white text-center', textAlign)}>
             {tagLine && (
               <FadeIn
                 as="p"
