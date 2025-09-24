@@ -24,12 +24,15 @@ function Avatar({
 
 function AvatarImage({
   className,
+  loading,
   ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Image>) {
+}: React.ComponentProps<typeof AvatarPrimitive.Image> & { loading?: 'eager' | 'lazy' }) {
   return (
     <AvatarPrimitive.Image
       data-slot="avatar-image"
       className={cn("aspect-square size-full", className)}
+      // Default to lazy to avoid early network work for offscreen avatars
+      loading={loading ?? 'lazy'}
       {...props}
     />
   );

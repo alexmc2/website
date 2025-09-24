@@ -78,7 +78,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-        <Analytics />
+        {isProduction && <Analytics />}
         <Toaster position="top-center" richColors />
       </body>
     </html>

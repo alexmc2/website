@@ -54,7 +54,6 @@ export default function LogoCloud1({
                   <Image
                     src={urlFor(image).url()}
                     alt={image.alt || ""}
-                    priority={arrayIndex === 0 && index < 3}
                     placeholder={
                       image?.asset?.metadata?.lqip &&
                       image?.asset?.mimeType !== "image/svg+xml"

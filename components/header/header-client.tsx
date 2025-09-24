@@ -119,7 +119,6 @@ export default function HeaderClient({
                 src="/demo-logo.svg"
                 alt=""
                 fill
-                priority
                 sizes="(min-width: 640px) 40px, 32px"
                 className="pointer-events-none"
               />

@@ -50,7 +50,6 @@ export default function Logo({ settings }: { settings: SETTINGS_QUERYResult }) {
           : undefined
       }
       blurDataURL={logoToUse?.asset?.metadata?.lqip || undefined}
-      priority
     />
   ) : (
     <span className="text-lg font-semibold tracking-tighter">
