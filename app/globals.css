@@ -291,7 +291,9 @@
 
 @layer base {
   html {
+    /* Keep a scrollbar on all pages to avoid layout jumps */
     scroll-behavior: smooth;
+    overflow-y: scroll;
   }
   * {
     @apply border-border outline-ring/50;
