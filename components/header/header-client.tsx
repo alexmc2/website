@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { useTheme } from 'next-themes';
 
 import DesktopNav from '@/components/header/desktop-nav';
 import MobileNav from '@/components/header/mobile-nav';
@@ -26,11 +25,7 @@ export default function HeaderClient({
   const [overHero, setOverHero] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const { setTheme } = useTheme();
-
-  useEffect(() => {
-    setTheme('light');
-  }, [setTheme]);
+  // Avoid forcing theme on first paint to keep main thread idle
 
   const onHome = pathname === '/';
   const headerRef = useRef<HTMLElement | null>(null);
@@ -111,6 +106,7 @@ export default function HeaderClient({
         >
           <Link
             href="/"
+            prefetch={false}
             aria-label="Home page"
             className="flex items-center gap-3 transition-transform duration-300 hover:scale-[1.01]"
           >

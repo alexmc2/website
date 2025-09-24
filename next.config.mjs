@@ -1,6 +1,19 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'x-vercel-skip-toolbar',
+            value: '1',
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {

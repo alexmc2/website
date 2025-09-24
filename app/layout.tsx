@@ -43,16 +43,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="preconnect"
-          href={sanityCdnOrigin}
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href={sanityApiOrigin}
-          crossOrigin="anonymous"
-        />
+        <link rel="preconnect" href={sanityCdnOrigin} crossOrigin="anonymous" />
+        <link rel="preconnect" href={sanityApiOrigin} crossOrigin="anonymous" />
         <link
           rel="preconnect"
           href={googleUserContentOrigin}
@@ -78,7 +70,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-        {isProduction && <Analytics />}
+        <Analytics />
         <Toaster position="top-center" richColors />
       </body>
     </html>

@@ -21,6 +21,7 @@ export const heroFullQuery = groq`
     },
     height,
     overlay,
+    frosted,
     overlayStrength,
     contentAlignment,
   }

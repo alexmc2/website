@@ -14,6 +14,7 @@ type HeroFullProps = {
   images?: any[] | null;
   height?: 'screen' | '70vh' | '60vh' | null;
   overlay?: boolean | null;
+  frosted?: boolean | null;
   overlayStrength?: number | null;
   contentAlignment?: 'left' | 'center' | 'right' | null;
 };
@@ -26,6 +27,7 @@ export default function HeroFull({
   images,
   height = 'screen',
   overlay = true,
+  frosted = true,
   overlayStrength = 50,
   contentAlignment = 'center',
 }: HeroFullProps) {
@@ -45,7 +47,8 @@ export default function HeroFull({
         ? 'text-center lg:text-right'
         : 'text-center';
   const cardClasses = cn(
-    'hero-blur w-full text-white sm:w-auto',
+    frosted && 'hero-blur',
+    'w-full text-white sm:w-auto',
     'max-w-2xl sm:max-w-3xl',
     textAlign
   );

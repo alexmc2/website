@@ -6,6 +6,7 @@ export const fontSans = Inter({
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
+  preload: false,
 });
 
 export const fontBody = fontSans;
@@ -15,4 +16,5 @@ export const fontHeading = Poppins({
   weight: ["400", "500", "600", "700"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });

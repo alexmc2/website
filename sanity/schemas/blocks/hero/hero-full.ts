@@ -86,6 +86,15 @@ export default defineType({
       group: "settings",
     }),
     defineField({
+      name: "frosted",
+      title: "Frosted Text Background",
+      type: "boolean",
+      description:
+        "Blurred glass effect behind the hero text block.",
+      initialValue: true,
+      group: "settings",
+    }),
+    defineField({
       name: "overlayStrength",
       title: "Overlay Strength (0–100)",
       type: "number",

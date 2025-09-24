@@ -29,6 +29,7 @@ export default async function Footer() {
               <Link
                 key={navItem._key}
                 href={navItem.href || "#"}
+                prefetch={false}
                 target={navItem.target ? "_blank" : undefined}
                 rel={navItem.target ? "noopener noreferrer" : undefined}
                 className={cn(

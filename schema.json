@@ -6755,6 +6755,13 @@
           },
           "optional": true
         },
+        "frosted": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "overlayStrength": {
           "type": "objectAttribute",
           "value": {
